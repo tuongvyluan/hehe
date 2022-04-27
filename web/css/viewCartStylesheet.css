@@ -1,0 +1,21 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Mar 11, 2022, 8:34:12 AM
+    Author     : Luan Tuong Vy
+*/
+
+td {
+    width: max-content;
+    padding: 5px 10px;
+}
+
+input[type=number] {
+    width: 20px;
+}
+
+table {
+    width: 100%;
+}
