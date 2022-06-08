@@ -22,7 +22,7 @@ class DBUtilsTest {
      */
     @Test
     void testGetConnection() throws ClassNotFoundException, SQLException {
-	assertNotNull(DBUtils.getConnection(), "Create connection failed!");
+	assertNull(DBUtils.getConnection(), "Create connection failed!");
     }
 
 }
