@@ -1,7 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -29,34 +31,51 @@
     <meta property="og:title" content="Home">
     <meta property="og:type" content="website">
 </head>
-    <body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-xl-mode">
-    <header class="u-align-center-sm u-align-center-xs u-clearfix u-grey-30 u-header u-sticky u-sticky-5514 u-header" id="sec-04e9"><div class="u-clearfix u-sheet u-sheet-1">
-        <a href="https://nicepage.com" class="u-image u-logo u-image-1"  >
+<body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-xl-mode">
+    <header class="u-align-center-sm u-align-center-xs u-clearfix u-header u-sticky u-sticky-5514 u-header" id="sec-04e9" style="background-color: #2C31CF"><div class="u-clearfix u-sheet u-sheet-1">
+        <a href="#" class="u-image u-logo u-image-1"  >
           <img src="images/hehe.png" class="u-logo-image u-logo-image-1">
         </a>
         
-        <nav class="u-align-left u-menu u-menu-dropdown u-offcanvas u-menu-1">
+        <nav class="u-align-right u-menu u-menu-dropdown u-offcanvas u-menu-1">
           <div class="menu-collapse" style="font-size: 1rem;">
             <a class="u-button-style u-nav-link" href="#">
-              <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 302 302" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-8a8f"></use></svg>
+              <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 302 302" style="color: #EEE;margin-right: 10px"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-8a8f"></use></svg>
               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg-8a8f" x="0px" y="0px" viewBox="0 0 302 302" style="enable-background:new 0 0 302 302;" xml:space="preserve" class="u-svg-content"><g><rect y="36" width="302" height="30"></rect><rect y="236" width="302" height="30"></rect><rect y="136" width="302" height="30"></rect>
 </g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
             </a>
           </div>
-          <div class="u-custom-menu u-nav-container">
-            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Home.html" style="padding: 10px 20px;">Home</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="About.html" style="padding: 10px 20px;">About</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Contact.html" style="padding: 10px 20px;">Contact</a>
-</li></ul>
+          <div class="u-custom-menu u-nav-container" style="color: #EEE">
+            <ul class="u-nav u-unstyled u-nav-1">
+            <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#" style="padding: 10px 20px;">Home</a>
+</li>
+<li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#" style="padding: 10px 20px;">Learning</a>
+</li>
+<li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#" style="padding: 10px 20px;">Practice</a>
+</li>
+<li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#" style="padding: 10px 20px;">Profile</a>
+</li>
+</ul>
           </div>
           <div class="u-custom-menu u-nav-container-collapse">
             <div class="u-align-center u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html">Home</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="About.html">About</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Contact.html">Contact</a>
-</li></ul>
+                <ul class="u-align-left u-nav u-popupmenu-items u-unstyled u-nav-2">
+                <li class="u-nav-item">
+                
+                <a class="u-button-style u-nav-link" href="Home.html">
+                
+                Home
+                </a>
+</li>
+<li class="u-nav-item"><a class="u-button-style u-nav-link" href="About.html">Learning</a>
+</li>
+<li class="u-nav-item"><a class="u-button-style u-nav-link" href="Contact.html">Practice</a>
+</li>
+<li class="u-nav-item"><a class="u-button-style u-nav-link" href="Contact.html">Profile</a>
+</li>
+</ul>
               </div>
             </div>
             <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
@@ -67,5 +86,6 @@ box-shadow: 2px 2px 8px 0 rgba(128,128,128,1) !important
 }.u-sticky-fixed.u-sticky-5514:before, .u-body.u-sticky-fixed .u-sticky-5514:before {
 borders: top right bottom left !important; border-color: #404040 !important; border-width: 2px !important
 }</style></header>
+
 </body>
 </html>
