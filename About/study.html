@@ -173,8 +173,8 @@
                             <ul>
                                 <li class="answer-select" id="answer-select">
                                     <div class="select">
-                                        <input type="checkbox" id="answer" class="answer" name="answer" value="A"
-                                            form="answerForm">
+                                        <input type="checkbox" id="answer1" class="answer" name="answer" value="A"
+                                            form="answerForm" onchange="selectOnlyThis(this.id)">
                                         <span class="checkmark"></span>
                                     </div>
                                     <div class="answer-content">
@@ -183,8 +183,8 @@
                                 </li>
                                 <li class="answer-select" id="answer-select">
                                     <div class="select">
-                                        <input type="checkbox" id="answer1" class="answer" name="answer" value="B"
-                                            form="answerForm">
+                                        <input type="checkbox" id="answer2" class="answer" name="answer" value="B"
+                                            form="answerForm" onchange="selectOnlyThis(this.id)">
                                         <span class="checkmark"></span>
                                     </div>
                                     <div class="answer-content">
@@ -193,8 +193,8 @@
                                 </li>
                                 <li class="answer-select" id="answer-select">
                                     <div class="select">
-                                        <input type="checkbox" id="answer2" class="answer" name="answer" value="C"
-                                            form="answerForm">
+                                        <input type="checkbox" id="answer3" class="answer" name="answer" value="C"
+                                            form="answerForm" onchange="selectOnlyThis(this.id)">
                                         <span class="checkmark"></span>
                                     </div>
                                     <div class="answer-content">
@@ -203,8 +203,8 @@
                                 </li>
                                 <li class="answer-select" id="answer-select">
                                     <div class="select">
-                                        <input type="checkbox" id="answer3" class="answer" name="answer" value="D"
-                                            form="answerForm">
+                                        <input type="checkbox" id="answer4" class="answer" name="answer" value="D"
+                                            form="answerForm" onchange="selectOnlyThis(this.id)">
                                         <span class="checkmark"></span>
                                     </div>
                                     <div class="answer-content">
@@ -217,7 +217,7 @@
                 </div>
                 <div class="right-footer">
                     <div class="submit-menu">
-                        <a class="previous-button" id="prevbtn"> //jsp dung redirect den trang hien tai``
+                        <a class="previous-button" id="prevbtn"> <!--dung jsp redirect den trang hien tai-->
                             <i class="fa-solid fa-arrow-left"></i>
                             <span>Previous</span>
                         </a>

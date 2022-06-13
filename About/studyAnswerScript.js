@@ -24,25 +24,35 @@
 
 $(document).ready(function () {
 
-    // select multiple choice 
+    // select single choice
     $('li.answer-select').click(function (e) {
         $(this).toggleClass('selected').siblings().removeClass('selected');
         if (!$(e.target).is('input[type="checkbox"]')) {
             var $checkbox = $(this).find('input[type="checkbox"]');
             $checkbox.prop('checked', !$checkbox.prop('checked'));
+            selectOnlyThis($checkbox.prop('id'));
         }
-    })
-    $('input[type="checkbox"]').on('change', function () {
-        $('input[type="checkbox"]').siblings().prop('checked', false);
     })
 })
 
-function check() {
-    if (document.getElementById('answer').checked == true) {
-        alert("checked");
-    } else {
-        alert("You didn't check it! Let me check it for you.");
+function selectOnlyThis(id) {
+    if (document.getElementById(id).checked) {
+        for (var i = 1; i <= 4; i++) {
+            document.getElementById('answer' + i).checked = false;
+        }
+        document.getElementById(id).checked = true;
     }
+}
+
+function check() {
+    for (var i = 1; i <= 4; i++) {
+        if (document.getElementById('answer'+i).checked == true) {
+            console.log('checked'+i)
+        } else {
+            console.log('not checked'+i)
+        }
+    }
+
 }
 
 //reset the selection
@@ -50,6 +60,10 @@ document.getElementById('reset').addEventListener('click', () => {
     var selectedAnswer = document.querySelectorAll(".selected");
     for (var i = 0; i < selectedAnswer.length; i++) {
         selectedAnswer[i].className = "answer-select";
+    }
+    var checkboxes = document.querySelectorAll("input");
+    for (var checkbox of checkboxes) {
+        checkbox.checked = false;
     }
 })
 
