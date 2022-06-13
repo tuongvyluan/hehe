@@ -23,18 +23,22 @@
 //     };
 
 $(document).ready(function () {
+
     // select multiple choice 
     $('li.answer-select').click(function (e) {
-        $(this).toggleClass('selected');
-        if (!$(e.target).is('input')) {
-            var $checkbox = $(this).find('input');
+        $(this).toggleClass('selected').siblings().removeClass('selected');
+        if (!$(e.target).is('input[type="checkbox"]')) {
+            var $checkbox = $(this).find('input[type="checkbox"]');
             $checkbox.prop('checked', !$checkbox.prop('checked'));
         }
+    })
+    $('input[type="checkbox"]').on('change', function () {
+        $('input[type="checkbox"]').siblings().prop('checked', false);
     })
 })
 
 function check() {
-    if (document.getElementById('answer').checked ==true) {
+    if (document.getElementById('answer').checked == true) {
         alert("checked");
     } else {
         alert("You didn't check it! Let me check it for you.");
