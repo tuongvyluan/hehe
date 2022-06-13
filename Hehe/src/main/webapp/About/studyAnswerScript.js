@@ -21,11 +21,12 @@
 //              alert(row['name']);                 
 //          }
 //     };
-var ans = 1;
 
+//multiple choice handler
 $(document).ready(function () {
+    var ans = 1;
     switch (ans) {
-        case 1:
+        case 1:     // single select
             $('li.answer-select').click(function (e) {
                 $(this).toggleClass('selected').siblings().removeClass('selected');
                 if (!$(e.target).is('input[type="checkbox"]')) {
@@ -35,7 +36,7 @@ $(document).ready(function () {
                 }
             })
             break;
-        case 2:
+        case 2: // multiple select
             $('li.answer-select').click(function (e) {
                 $(this).toggleClass('selected');
                 if (!$(e.target).is('input[type="checkbox"]')) {
@@ -45,8 +46,6 @@ $(document).ready(function () {
             })
             break;
     }
-    // select single choice 
-
 })
 
 function selectOnlyThis(id) {
