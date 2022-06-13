@@ -14,7 +14,7 @@ id="WebApp_ID" version="2.5">
 
 <welcome-file-list>
 
-<welcome-file>login.jsp</welcome-file>
+<welcome-file>study.html</welcome-file>
 
 </welcome-file-list>
 

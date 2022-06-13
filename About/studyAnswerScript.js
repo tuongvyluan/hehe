@@ -23,8 +23,7 @@
 //     };
 
 $(document).ready(function () {
-
-    // select single choice
+    // select single choice 
     $('li.answer-select').click(function (e) {
         $(this).toggleClass('selected').siblings().removeClass('selected');
         if (!$(e.target).is('input[type="checkbox"]')) {
