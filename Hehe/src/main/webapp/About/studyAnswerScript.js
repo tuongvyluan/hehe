@@ -24,7 +24,7 @@
 
 //multiple choice handler
 $(document).ready(function () {
-    var ans = 1;
+    var ans = 2;
     switch (ans) {
         case 1:     // single select
             $('li.answer-select').click(function (e) {
