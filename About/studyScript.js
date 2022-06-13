@@ -60,21 +60,3 @@ document.addEventListener('DOMContentLoaded', function () {
     resizer.addEventListener('mousedown', mouseDownHandler);
 });
 
-//multiple choice handler
-$('.answer-select').click(function () {
-    $(this).toggleClass('selected');
-})
-
-//reset the selection
-document.getElementById('reset').addEventListener('click', () => {
-    var selectedAnswer = document.querySelectorAll(".selected");
-    for (var i = 0; i < selectedAnswer.length; i++) {
-        selectedAnswer[i].className = "answer-select";
-    }
-})
-
-//submit the answer
-function submitAnswers() {
-    var form = document.getElementById('answerForm');
-    form.submit();
-}

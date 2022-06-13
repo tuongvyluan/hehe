@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="studyStyle.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+    <script src="studyScript.js" defer></script>
+    <script src="studyAnswerScript.js" defer></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
     <script src="https://kit.fontawesome.com/709397a81f.js" crossorigin="anonymous"></script>
@@ -159,25 +161,30 @@
     </header>
     <main>
         <div class="container">
+            <form method="post" action="https://www.google.com.vn/?hl=vi" name="answerForm" id="answerForm"></form>
             <div class="container__left">
                 <div class="lesson">
                     <div class="lesson_content">
-                        <h3>
+                        <h3 style="text-align: justify;">
                             <strong>
                                 Lý Thuyết
                             </strong>
                         </h3>
-                        <ul>
+                        <ul style="text-align: justify;">
                             <li>
                                 <h4>
                                     <strong>Khái niệm</strong>
                                 </h4>
                             </li>
                         </ul>
-                        <p>
+                        <p style="text-align: justify;">
                             Truyền thông dữ liệu là quá trình chia sẻ và truyền dữ liệu thông tin bằng cách thực hiện
                             các hành động cử chỉ hoặc thông qua việc sử dụng công nghệ được thiết kế giữa các cá nhân và
                             tổ chức để truyền dữ liệu từ nơi này đến nơi khác hoặc từ cá nhân này sang cá nhân khác.
+                        </p>
+                        <p style="padding-left: 30px;">
+                            <img src="https://tuyensinh.uit.edu.vn/sites/default/files/uploads/images/201803/iot_lay_nen_tang_la_mang_may_tinh_de_ket_noi_moi_thu_lai_voi_nhau.jpg"
+                                alt="truyền thông dữ liệu">
                         </p>
                         <br>
                         <h3>Bài tập</h3>
@@ -205,43 +212,46 @@
                 </div>
                 <div class="answer">
                     <div class="answer-input">
-                        <form action="https://www.google.com.vn/?hl=vi" id="answerForm"></form>
                         <div class="answer-list">
                             <ul>
                                 <li class="answer-select" id="answer-select">
                                     <div class="select">
-                                        <input type="checkbox" name="answer" value="1" form="answerForm">
+                                        <input type="checkbox" id="answer" class="answer" name="answer" value="A"
+                                            form="answerForm">
                                         <span class="checkmark"></span>
                                     </div>
                                     <div class="answer-content">
-                                        <p>Là quá trình rèn luyện sức khỏe của bản thân</p>
+                                        <p>A</p>
                                     </div>
                                 </li>
                                 <li class="answer-select" id="answer-select">
                                     <div class="select">
-                                        <input type="checkbox" name="answer" value="1" form="answerForm">
+                                        <input type="checkbox" id="answer1" class="answer" name="answer" value="B"
+                                            form="answerForm">
                                         <span class="checkmark"></span>
                                     </div>
                                     <div class="answer-content">
-                                        <p>Là quá trình rèn luyện sức khỏe của bản thân</p>
+                                        <p>B</p>
                                     </div>
                                 </li>
                                 <li class="answer-select" id="answer-select">
                                     <div class="select">
-                                        <input type="checkbox" name="answer" value="1" form="answerForm">
+                                        <input type="checkbox" id="answer2" class="answer" name="answer" value="C"
+                                            form="answerForm">
                                         <span class="checkmark"></span>
                                     </div>
                                     <div class="answer-content">
-                                        <p>Là quá trình rèn luyện sức khỏe của bản thân</p>
+                                        <p>C</p>
                                     </div>
                                 </li>
                                 <li class="answer-select" id="answer-select">
                                     <div class="select">
-                                        <input type="checkbox" name="answer" value="1" form="answerForm">
+                                        <input type="checkbox" id="answer3" class="answer" name="answer" value="D"
+                                            form="answerForm">
                                         <span class="checkmark"></span>
                                     </div>
                                     <div class="answer-content">
-                                        <p>Là quá trình rèn luyện sức khỏe của bản thân</p>
+                                        <p>D</p>
                                     </div>
                                 </li>
                             </ul>
@@ -250,8 +260,15 @@
                 </div>
                 <div class="right-footer">
                     <div class="submit-menu">
-                        <a class="submit-button" id="submitbtn" input type="submit" value="Submit"
-                            onclick="submitAnswers();">
+                        <a class="previous-button" id="prevbtn">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span>Previous</span>
+                        </a>
+                        <a class="next-button" id="nextbtn">
+                            <span>Next</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a class="submit-button" id="submitbtn" input type="submit" value="Submit" onclick="check();">
                             <i class="fa-solid fa-floppy-disk"></i>
                             <span>Submit</span>
                         </a>
@@ -260,7 +277,6 @@
             </div>
         </div>
         </div>
-        <script src="studyScript.js"></script>
     </main>
 </body>
 
