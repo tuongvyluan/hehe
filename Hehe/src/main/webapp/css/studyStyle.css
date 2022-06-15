@@ -1,0 +1,299 @@
+html,
+body {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    margin: 0;
+}
+
+header {
+    flex: 0 1 auto;
+}
+
+main {
+    overflow: hidden;
+    flex: 1 1 auto;
+}
+
+ul.single-select {
+    list-style: none;
+}
+
+img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: auto;
+    width: 500px;
+    max-width: 100%;
+    aspect-ratio: auto 500/252;
+}
+
+.list-quiz ul {
+    padding: 0;
+    margin: 0;
+}
+
+.draggable {
+    /* Indicate the element draggable */
+    cursor: move;
+
+    /* It will be positioned absolutely */
+    position: absolute;
+
+    /* Doesn't allow to select the content inside */
+    user-select: none;
+}
+
+.container {
+    display: flex;
+    /* Misc */
+    height: 100%;
+    min-width: 100%;
+}
+
+.container__left {
+    width: 50%;
+
+    /* Misc */
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    min-width: 100px;
+}
+
+.resizer {
+    background-color: #2b7fd8;
+    cursor: e-resize;
+    height: 100%;
+    width: 2px;
+}
+
+.button-resize {
+    position: relative;
+    background-color: rgb(135, 175, 62);
+    top: 50%;
+    right: 18px;
+    height: 30px;
+    width: 40px;
+    cursor: pointer;
+    box-shadow: 0 3px 5px 0 #000;
+    border-radius: 50px;
+}
+
+.container__right {
+    /* Take the remaining width */
+    flex: 1;
+    /* Misc */
+    align-items: center;
+    display: block;
+    justify-content: center;
+    height: 100%;
+    background-color: #1e1f26;
+    min-width: 100px;
+}
+
+.lesson {
+    overflow: auto;
+    padding: 10px 10px 10px;
+    background-color: #ffffff;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 97.6%;
+}
+
+.lesson-content {
+    margin-bottom: 30px;
+    display: inline-block;
+    width: 100%;
+}
+
+.quiz-container .quiz-list {
+    margin: 10px 11px 50px 23px;
+    width: 100%;
+}
+
+.right-header {
+    background-color: rgb(35, 36, 50);
+    padding: 0 10px;
+}
+
+.reset-menu {
+    min-height: 40px;
+    padding-left: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.reset-button {
+    color: #fff;
+    cursor: pointer;
+    background-color: #3b3c54;
+    border-radius: 3px;
+    padding: 5px 10px;
+    position: relative;
+    margin-left: auto;
+    user-select: none;
+}
+
+.reset-button:hover {
+    background-color: #2c3cb9;
+    color: #fff;
+}
+
+.answer {
+    overflow: hidden;
+    height: 90.8%;
+    position: relative;
+}
+
+.answer-input {
+    min-height: 100%;
+    display: flex;
+    vertical-align: middle;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.answer-list {
+    margin: 10px 10px 50px 23px;
+    width: 100%;
+}
+
+.answer-select {
+    background-color: #fff;
+    padding: 30px 40px 20px;
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    display: flex;
+    cursor: pointer;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%);
+    -webkit-box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%);
+}
+
+.answer-select:hover {
+    background-color: rgb(37, 211, 217);
+}
+
+li.selected {
+    background-color: rgb(37, 211, 217);
+}
+
+.select {
+    min-width: 18px;
+    height: 0;
+    margin-right: 18px;
+    position: relative;
+    display: flex;
+    float: left;
+    user-select: none;
+}
+
+input[type="checkbox"] {
+    position: absolute;
+    opacity: 1;
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    z-index: 90;
+}
+
+/* .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border: 3px solid rgb(88, 189, 16);
+    border-radius: 50%;
+} */
+
+input:checked~.checkmark {
+    background-color: #2196F3;
+    background-color: rgb(198, 118, 33);
+    border: 3px solid rgb(172, 16, 189);
+}
+
+.answer-select:hover input~.checkmark {
+    border: 3px solid rgb(172, 16, 189);
+}
+
+.answer-content {
+    left: 36px;
+    margin-right: 30px;
+    position: relative;
+    display: block;
+    float: left;
+    user-select: none;
+}
+
+.right-footer {
+    background-color: rgb(35, 36, 50);
+    padding: 0 10px;
+    position: relative;
+}
+
+.submit-menu {
+    min-height: 45px;
+    padding-left: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.previous-button {
+    color: #fff;
+    cursor: pointer;
+    background-color: #bb810e;
+    border-radius: 3px;
+    padding: 5px 10px;
+    position: relative;
+    margin-left: 5px;
+    user-select: none;
+}
+
+.previous-button:hover {
+    background-color: rgb(20, 104, 40);
+    color: #fff;
+}
+
+.next-button {
+    color: #fff;
+    cursor: pointer;
+    background-color: #bb810e;
+    border-radius: 3px;
+    padding: 5px 10px;
+    position: relative;
+    margin-left: 5px;
+    user-select: none;
+}
+
+.next-button:hover {
+    background-color: rgb(20, 104, 40);
+    color: #fff;
+}
+
+.submit-button {
+    color: #fff;
+    cursor: pointer;
+    background-color: #bb810e;
+    border-radius: 3px;
+    padding: 5px 10px;
+    position: relative;
+    margin-left: auto;
+    user-select: none;
+}
+
+.submit-button:hover {
+    background-color: rgb(20, 104, 40);
+    color: #fff;
+}

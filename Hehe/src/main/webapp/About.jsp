@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html style="font-size: 16px;">
 
@@ -7,10 +9,10 @@
   <meta name="keywords" content="">
   <meta name="description" content="">
   <title>About</title>
-  <link rel="stylesheet" href="nicepage.css" media="screen">
-  <link rel="stylesheet" href="About.css" media="screen">
-  <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
-  <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+  <link rel="stylesheet" href="css/nicepage.css" media="screen">
+  <link rel="stylesheet" href="css/About.css" media="screen">
+  <script class="u-script" type="text/javascript" src="jquery/jquery.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="js/nicepage.js" defer=""></script>
   <meta name="generator" content="Nicepage 4.12.5, nicepage.com">
   <link id="u-theme-google-font" rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
@@ -38,7 +40,7 @@
       <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="80" data-image-height="40">
         <img src="images/default-logo.png" class="u-logo-image u-logo-image-1">
       </a>
-      <!-- <div class="u-social-icons u-spacing-10 u-social-icons-1">
+      <div class="u-social-icons u-spacing-10 u-social-icons-1">
         <a class="u-social-url" title="facebook" target="_blank" href=""><span
             class="u-icon u-social-facebook u-social-icon u-icon-1"><svg class="u-svg-link"
               preserveAspectRatio="xMidYMin slice" viewBox="0 0 112 112" style="">
@@ -79,7 +81,7 @@
             c5.5,0,9.9,4.5,9.9,9.9V73.3z"></path>
             </svg></span>
         </a>
-      </div> -->
+      </div>
       <nav class="u-align-left u-menu u-menu-dropdown u-offcanvas u-menu-1">
         <div class="menu-collapse" style="font-size: 1rem;">
           <a class="u-button-style u-nav-link" href="#">
