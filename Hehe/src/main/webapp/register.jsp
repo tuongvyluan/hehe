@@ -25,43 +25,82 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	
+<script src="https://kit.fontawesome.com/77d5a89f77.js" crossorigin="anonymous"></script>
 <!--===============================================================================================-->
 
 <title>Register</title>
 </head>
 <body>
+<header style="">
+	<%@include file="header.jsp" %>
+</header>
 	<div class="limiter">
+	
 		<div class="container-login100" style="background-image: url('images/loginBackground.jpg');">
-			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+			<div class="wrap-login100 regis p-l-55 p-r-55 p-t-65 p-b-54" style="width:1000px">
 				<form class="login100-form validate-form">
 					<span class="login100-form-title p-b-49">
 						Register
 					</span>
-
-					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is required">
+					
+<div class="wrapper" style="display: flex;justify-content: space-between;">
+<div class="input-wrapper" style="width: 40%">
+<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is required">
 						<span class="label-input100">Username</span>
 						<input class="input100" type="text" name="username" placeholder="Type your username">
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
-
-					<div class="wrap-input100 validate-input" data-validate="Password is required">
+					
+					<div class="wrap-input100 validate-input m-b-23" data-validate="Password is required">
 						<span class="label-input100">Password</span>
-						<input class="input100" type="password" name="pass" placeholder="Type your new password">
+						<input class="input100" type="password" name="pass" placeholder="Type your password">
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
 					
-					<div class="wrap-input100 validate-input" data-validate="Password is required" style="margin-bottom: 20px" >
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
 						<span class="label-input100">Confirm password</span>
-						<input class="input100" type="password" name="pass" placeholder="Type your new password">
+						<input class="input100" type="password" name="pass" placeholder="Confirm your password">
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
+					</div> <%-- end input wrapper --%>
+
+<div class="input-wrapper" style="width: 40%">
+
 					
-				<%--
+					<div class="wrap-input100 validate-input m-b-23" data-validate="Password is required">
+						<span class="label-input100">Name</span>
+						<input class="input100" type="password" name="pass" placeholder="Type your name">
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+					
+					<div class="wrap-input100 validate-input m-b-23 p-l-0" data-validate = "Username is required">
+						<span class="label-input100">Date of birth</span>
+						<input class="input100" type="date" name="username" placeholder="Type your username">
+		<span class="focus-input100" data-symbol="&#xf239;"></span>
+					</div>
+					
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<span class="label-input100">Phone number</span>
+						<input class="input100" type="password" name="pass" placeholder="Confirm your password">
+						<span class="focus-input100" data-symbol="&#xf190;"></span>
+					</div>
+					</div> <%-- end input wrapper --%>
+</div> <%-- end wrapper --%>			
+					
+
+					
+					
+
+					
+					
+					
+					
 				<div class="text-right p-t-8 p-b-31">
 						<a href="#">
-							Have an account ?<br/>Sign in instead
+							 
 						</a>
-					</div> --%>	
+					</div>
 					
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
@@ -84,7 +123,7 @@
 						</a>
 					</div>
 
-					<div class="flex-col-c p-t-155">
+					<div class="flex-col-c p-t-100">
 						<span class="txt1 p-b-17">
 							Have an account ?
 						</span>
@@ -97,5 +136,8 @@
 			</div>
 		</div>
 	</div>
+	<footer>
+	<%@ include file="footer.jsp" %>
+	</footer>
 </body>
 </html>

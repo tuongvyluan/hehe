@@ -30,6 +30,9 @@
 <title>Login</title>
 </head>
 <body>
+<header>
+<%@ include file="header.jsp" %>
+</header>
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/loginBackground.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
@@ -67,7 +70,7 @@
 
 					<div class="txt1 text-center p-t-54 p-b-20">
 						<span>
-							Or Sign Up Using
+							Or Login Using
 						</span>
 					</div>
 
@@ -77,7 +80,7 @@
 						</a>
 					</div>
 
-					<div class="flex-col-c p-t-155">
+					<div class="flex-col-c p-t-100">
 						<span class="txt1 p-b-17">
 							Don't have an account ?
 						</span>
@@ -90,5 +93,6 @@
 			</div>
 		</div>
 	</div>
+	<%@ include file="footer.jsp" %>
 </body>
 </html>

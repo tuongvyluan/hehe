@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="nicepage.css" media="screen">
-<link rel="stylesheet" href="Home.css" media="screen">
-    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <link rel="stylesheet" href="./About/nicepage.css" media="screen">
+<link rel="stylesheet" href="./About/Home.css" media="screen">
+    <script class="u-script" type="text/javascript" src="./About/jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="./About/nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 4.12.5, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro:100,200,300,400,500,600,700|Cambay:400,400i,700,700i">
@@ -32,7 +32,7 @@
     <meta property="og:type" content="website">
 </head>
 <body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-xl-mode">
-    <header class="u-align-center-sm u-align-center-xs u-clearfix u-header u-sticky u-sticky-5514 u-header" id="sec-04e9" style="background-color: #2C31CF"><div class="u-clearfix u-sheet u-sheet-1">
+    <header class="u-align-center-sm u-align-center-xs u-clearfix u-header u-sticky u-sticky-5514 u-header" id="sec-04e9" style="background-color: #2C31CF;height: 80px;display: flex;align-items: center;"><div class="u-clearfix u-sheet u-sheet-1">
         <a href="#" class="u-image u-logo u-image-1"  >
           <img src="images/hehe.png" class="u-logo-image u-logo-image-1">
         </a>
@@ -46,7 +46,8 @@
             </a>
           </div>
           <div class="u-custom-menu u-nav-container" style="color: #EEE">
-            <ul class="u-nav u-unstyled u-nav-1">
+          <div class="right-nav">
+                      <ul class="u-nav u-unstyled u-nav-1">
             <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#" style="padding: 10px 20px;">Home</a>
 </li>
 <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#" style="padding: 10px 20px;">Learning</a>
@@ -56,6 +57,8 @@
 <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#" style="padding: 10px 20px;">Profile</a>
 </li>
 </ul>
+          </div>
+
           </div>
           <div class="u-custom-menu u-nav-container-collapse">
             <div class="u-align-center u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
