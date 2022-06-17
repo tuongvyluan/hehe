@@ -8,6 +8,6 @@ package answers;
  *
  * @author ADMIN
  */
-public class AnswerDTO {
+public class AnswerDAO {
     
 }
