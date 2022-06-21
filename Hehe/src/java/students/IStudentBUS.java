@@ -12,4 +12,6 @@ public interface IStudentBUS {
     
     public StudentDTO getStudent(int id);
     
+    public StudentError register(StudentModel student);
+    
 }

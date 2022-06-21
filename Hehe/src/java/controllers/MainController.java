@@ -5,7 +5,6 @@
 package controllers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +19,7 @@ public class MainController extends HttpServlet {
     // Action String
     private final String LOGIN_STUDENT = "LoginStudent";
     private final String LOGIN_AUTHOR = "LoginAuthor";
+    private final String REGISTER_STUDENT = "RegisterStudent";
     
     // Controller, Destination String
     private final String ERROR = "error.jsp";
@@ -37,6 +37,8 @@ public class MainController extends HttpServlet {
                 url = STUDENT_CONTROLLER;
             } else if (LOGIN_AUTHOR.equals(action)) {
                 url = AUTHOR_CONTROLLER;
+            } else if (REGISTER_STUDENT.equals(action)) {
+                url = STUDENT_CONTROLLER;
             }
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());
