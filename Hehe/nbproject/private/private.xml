@@ -4,6 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <file>file:/D:/Learning/SEM5/SWP/HeheNetbean/hehe/Hehe/src/java/authors/AuthorBUS.java</file>
             <file>file:/D:/Learning/SEM5/SWP/HeheNetbean/hehe/Hehe/src/java/authors/AuthorDAO.java</file>
             <file>file:/D:/Learning/SEM5/SWP/HeheNetbean/hehe/Hehe/src/java/admin/AdminDTO.java</file>
@@ -34,9 +35,11 @@
             <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/students/StudentDTO.java</file>
             <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/students/StudentDAO.java</file>
             <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/students/IStudentBUS.java</file>
+=======
+            <file>file:/D:/Homework/SWP/hehe/Hehe/web/profile.jsp</file>
+>>>>>>> feature_home_vy
             <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/controllers/StudentController.java</file>
-            <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/utils/DBUtils.java</file>
-            <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/students/StudentBUS.java</file>
+            <file>file:/D:/Homework/SWP/hehe/Hehe/web/editProfile.jsp</file>
             <file>file:/D:/Homework/SWP/hehe/Hehe/web/register.jsp</file>
 >>>>>>> 646b344e583549e8853872819a0bbdde651e19ac
         </group>

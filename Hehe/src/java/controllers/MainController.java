@@ -15,11 +15,10 @@ import javax.servlet.http.HttpServletResponse;
  * @author Luan Tuong Vy
  */
 public class MainController extends HttpServlet {
-
-    // Action String
-    private final String LOGIN_STUDENT = "LoginStudent";
-    private final String LOGIN_AUTHOR = "LoginAuthor";
-    private final String REGISTER_STUDENT = "RegisterStudent";
+    
+    // Controller param
+    private final String STUDENT = "Student";
+    private final String AUTHOR = "Author";
     
     // Controller, Destination String
     private final String ERROR = "error.jsp";
@@ -32,12 +31,12 @@ public class MainController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
-            String action = request.getParameter("action");
-            if (LOGIN_STUDENT.equals(action)) {
+            String controller = request.getParameter("controller");
+            if (STUDENT.equals(controller)) {
                 url = STUDENT_CONTROLLER;
-            } else if (LOGIN_AUTHOR.equals(action)) {
+            } else if (AUTHOR.equals(controller)) {
                 url = AUTHOR_CONTROLLER;
-            } else if (REGISTER_STUDENT.equals(action)) {
+            } else if (STUDENT.equals(controller)) {
                 url = STUDENT_CONTROLLER;
             }
         } catch (Exception e) {

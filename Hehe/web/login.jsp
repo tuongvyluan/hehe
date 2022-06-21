@@ -32,10 +32,11 @@
     <body>
         <div class="limiter">
             <div class="container-login100" style="background-image: url('images/loginBackground.jpg');">
-                <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+                <div class="wrap-login100 p-l-55 p-r-55 p-t-40 p-b-40">
                     <form name="Login" method="POST" action="MainController" class="login100-form validate-form">
+                        <input hidden="" name="controller" value="Student">
                         <input hidden="" name="action" value="LoginStudent">
-                        <span class="login100-form-title p-b-49">
+                        <span class="login100-form-title p-b-39">
                             Login
                         </span>
 
@@ -51,7 +52,7 @@
                             <span class="focus-input100" data-symbol="&#xf190;"></span>
                         </div>
 
-                        <div class="text-right p-t-8 p-b-31">
+                        <div class="text-right p-t-8 p-b-20">
                             <a href="#">
                                 Forgot password?
                             </a>
@@ -66,7 +67,7 @@
                             </div>
                         </div>
 
-                        <div class="txt1 text-center p-t-54 p-b-20">
+                        <div class="txt1 text-center p-t-30 p-b-20">
                             <span>
                                 Or Login Using
                             </span>
@@ -78,7 +79,7 @@
                             </a>
                         </div>
 
-                        <div class="flex-col-c p-t-100">
+                        <div class="flex-col-c p-t-30">
                             <span class="txt1 p-b-17">
                                 Don't have an account?
                             </span>

@@ -45,10 +45,10 @@
         <div class="limiter">
 
             <div class="container-login100" style="background-image: url('images/loginBackground.jpg');">
-                <div class="wrap-login100 regis p-l-55 p-r-55 p-t-65 p-b-54" style="width:1000px">
+                <div class="wrap-login100 regis p-l-55 p-r-55 p-t-40 p-b-40" style="width:1000px">
                     <form name="Register" method="POST" action="MainController" class="login100-form validate-form">
                         <input hidden="" name="action" value="RegisterStudent">
-                        <span class="login100-form-title p-b-49">
+                        <span class="login100-form-title p-b-39">
                             Register
                         </span>
 
@@ -101,13 +101,6 @@
                                 </div>
                                 <p><%= error.getLastName()%></p>
 
-                                <div class="wrap-input100 m-b-23 p-l-0">
-                                    <span class="label-input100">Date of birth</span>
-                                    <input value="${param.dob}" class="input100" type="date" name="dob">
-                                    <span class="focus-input100" data-symbol="&#xf239;"></span>
-                                </div>
-                                <p><%= error.getDob()%></p>
-
                                 <div class="wrap-input100">
                                     <span class="label-input100">Phone number</span>
                                     <input value="${param.phoneNumber}"
@@ -118,23 +111,9 @@
                                 </div>
                                 <p><%= error.getPhoneNumber()%></p>
                             </div> <%-- end input wrapper --%>
-                        </div> <%-- end wrapper --%>			
-
-
-
-
-
-
-
-
-
-                        <div class="text-right p-t-8 p-b-31">
-                            <a href="#">
-
-                            </a>
-                        </div>
-
-                        <div class="container-login100-form-btn">
+                        </div> <%-- end wrapper --%>		
+                        <div class="text-right p-t-20">
+                            <div class="container-login100-form-btn">
                             <div class="wrap-login100-form-btn">
                                 <div class="login100-form-bgbtn"></div>
                                 <button class="login100-form-btn" style="">
@@ -142,8 +121,11 @@
                                 </button>
                             </div>
                         </div>
+                        </div>
 
-                        <div class="txt1 text-center p-t-54 p-b-20">
+                        
+
+                        <div class="txt1 text-center p-t-30 p-b-20">
                             <span>
                                 Or Sign Up Using
                             </span>
@@ -155,7 +137,7 @@
                             </a>
                         </div>
 
-                        <div class="flex-col-c p-t-100">
+                        <div class="flex-col-c p-t-30">
                             <span class="txt1 p-b-17">
                                 Have an account?
                             </span>

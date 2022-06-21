@@ -113,11 +113,6 @@ public class StudentDAO {
         return check;
     }
 
-    public boolean update(StudentModel t) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
     public StudentModel delete(StudentModel t) {
         // TODO Auto-generated method stub
         return null;

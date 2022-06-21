@@ -14,7 +14,7 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         />
-        <link rel="stylesheet" href="./profile.css" />
+        <link rel="stylesheet" href="./css/profile.css" />
     </head>
     <body>
         <%
@@ -36,7 +36,7 @@
                                 <li class="nav-item">
                                     <a
                                         class="nav-link px-2 active"
-                                        href="./profile.html"
+                                        href=""
                                         ><i
                                             class="fa-solid fa-user-astronaut"
                                         ></i
@@ -46,8 +46,7 @@
                                 <li class="nav-item">
                                     <a
                                         class="nav-link px-2"
-                                        href="./editProfile.html"
-                                        target="__blank"
+                                        href="./editProfile.jsp"
                                         ><i
                                             class="fa-regular fa-pen-to-square"
                                         ></i

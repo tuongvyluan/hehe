@@ -1,4 +1,23 @@
+<<<<<<< HEAD
 /.metadata/
 /Hehe/nbproject/private/
 /Hehe/build/
 /Hehe/dist/
+=======
+# NetBeans specific #
+Hehe/nbproject/private/
+Hehe/build/
+Hehe/nbbuild/
+Hehe/dist/
+Hehe/nbdist/
+Hehe/nbactions.xml
+Hehe/nb-configuration.xml
+
+# Class Files #
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+>>>>>>> feature_home_vy
