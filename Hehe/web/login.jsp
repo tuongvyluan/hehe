@@ -41,13 +41,13 @@
 
                         <div class="wrap-input100 validate-input m-b-23" data-validate = "Email is required">
                             <span class="label-input100">Email</span>
-                            <input id="email" class="input100" type="text" name="email" placeholder="Type your email">
+                            <input value="${param.email}" id="email" class="input100" type="text" name="email" placeholder="Type your email">
                             <span class="focus-input100" data-symbol="&#xf206;"></span>
                         </div>
 
                         <div class="wrap-input100 validate-input" data-validate="Password is required">
                             <span class="label-input100">Password</span>
-                            <input id="password" class="input100" type="password" name="password" placeholder="Type your password">
+                            <input value="${param.password}" id="password" class="input100" type="password" name="password" placeholder="Type your password">
                             <span class="focus-input100" data-symbol="&#xf190;"></span>
                         </div>
 
@@ -80,10 +80,10 @@
 
                         <div class="flex-col-c p-t-100">
                             <span class="txt1 p-b-17">
-                                Don't have an account ?
+                                Don't have an account?
                             </span>
 
-                            <a href="#" class="txt2">
+                            <a href="register.jsp" class="txt2">
                                 CLICK HERE TO CREATE
                             </a>
                         </div>
