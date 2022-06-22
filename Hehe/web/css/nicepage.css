@@ -37131,3 +37131,9 @@ html {
   background-position: -339px -107px;
   width: 57px;
 }
+.input100:invalid{
+    border: 2px solid red;
+}
+.input100:valid{
+    border: 2px solid black;
+}

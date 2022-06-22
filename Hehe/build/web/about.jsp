@@ -1,12 +1,16 @@
+<%-- 
+    Document   : about
+    Created on : 22 Jun 2022, 10:54:28
+    Author     : triud
+--%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html style="font-size: 16px;">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta name="keywords" content="​IT Company, Company Services, What We Do, Custom software solutions">
-    <meta name="description" content="">
-    <title>Home</title>
-    <link rel="stylesheet" href="css/nicepage.css" media="screen">
+<html>
+    <head>
+        
+        <link rel="stylesheet" href="css/nicepage.css" media="screen">
     <link rel="stylesheet" href="css/footer.css">
 	<link rel="stylesheet" href="css/Home.css" media="screen">
     <script class="u-script" type="text/javascript" src="js/jquery.js" defer=""></script>
@@ -31,51 +35,13 @@
 				"https://instagram.com/name"
 		]
 }</script>
-    <meta name="theme-color" content="#478ac9">
-    <meta name="twitter:site" content="@">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Home">
-    <meta name="twitter:description" content="">
-    <meta property="og:title" content="Home">
-    <meta property="og:type" content="website">
-  </head>
-  <body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-xl-mode"><header class="u-align-center-sm u-align-center-xs u-clearfix u-grey-30 u-header u-sticky u-sticky-5514 u-header" id="sec-04e9"><div class="u-clearfix u-sheet u-sheet-1">
-        <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="80" data-image-height="40">
-          <img src="images/default-logo.png" class="u-logo-image u-logo-image-1">
-        </a>
-        <nav class="u-align-left u-menu u-menu-dropdown u-offcanvas u-menu-1">
-          <div class="menu-collapse" style="font-size: 1rem;">
-            <a class="u-button-style u-nav-link" href="#">
-              <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 302 302" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-8a8f"></use></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg-8a8f" x="0px" y="0px" viewBox="0 0 302 302" style="enable-background:new 0 0 302 302;" xml:space="preserve" class="u-svg-content"><g><rect y="36" width="302" height="30"></rect><rect y="236" width="302" height="30"></rect><rect y="136" width="302" height="30"></rect>
-</g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
-            </a>
-          </div>
-          <div class="u-custom-menu u-nav-container">
-            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Home.html" style="padding: 10px 20px;">Home</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="About.html" style="padding: 10px 20px;">About</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Contact.html" style="padding: 10px 20px;">Contact</a>
-</li></ul>
-          </div>
-          <div class="u-custom-menu u-nav-container-collapse">
-            <div class="u-align-center u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
-              <div class="u-inner-container-layout u-sidenav-overflow">
-                <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html">Home</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="About.html">About</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Contact.html">Contact</a>
-</li></ul>
-              </div>
-            </div>
-            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
-          </div>
-        </nav>
-      </div><style class="u-sticky-style" data-style-id="5514">.u-sticky-fixed.u-sticky-5514, .u-body.u-sticky-fixed .u-sticky-5514 {
-box-shadow: 2px 2px 8px 0 rgba(128,128,128,1) !important
-}.u-sticky-fixed.u-sticky-5514:before, .u-body.u-sticky-fixed .u-sticky-5514:before {
-borders: top right bottom left !important; border-color: #404040 !important; border-width: 2px !important
-}</style></header>
-    <section class="u-clearfix u-palette-1-base u-section-1" id="carousel_d015">
+        <title>About</title>
+    </head>
+    <body>
+        <header>
+            <%@include file="header.jsp"  %>
+        </header>
+        <section class="u-clearfix u-palette-1-base u-section-1" id="carousel_d015">
       <div class="u-clearfix u-sheet u-valign-middle-xl u-sheet-1">
         <div class="u-expanded-width-xs u-shape u-shape-svg u-text-palette-3-base u-shape-1">
           <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 140" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-1b2f"></use></svg>
@@ -299,153 +265,9 @@ borders: top right bottom left !important; border-color: #404040 !important; bor
         </div>
       </div>
     </section>
-    
-    
-     <footer>
-  <div class="footer-gray">
-    <div class="footer-custom">
-      <div class="footer-lists">
-        <div class="footer-list-wrap">
-          <h6 class="ftr-hdr">Order Toll Free</h6>
-          <ul class="ftr-links-sub">
-            <li>800-952-5592</li>
-          </ul>
-          <h6 class="ftr-hdr">International</h6>
-          <ul class="ftr-links-sub">
-            <li><a href="http://www.art.fr" rel="nofollow">France</a></li>
-            <li><a href="https://www.art.co.uk" rel="nofollow">United Kingdom</a></li>
-          </ul>
-        </div>
-        <!--/.footer-list-wrap-->
-        <div class="footer-list-wrap">
-          <h6 class="ftr-hdr">Customer Service</h6>
-          <ul class="ftr-links-sub">
-            <li><a href="/help/talktous.html" rel="nofollow">Contact Us</a></li>
-            <li><a href="/help/placingorders.html" rel="nofollow">Ordering</a></li>
-            <li><a href="/help/shipping.html" rel="nofollow">Shipping &amp; Delivery</a></li>
-            <li><a href="/help/shippingreturns.html" rel="nofollow">Returns</a></li>
-            <li><a href="/help/international-shipping.html" rel="nofollow">International Orders</a></li>
-            <li><a href="/~/egift-cards/" rel="nofollow">Gift Cards</a></li>
-            <li><a href="/help/faq.html" rel="nofollow">FAQs</a></li>
-          </ul>
-        </div>
-        <div class="footer-list-wrap">
-          <h6 class="ftr-hdr">About Art.com</h6>
-          <ul class="ftr-links-sub">
-            <li><a href="/asp/aboutus/default-asp/_/posters.htm" rel="nofollow">Our Company</a></li>
-            <li><a href="http://corporate.art.com/careers" rel="nofollow">Careers</a></li>
-            <li><a href="/asp/landing/artistrising" rel="nofollow">Artist Rising</a></li>
-            <li><a href="/~/art-for-business" rel="nofollow">Business &amp; Trade Sales</a></li>
-            <li><a href="http://affiliates.art.com/index.aspx" rel="nofollow">Affiliate Program</a></li>
-            <li><a href="/catalog" rel="nofollow"><strong>Shop Our Catalog</strong></a></li>
-            <li><a href="http://blog.art.com" rel="nofollow">ART.COM BLOG</a></li>
-          </ul>
-        </div>
-        <!--/.footer-list-wrap-->
-        <div class="footer-list-wrap">
-          <h6 class="ftr-hdr">My Account</h6>
-          <ul class="ftr-links-sub">
-            <art:content rule="!loggedin">
-              <li class="ftr-Login"><span class="link login-trigger">Access My Account</span></li>
-              <li><span class="link" onclick="link('/asp/secure/your_account/track_orders-asp/_/posters.htm')">Track My Order</span></li>
-            </art:content>
-            <art:content rule="loggedin">
-              <li class="ftr-Login"><span class="link ftr-access-my-account">Access My Account</span></li>
-              <li><span class="link" onclick="window.location.href = getProfileKey() + '?pagetype=oh';">Track My Order</span></li>
-            </art:content>
-          </ul>
-        </div>
-        <!--/.footer-list-wrap-->
-      </div>
-      <!--/.footer-lists-->
-      <div class="footer-email">
-        <h6 class="ftr-hdr">Sign up for exclusive offers and inspiration</h6>
-        <div id="ftr-email" class="ftr-email-form">
-          <form id="ftrEmailForm" method="post" action="http://em.art.com/pub/rf">
-            <div class="error">Please enter a valid email address</div>
-            <input type="text" name="email_address_" id="ftrEmailInput" class="input" placeholder="Enter email address" />
-            <!--
-                -->
-            <input type="submit" class="button" value="SUBMIT" />
-            <input type="hidden" name="country_iso2" value="">
-            <input type="hidden" name="language_iso2" value="en">
-            <input type="hidden" name="site_domain" value="art.com">
-            <input type="hidden" name="email_acq_source" value="01-000001">
-            <input type="hidden" name="email_acq_date" value="" id="ftr-email-date">
-            <input type="hidden" name="brand_id" value="ART">
-            <input type="hidden" name="_ri_" value="X0Gzc2X%3DWQpglLjHJlYQGnp51yrMf2qXdC9tjU8pzgMtwfYzaVwjpnpgHlpgneHmgJoXX0Gzc2X%3DWQpglLjHJlYQGnyLSq2fzdkuzdzglHMsUhgeNzaSgkk">
-          </form>
-        </div>
-        <!--/.ftr-email-form-->
-        <div class="ftr-email-privacy-policy"></div>
-      </div>
-      <!--/.footer-email-->
-      <div class="footer-social">
-        <h6 class="ftr-hdr">Follow Us</h6>
-        <ul>
-          <li>
-            <a href="https://www.facebook.com/art.com" title="Facebook" onclick="_gaq.push(['_trackSocial', 'Facebook', 'Follow', 'Footer', 'undefined', 'True']);">
-              <img width="24" height="24" alt="Like us on Facebook" src="http://cache1.artprintimages.com/images/jump_pages/rebrand/footer/fb.png">
-            </a>
-          </li>
-          <li>
-            <a href="https://plus.google.com/108089796661280870153" title="Google+" onclick="_gaq.push(['_trackSocial', 'GooglePlus', 'Follow', 'Footer', 'undefined', 'True']);">
-              <img width="24" height="24" alt="Follow us on Google+" src="http://cache1.artprintimages.com/images/jump_pages/rebrand/footer/gplus.png">
-            </a>
-          </li>
-          <li>
-            <a href="https://pinterest.com/artdotcom/" target="_blank">
-              <img width="24" height="24" alt="Follow us on Pinterest" src="http://cache1.artprintimages.com/images/jump_pages/rebrand/footer/pin-badge.png">
-            </a>
-          </li>
-          <li>
-            <a target="_blank" href="http://instagram.com/artdotcom/">
-              <img width="24" height="24" alt="Follow us on Instagram" src="http://cache1.artprintimages.com/images/jump_pages/rebrand/footer/instagram-badge.png">
-            </a>
-          </li>
-          <li>
-            <a href="https://www.twitter.com/artdotcom" title="Twitter" onclick="_gaq.push(['_trackSocial', 'Twitter', 'Follow', 'Footer', 'undefined', 'True']);">
-              <img width="67" alt="Follow us on Twitter" src="http://cache1.artprintimages.com/images/jump_pages/rebrand/footer/twitter.png">
-            </a>
-          </li>
-        </ul>
-      </div>
-      <!--/.footer-social-->
-      <div class="footer-legal">
-        <p>&copy; Art.com Inc. All Rights Reserved. | <a href="/help/privacy-policy.html" rel="nofollow">Privacy Policy</a> | <a href="/help/terms-of-use.html" rel="nofollow">Terms of Use</a> | <a href="/help/terms-of-sale.html" rel="nofollow">Terms of Sale</a></p>
-        <p>Art.com, You+Art, and Photos [to] Art are trademarks or registered trademarks of Art.com Inc.</p>
-        <p>Various aspects of this website are covered by issued US patent No. 7,973,796 and other pending patent applications.</p>
-      </div>
-      <!--/.footer-legal-->
-      <div class="footer-payment">
-        <ul>
-          <li class="ftr-stella">
-            <span title="Stella Service" onclick="openLink('http://www.stellaservice.com/profile/Art.com/')"></span>
-          </li>
-          <li>
-            <span onclick="clickTrack(); return false;" onmouseover="this.style.cursor='pointer'"><img border="0" alt="HACKER SAFE certified sites prevent over 99.9% of hacker crime." src="https://images.scanalert.com/meter/www.art.com/31.gif"></span>
-          </li>
-          <li class="ftr-bbb">
-            <span title="BBB" onclick="openLink('http://www.bbb.org/raleigh-durham/business-reviews/art-suppliers/artcom-inc-in-raleigh-nc-5001914')"></span>
-          </li>
-        </ul>
-      </div>
-      <!--/.footer-payment-->
-    </div>
-    <!--/.footer-custom-->
-  </div>
-  <!--/.footer-gray-->
-</footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-      <a class="u-link" href="https://nicepage.com/website-templates" target="_blank">
-        <span>Website Templates</span>
-      </a>
-      <p class="u-text">
-        <span>created with</span>
-      </p>
-      <a class="u-link" href="" target="_blank">
-        <span>Website Builder Software</span>
-      </a>. 
-    </section>
-  </body>
+        <footer>
+            <%@include file="footer.jsp" %> %>
+        </footer>
+
+    </body>
 </html>

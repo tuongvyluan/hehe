@@ -1,5 +1,5 @@
-    <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
+   <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,7 +7,7 @@
         <title>Insert title here</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8">
-        <meta name="keywords" content="​IT Company, Company Services, What We Do, Custom software solutions">
+        <meta name="keywords" content="âIT Company, Company Services, What We Do, Custom software solutions">
         <meta name="description" content="">
         <title>Home</title>
         <link rel="stylesheet" href="css/nicepage.css" media="screen">
