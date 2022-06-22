@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
@@ -27,7 +27,6 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 
-<<<<<<< HEAD
                         <div class="wrap-input100 validate-input m-b-23" data-validate = "Email is required">
                             <span class="label-input100">Email</span>
                             <input value="${param.email}" id="email" class="input100" type="text" name="email" placeholder="Type your email">
@@ -39,27 +38,6 @@
                             <input value="${param.password}" id="password" class="input100" type="password" name="password" placeholder="Type your password">
                             <span class="focus-input100" data-symbol="&#xf190;"></span>
                         </div>
-=======
-<title>Login</title>
-</head>
-<body>
-<header>
-<%@ include file="header.jsp" %>
-</header>
-	<div class="limiter">
-		<div class="container-login100" style="background-image: url('images/loginBackground.jpg');">
-			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-				<form class="login100-form validate-form">
-					<span class="login100-form-title p-b-49">
-						Login
-					</span>
-
-					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is required">
-						<span class="label-input100">Username</span>
-						<input class="input100" type="text" name="username" placeholder="Type your username">
-						<span class="focus-input100" data-symbol="&#xf206;"></span>
-					</div>
->>>>>>> a36c7b1550fc9127f423cf282216ec3a08d97f38
 
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
 						<span class="label-input100">Password</span>
@@ -99,7 +77,6 @@
 							Don't have an account ?
 						</span>
 
-<<<<<<< HEAD
                         <div class="flex-col-c p-t-100">
                             <span class="txt1 p-b-17">
                                 Don't have an account?
@@ -114,19 +91,4 @@
             </div>
         </div>
     </body>
-=======
-						<a href="#" class="txt2">
-							CLICK HERE TO CREATE
-						</a>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<footer>
-	<%@ include file="footer.jsp" %>
-	</footer>
-	
-</body>
->>>>>>> a36c7b1550fc9127f423cf282216ec3a08d97f38
 </html>
