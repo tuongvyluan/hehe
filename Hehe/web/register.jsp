@@ -93,6 +93,7 @@
                                 </div>
                                 <p><%= error.getFirstName()%></p>
 
+<<<<<<< HEAD
                                 <div class="wrap-input100 validate-input m-b-23">
                                     <span class="label-input100">Last name</span>
                                     <input value="${param.lastName}" class="input100"
@@ -169,4 +170,18 @@
             </div>
         </div>
     </body>
+=======
+						<a href="#" class="txt2">
+							CLICK HERE TO SIGN IN
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer>
+	<%@ include file="footer.jsp" %>
+	</footer>
+</body>
+>>>>>>> a36c7b1550fc9127f423cf282216ec3a08d97f38
 </html>

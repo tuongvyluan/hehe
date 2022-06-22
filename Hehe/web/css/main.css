@@ -182,11 +182,15 @@ iframe {
 
 .wrap-login100 {
   width: 500px;
+  height:900px;
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
 }
 
+.input-wrapper{
+	width: 40%;
+}
 
 /*------------------------------------------------------------------
 [ Form ]*/
@@ -463,6 +467,11 @@ iframe {
 .login100-social-item:hover {
   color: #fff;
   background-color: #333333;
+}
+body{
+	margin:0;
+	height:100%;
+	overflow: hidden;
 }
 
 /*//////////////////////////////////////////////////////////////////
