@@ -128,6 +128,7 @@
 							Have an account ?
 						</span>
 
+<<<<<<< HEAD
 						<a href="#" class="txt2">
 							CLICK HERE TO SIGN IN
 						</a>
@@ -141,4 +142,56 @@
 	</footer>
         <script src="js/validate.js"></script>
 </body>
+=======
+                                <div class="wrap-input100">
+                                    <span class="label-input100">Phone number</span>
+                                    <input value="${param.phoneNumber}"
+                                           class="input100" type="tel" name="phoneNumber"
+                                           pattern="[0-9]{10}"
+                                           placeholder="Phone number">
+                                    <span class="focus-input100" data-symbol="&#xf190;"></span>
+                                </div>
+                                <p><%= error.getPhoneNumber()%></p>
+                            </div> <%-- end input wrapper --%>
+                        </div> <%-- end wrapper --%>		
+                        <div class="text-right p-t-20">
+                            <div class="container-login100-form-btn">
+                            <div class="wrap-login100-form-btn">
+                                <div class="login100-form-bgbtn"></div>
+                                <button class="login100-form-btn" style="">
+                                    Register
+                                </button>
+                            </div>
+                        </div>
+                        </div>
+
+                        
+
+                        <div class="txt1 text-center p-t-30 p-b-20">
+                            <span>
+                                Or Sign Up Using
+                            </span>
+                        </div>
+
+                        <div class="flex-c-m">
+                            <a href="#" class="login100-social-item bg3">
+                                <i class="fa fa-google"></i>
+                            </a>
+                        </div>
+
+                        <div class="flex-col-c p-t-30">
+                            <span class="txt1 p-b-17">
+                                Have an account?
+                            </span>
+
+                            <a href="login.jsp" class="txt2">
+                                CLICK HERE TO SIGN IN
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+>>>>>>> a7f1b762f806f4f03ea77a2bbe608b0c8ff06efc
 </html>

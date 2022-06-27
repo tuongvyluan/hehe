@@ -4,44 +4,59 @@
  */
 package controllers;
 
+import courses.CourseBUS;
+import courses.CourseModel;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import students.StudentDTO;
+import students.StudentModel;
 
 /**
  *
  * @author Luan Tuong Vy
  */
-public class MainController extends HttpServlet {
-    
-    // Controller param
-    private final String STUDENT = "Student";
-    private final String AUTHOR = "Author";
-    private final String COURSE = "Course";
-    
-    // Controller, Destination String
-    private final String ERROR = "error.jsp";
-    private final String STUDENT_CONTROLLER = "StudentController";
-    private final String AUTHOR_CONTROLLER = "AuthorController";
-    private final String COURSE_CONTROLLER = "CourseController";
+@WebServlet(name = "CourseController", urlPatterns = {"/CourseController"})
+public class CourseController extends HttpServlet {
 
-    
+    //Action String
+    private final String VIEW_COURSE = "ViewCourse";
+
+    //Destination String
+    private final String ERROR = "error.jsp";
+    private final String HOME = "home.jsp";
+    private final String COURSE = "course.jsp";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = ERROR;
+        String url = HOME;
+        HttpSession session;
+        CourseModel course;
+        StudentDTO student;
+        CourseBUS courseBUS = new CourseBUS();
         try {
-            String controller = request.getParameter("controller");
-            if (STUDENT.equals(controller)) {
-                url = STUDENT_CONTROLLER;
-            } else if (AUTHOR.equals(controller)) {
-                url = AUTHOR_CONTROLLER;
-            } else if (STUDENT.equals(controller)) {
-                url = STUDENT_CONTROLLER;
-            } else if (COURSE.equals(controller)) {
-                url = COURSE_CONTROLLER;
+            String action = request.getParameter("action");
+            int courseId = Integer.parseInt(request.getParameter("courseId"));
+            switch (action) {
+                case VIEW_COURSE: {
+                    session = request.getSession();
+                    student = (StudentDTO) session.getAttribute("LOGIN_STUDENT");
+                    if (student == null) {
+                        course = courseBUS.get(courseId);
+                        request.setAttribute("CURRENT_COURSE", course);
+                    }
+                    course = courseBUS.get(courseId);
+                        request.setAttribute("CURRENT_COURSE", course);
+                    url = COURSE;
+                    break;
+                }
             }
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());

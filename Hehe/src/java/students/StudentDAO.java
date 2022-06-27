@@ -21,11 +21,14 @@ public class StudentDAO {
             + "phoneNumber, status, createdAt, updatedAt";
 
     //SQL query
-    private final String PAGINATION = "DECLARE @PageNumber as INT " + "DECLARE @RowsOfPage as INT " + "SET @PageNumber = ? "
+    private final String DECLARE_PAGINATION = "DECLARE @PageNumber as INT " + "DECLARE @RowsOfPage as INT " + "SET @PageNumber = ? "
             + "SET @RowsOfPage = ? ";
 
+    private final String PAGINATION = "OFFSET (@PageNumber - 1) * @RowsOfPage "
+            + "ROWS FETCH NEXT @RowsOfPage ROWS ONLY";
+
     private final String GET_STUDENTS = "SELECT " + STUDENT_MODEL_FIELDS + " FROM Student ORDER BY createdAt "
-            + "OFFSET (@PageNumber - 1) * @RowsOfPage ROWS FETCH NEXT @RowsOfPage ROWS ONLY";
+            + PAGINATION;
 
     private final String GET_STUDENT_BY_EMAIL = "SELECT " + STUDENT_MODEL_FIELDS + " FROM Student WHERE email=?";
 
@@ -38,13 +41,20 @@ public class StudentDAO {
 
     public List<StudentModel> get(int pageNumber, int rowsOfPage) throws SQLException {
         ArrayList<StudentModel> list = new ArrayList<>();
+        if (pageNumber <= 0) {
+            pageNumber = 1;
+        }
+        
+        if (rowsOfPage <= 0) {
+            rowsOfPage = 1;
+        }
         Connection conn = null;
         PreparedStatement ptm = null;
         ResultSet rs = null;
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(PAGINATION + GET_STUDENTS);
+                ptm = conn.prepareStatement(DECLARE_PAGINATION + GET_STUDENTS);
                 ptm.setInt(1, pageNumber);
                 ptm.setInt(2, rowsOfPage);
                 rs = ptm.executeQuery();
@@ -76,7 +86,7 @@ public class StudentDAO {
                 conn.close();
             }
         }
-        return null;
+        return list;
     }
 
     public Optional<StudentModel> get(int id) {
@@ -111,11 +121,6 @@ public class StudentDAO {
             }
         }
         return check;
-    }
-
-    public boolean update(StudentModel t) {
-        // TODO Auto-generated method stub
-        return false;
     }
 
     public StudentModel delete(StudentModel t) {

@@ -36,7 +36,7 @@
                                 <li class="nav-item">
                                     <a
                                         class="nav-link px-2 active"
-                                        href="./profile.html"
+                                        href=""
                                         ><i
                                             class="fa-solid fa-user-astronaut"
                                         ></i
@@ -46,8 +46,7 @@
                                 <li class="nav-item">
                                     <a
                                         class="nav-link px-2"
-                                        href="./editProfile.html"
-                                        target="__blank"
+                                        href="./editProfile.jsp"
                                         ><i
                                             class="fa-regular fa-pen-to-square"
                                         ></i

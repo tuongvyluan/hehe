@@ -5,7 +5,9 @@
 package controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,40 +16,22 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Luan Tuong Vy
  */
-public class MainController extends HttpServlet {
-    
-    // Controller param
-    private final String STUDENT = "Student";
-    private final String AUTHOR = "Author";
-    private final String COURSE = "Course";
-    
-    // Controller, Destination String
-    private final String ERROR = "error.jsp";
-    private final String STUDENT_CONTROLLER = "StudentController";
-    private final String AUTHOR_CONTROLLER = "AuthorController";
-    private final String COURSE_CONTROLLER = "CourseController";
+@WebServlet(name = "CategoryController", urlPatterns = {"/CategoryController"})
+public class CategoryController extends HttpServlet {
 
-    
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = ERROR;
-        try {
-            String controller = request.getParameter("controller");
-            if (STUDENT.equals(controller)) {
-                url = STUDENT_CONTROLLER;
-            } else if (AUTHOR.equals(controller)) {
-                url = AUTHOR_CONTROLLER;
-            } else if (STUDENT.equals(controller)) {
-                url = STUDENT_CONTROLLER;
-            } else if (COURSE.equals(controller)) {
-                url = COURSE_CONTROLLER;
-            }
-        } catch (Exception e) {
-            log("Error at MainController: " + e.toString());
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
-        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

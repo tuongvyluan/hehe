@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /.metadata/
 <<<<<<< HEAD
 /Hehe/nbproject/private/
@@ -7,3 +8,21 @@
 /Hehe-courses/Hehe/build/
 /Hehe/dist/
 >>>>>>> a36c7b1550fc9127f423cf282216ec3a08d97f38
+=======
+# NetBeans specific #
+Hehe/nbproject/private/
+Hehe/build/
+Hehe/nbbuild/
+Hehe/dist/
+Hehe/nbdist/
+Hehe/nbactions.xml
+Hehe/nb-configuration.xml
+
+# Class Files #
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+>>>>>>> a7f1b762f806f4f03ea77a2bbe608b0c8ff06efc

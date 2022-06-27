@@ -1,110 +1,55 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package courses;
 
+/**
+ *
+ * @author Luan Tuong Vy
+ */
 public class CourseDTO {
-    int courseId;
-    int authorId;
-    int categoryId;
-    String courseName;
-    String description;
-    int status;
-    double price;
-    String createdAt;
-    String updatedAt;
-    double duration;
+    
+    private int courseId;
+    private int categoryId;
+    private String courseName;
 
-    public CourseDTO(int courseId, int authorId, int categoryId, String courseName, String description, int status,
-	    double price, String createdAt, String updatedAt, double duration) {
-	super();
-	this.courseId = courseId;
-	this.authorId = authorId;
-	this.categoryId = categoryId;
-	this.courseName = courseName;
-	this.description = description;
-	this.status = status;
-	this.price = price;
-	this.createdAt = createdAt;
-	this.updatedAt = updatedAt;
-	this.duration = duration;
+    public CourseDTO() {
+    }
+    
+    public CourseDTO(int courseId, int categoryId, String courseName) {
+        this.courseId = courseId;
+        this.categoryId = categoryId;
+        this.courseName = courseName;
     }
 
     public int getCourseId() {
-	return courseId;
+        return courseId;
     }
 
     public void setCourseId(int courseId) {
-	this.courseId = courseId;
-    }
-
-    public int getAuthorId() {
-	return authorId;
-    }
-
-    public void setAuthorId(int authorId) {
-	this.authorId = authorId;
+        this.courseId = courseId;
     }
 
     public int getCategoryId() {
-	return categoryId;
+        return categoryId;
     }
 
     public void setCategoryId(int categoryId) {
-	this.categoryId = categoryId;
+        this.categoryId = categoryId;
     }
 
     public String getCourseName() {
-	return courseName;
+        return courseName;
     }
 
     public void setCourseName(String courseName) {
-	this.courseName = courseName;
+        this.courseName = courseName;
     }
 
-    public String getDescription() {
-	return description;
+    @Override
+    public String toString() {
+        return "CourseDTO{" + "courseId=" + courseId + ", categoryId=" + categoryId + ", courseName=" + courseName + '}';
     }
-
-    public void setDescription(String description) {
-	this.description = description;
-    }
-
-    public int getStatus() {
-	return status;
-    }
-
-    public void setStatus(int status) {
-	this.status = status;
-    }
-
-    public double getPrice() {
-	return price;
-    }
-
-    public void setPrice(double price) {
-	this.price = price;
-    }
-
-    public String getCreatedAt() {
-	return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-	this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-	return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-	this.updatedAt = updatedAt;
-    }
-
-    public double getDuration() {
-	return duration;
-    }
-
-    public void setDuration(double duration) {
-	this.duration = duration;
-    }
-
+    
 }
