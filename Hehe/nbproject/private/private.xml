@@ -6,10 +6,19 @@
         <group/>
 =======
         <group>
-            <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/courses/CourseDAO.java</file>
+            <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/studentInCourses/StudentInCourseDTO.java</file>
+            <file>file:/D:/Homework/SWP/hehe/Hehe/web/studentInCourse.jsp</file>
+            <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/studentInCourses/StudentInCourseBUS.java</file>
+            <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/controllers/CategoryController.java</file>
+            <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/studentInCourses/StudentInCourseModel.java</file>
+            <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/controllers/MainController.java</file>
+            <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/studentInCourses/StudentInCourseDAO.java</file>
             <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/courses/CourseBUS.java</file>
-            <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/courses/CourseModel.java</file>
-            <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/courses/CourseDTO.java</file>
+            <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/courses/CourseDAO.java</file>
+            <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/students/StudentDAO.java</file>
+            <file>file:/D:/Homework/SWP/hehe/Hehe/web/course.jsp</file>
+            <file>file:/D:/Homework/SWP/hehe/Hehe/web/home.jsp</file>
+            <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/controllers/StudentController.java</file>
             <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/controllers/CourseController.java</file>
         </group>
 >>>>>>> a7f1b762f806f4f03ea77a2bbe608b0c8ff06efc

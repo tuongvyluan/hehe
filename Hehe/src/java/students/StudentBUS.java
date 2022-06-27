@@ -9,7 +9,6 @@ public class StudentBUS {
     public StudentModel checkLogin(String email, String password) throws SQLException {
         StudentDAO dao = new StudentDAO();
         StudentModel student = dao.get(email, password);
-        System.out.println(student.toString());
         return student;
     }
 

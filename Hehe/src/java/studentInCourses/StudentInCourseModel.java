@@ -1,6 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ *
  */
 package studentInCourses;
 
@@ -8,25 +7,31 @@ import courses.CourseModel;
 import students.StudentModel;
 
 /**
+ * @author Tuong Vy Luan
  *
- * @author Luan Tuong Vy
  */
-public class StudentInCourseDTO {
-    
+public class StudentInCourseModel {
+
     private int studentInCourseId;
     private StudentModel student;
     private CourseModel course;
     private int displayIndex;
+    private String certificate;
+    private double startDate;
+    private double deadlineDate;
     private String status;
 
-    public StudentInCourseDTO() {
+    public StudentInCourseModel() {
     }
 
-    public StudentInCourseDTO(int studentInCourseId, StudentModel student, CourseModel course, int displayIndex, String status) {
+    public StudentInCourseModel(int studentInCourseId, StudentModel student, CourseModel course, int displayIndex, String certificate, double startDate, double deadlineDate, String status) {
         this.studentInCourseId = studentInCourseId;
         this.student = student;
         this.course = course;
         this.displayIndex = displayIndex;
+        this.certificate = certificate;
+        this.startDate = startDate;
+        this.deadlineDate = deadlineDate;
         this.status = status;
     }
 
@@ -62,6 +67,30 @@ public class StudentInCourseDTO {
         this.displayIndex = displayIndex;
     }
 
+    public String getCertificate() {
+        return certificate;
+    }
+
+    public void setCertificate(String certificate) {
+        this.certificate = certificate;
+    }
+
+    public double getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(double startDate) {
+        this.startDate = startDate;
+    }
+
+    public double getDeadlineDate() {
+        return deadlineDate;
+    }
+
+    public void setDeadlineDate(double deadlineDate) {
+        this.deadlineDate = deadlineDate;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -72,6 +101,6 @@ public class StudentInCourseDTO {
 
     @Override
     public String toString() {
-        return "StudentInCourseDTO{" + "studentInCourseId=" + studentInCourseId + ", student=" + student + ", course=" + course + ", displayIndex=" + displayIndex + ", status=" + status + '}';
+        return "StudentInCourseModel{" + "studentInCourseId=" + studentInCourseId + ", student=" + student + ", course=" + course + ", displayIndex=" + displayIndex + ", certificate=" + certificate + ", startDate=" + startDate + ", deadlineDate=" + deadlineDate + ", status=" + status + '}';
     }
 }

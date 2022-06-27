@@ -4,6 +4,10 @@
     Author     : Luan Tuong Vy
 --%>
 
+<%@page import="sections.SectionDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="authors.AuthorBUS"%>
 <%@page import="courses.CourseModel"%>
 <%@page import="students.StudentDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,25 +20,24 @@
   <body>
     <%
         //Prevent everyone else except the login student go to this page
-        StudentDTO student;
-        CourseModel course = new CourseModel();
-        if (session.getAttribute("LOGIN_STUDENT") != null) {
-            student = (StudentDTO) session.getAttribute("LOGIN_STUDENT");
+        AuthorBUS authorBUS = new AuthorBUS();
+        CourseModel course = (CourseModel) request.getAttribute("CURRENT_COURSE");
+        ArrayList<SectionDTO> sections = (ArrayList) request.getAttribute("SECTION_LIST");
     %>
-    <h1>Hello <%= student.getFirstName()%></h1>
-    <%
-        } else {
-            course = (CourseModel) request.getAttribute("CURRENT_COURSE");
-            if (course == null) {
-                response.sendRedirect("home.jsp");
-                return;
-            }
-        }
-    %>
-    <h1>Hello World!</h1>
-    <h2><%= course.getCourseName()%></h2>
+    <h1><%= course.getCourseName()%></h1>
+    <p>Author: <%= authorBUS.get(course.getAuthorId()).getFirstName()%></p>
     <p><%= course.getDescription()%></p>
     <p><%= course.getDuration()%></p>
     <p><%= course.getPrice()%></p>
+
+    <h2>Section</h2>
+    <%
+        for (SectionDTO section : sections) {
+    %>
+    <h3><%= section.getSectionName()%></h3>
+
+    <%
+        }
+    %>
   </body>
 </html>

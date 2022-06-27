@@ -42,10 +42,10 @@
     %>
     <p><%= course.getCourseName()%></p>
     <form name="ViewCourse" method="POST" action="MainController" >
-      <input hidden="" name="controller" value="Course">
+      <input hidden="" name="controller" value="ViewCourse">
       <input hidden="" name="action" value="ViewCourse">
       <input hidden name="courseId" value="<%= course.getCourseId() %>">
-      <button>Enroll now</button>
+      <button>View</button>
     </form>
     <%
             }

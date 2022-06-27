@@ -9,6 +9,7 @@ public class StudentDTO {
     private String lastName;
     private String email;
     private String phoneNumber;
+    private LocalDate dob;
 
     public StudentDTO() {
 
@@ -20,6 +21,7 @@ public class StudentDTO {
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.dob = dob;
     }
 
     public int getId() {
@@ -62,9 +64,18 @@ public class StudentDTO {
         this.phoneNumber = phoneNumber;
     }
 
+    public LocalDate getDob() {
+        return dob;
+    }
+
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
+    }
+
     @Override
     public String toString() {
-        return "StudentDTO [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName
-                + ", email=" + email + ", phoneNumber=" + phoneNumber + "]";
+        return "StudentDTO{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", phoneNumber=" + phoneNumber + ", dob=" + dob + '}';
     }
+    
+    
 }
