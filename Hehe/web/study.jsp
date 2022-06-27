@@ -1,3 +1,4 @@
+<%@page import="students.StudentDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -144,6 +145,11 @@
                             <i class="fa-solid fa-floppy-disk"></i>
                             <span>Submit</span>
                         </a>
+                    </div>
+                </div>
+                <div class="required-login">
+                    <div class="required-content">
+                        Please <a href="login.jsp">login</a> to continue!
                     </div>
                 </div>
             </div>
