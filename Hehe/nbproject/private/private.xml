@@ -5,11 +5,12 @@
         <group>
             <file>file:/C:/web%20code/hehe-online-course/Hehe/web/login.jsp</file>
             <file>file:/C:/web%20code/hehe-online-course/Hehe/web/study.jsp</file>
-            <file>file:/C:/web%20code/hehe-online-course/Hehe/web/error.jsp</file>
-            <file>file:/C:/web%20code/hehe-online-course/Hehe/src/java/controllers/CategoryController.java</file>
+            <file>file:/C:/web%20code/hehe-online-course/Hehe/src/java/controllers/StudentController.java</file>
+            <file>file:/C:/web%20code/hehe-online-course/Hehe/src/java/controllers/MainController.java</file>
+            <file>file:/C:/web%20code/hehe-online-course/Hehe/src/java/students/StudentBUS.java</file>
+            <file>file:/C:/web%20code/hehe-online-course/Hehe/src/java/students/StudentModel.java</file>
             <file>file:/C:/web%20code/hehe-online-course/Hehe/web/css/studyStyle.css</file>
             <file>file:/C:/web%20code/hehe-online-course/Hehe/web/profile.jsp</file>
-            <file>file:/C:/web%20code/hehe-online-course/Hehe/web/studentInCourse.jsp</file>
         </group>
     </open-files>
 </project-private>
