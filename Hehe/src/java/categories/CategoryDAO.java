@@ -76,7 +76,5 @@ public class CategoryDAO {
             }
         }
         return list;
-        
     }
-    
 }

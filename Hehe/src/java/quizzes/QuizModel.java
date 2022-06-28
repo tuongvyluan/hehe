@@ -2,7 +2,7 @@ package quizzes;
 
 import java.sql.Date;
 
-public class QuizDTO {
+public class QuizModel {
     int quizId;
     int topicId;
     String content;
@@ -11,7 +11,7 @@ public class QuizDTO {
     String createdAt;
     String updatedAt;
 
-    public QuizDTO(int quizId, int topicId, String content, Date date, int numberAnswers, String createdAt,
+    public QuizModel(int quizId, int topicId, String content, Date date, int numberAnswers, String createdAt,
 	    String updatedAt) {
 	super();
 	this.quizId = quizId;

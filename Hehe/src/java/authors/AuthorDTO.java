@@ -61,5 +61,4 @@ public class AuthorDTO {
     public String toString() {
         return "AuthorDTO{" + "authorId=" + authorId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + '}';
     }
-
 }
