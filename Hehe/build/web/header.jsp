@@ -67,16 +67,15 @@
                 <ul class="u-align-left u-nav u-popupmenu-items u-unstyled u-nav-2">
                   <li class="u-nav-item">
 
-                    <a class="u-button-style u-nav-link" href="Home.html">
-
+                    <a class="u-button-style u-nav-link" href="home.jsp">
                       Home
                     </a>
                   </li>
-                  <li class="u-nav-item"><a class="u-button-style u-nav-link" href="About.html">Learning</a>
+                  <li class="u-nav-item"><a class="u-button-style u-nav-link" href="about.jsp">Learning</a>
                   </li>
-                  <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Contact.html">Practice</a>
+                  <li class="u-nav-item"><a class="u-button-style u-nav-link" href="contact.jsp">Practice</a>
                   </li>
-                  <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Contact.html">Profile</a>
+                  <li class="u-nav-item"><a class="u-button-style u-nav-link" href="contact.jsp">Profile</a>
                   </li>
                 </ul>
               </div>
@@ -84,14 +83,17 @@
             <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
           </div>
         </nav>
-      </div><style class="u-sticky-style" data-style-id="5514">.u-sticky-fixed.u-sticky-5514, .u-body.u-sticky-fixed .u-sticky-5514 {
+      </div>
+      <style class="u-sticky-style" data-style-id="5514">
+        .u-sticky-fixed.u-sticky-5514, .u-body.u-sticky-fixed .u-sticky-5514 {
             box-shadow: 2px 2px 8px 0 rgba(128,128,128,1) !important
         }
         .u-sticky-fixed.u-sticky-5514:before, .u-body.u-sticky-fixed .u-sticky-5514:before {
             borders: top right bottom left !important;
             border-color: #404040 !important;
             border-width: 2px !important
-        }</style></header>
+        }</style>
+    </header>
 
   </body>
 </html>
