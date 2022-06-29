@@ -87,6 +87,10 @@ public class AuthorModel {
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
+    
+    public AuthorDTO toDTO() {
+        return new AuthorDTO(authorId, firstName, lastName, email);
+    }
 
     @Override
     public String toString() {

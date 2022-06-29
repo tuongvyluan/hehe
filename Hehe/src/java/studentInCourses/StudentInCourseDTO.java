@@ -4,9 +4,6 @@
  */
 package studentInCourses;
 
-import courses.CourseModel;
-import students.StudentModel;
-
 /**
  *
  * @author Luan Tuong Vy
@@ -14,20 +11,20 @@ import students.StudentModel;
 public class StudentInCourseDTO {
     
     private int studentInCourseId;
-    private StudentModel student;
-    private CourseModel course;
+    private int studentId;
+    private int courseId;
     private int displayIndex;
     private String status;
 
-    public StudentInCourseDTO() {
-    }
-
-    public StudentInCourseDTO(int studentInCourseId, StudentModel student, CourseModel course, int displayIndex, String status) {
+    public StudentInCourseDTO(int studentInCourseId, int studentId, int courseId, int displayIndex, String status) {
         this.studentInCourseId = studentInCourseId;
-        this.student = student;
-        this.course = course;
+        this.studentId = studentId;
+        this.courseId = courseId;
         this.displayIndex = displayIndex;
         this.status = status;
+    }
+
+    public StudentInCourseDTO() {
     }
 
     public int getStudentInCourseId() {
@@ -38,20 +35,20 @@ public class StudentInCourseDTO {
         this.studentInCourseId = studentInCourseId;
     }
 
-    public StudentModel getStudent() {
-        return student;
+    public int getStudentId() {
+        return studentId;
     }
 
-    public void setStudent(StudentModel student) {
-        this.student = student;
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
-    public CourseModel getCourse() {
-        return course;
+    public int getCourseId() {
+        return courseId;
     }
 
-    public void setCourse(CourseModel course) {
-        this.course = course;
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
     public int getDisplayIndex() {
@@ -72,6 +69,6 @@ public class StudentInCourseDTO {
 
     @Override
     public String toString() {
-        return "StudentInCourseDTO{" + "studentInCourseId=" + studentInCourseId + ", student=" + student + ", course=" + course + ", displayIndex=" + displayIndex + ", status=" + status + '}';
+        return "StudentInCourseDTO{" + "studentInCourseId=" + studentInCourseId + ", studentId=" + studentId + ", courseId=" + courseId + ", displayIndex=" + displayIndex + ", status=" + status + '}';
     }
 }
