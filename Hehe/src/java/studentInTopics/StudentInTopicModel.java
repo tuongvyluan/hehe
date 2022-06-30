@@ -1,23 +1,24 @@
 package studentInTopics;
 
-import studentInCourses.StudentInCourseModel;
-import topics.TopicModel;
+import java.time.LocalDate;
 
 public class StudentInTopicModel {
 
     private int id;
-    private StudentInCourseModel studentCourse;
-    private TopicModel topic;
-    private double startDate;
-    private double deadlineDate;
+    private int studentInCourseId;
+    private int topicId;
+    private LocalDate startDate;
+    private LocalDate deadlineDate;
+    private String status; //removed
 
-    public StudentInTopicModel(int id, StudentInCourseModel studentCourse,
-            TopicModel topic, double startDate, double deadlineDate) {
+    public StudentInTopicModel(int id, int studentInCourseId, int topicId,
+            LocalDate startDate, LocalDate deadlineDate, String status) {
         this.id = id;
-        this.studentCourse = studentCourse;
-        this.topic = topic;
+        this.studentInCourseId = studentInCourseId;
+        this.topicId = topicId;
         this.startDate = startDate;
         this.deadlineDate = deadlineDate;
+        this.status = status;
     }
 
     public StudentInTopicModel() {
@@ -31,40 +32,52 @@ public class StudentInTopicModel {
         this.id = id;
     }
 
-    public StudentInCourseModel getStudentCourse() {
-        return studentCourse;
+    public int getStudentInCourseId() {
+        return studentInCourseId;
     }
 
-    public void setStudentCourse(StudentInCourseModel studentCourse) {
-        this.studentCourse = studentCourse;
+    public void setStudentInCourseId(int studentInCourseId) {
+        this.studentInCourseId = studentInCourseId;
     }
 
-    public TopicModel getTopic() {
-        return topic;
+    public int getTopicId() {
+        return topicId;
     }
 
-    public void setTopic(TopicModel topic) {
-        this.topic = topic;
+    public void setTopicId(int topicId) {
+        this.topicId = topicId;
     }
 
-    public double getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(double startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public double getDeadlineDate() {
+    public LocalDate getDeadlineDate() {
         return deadlineDate;
     }
 
-    public void setDeadlineDate(double deadlineDate) {
+    public void setDeadlineDate(LocalDate deadlineDate) {
         this.deadlineDate = deadlineDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public StudentInTopicDTO toDTO() {
+        return new StudentInTopicDTO(id, studentInCourseId, topicId, status);
     }
 
     @Override
     public String toString() {
-        return "StudentInTopicModel{" + "id=" + id + ", studentCourse=" + studentCourse + ", topic=" + topic + ", startDate=" + startDate + ", deadlineDate=" + deadlineDate + '}';
+        return "StudentInTopicModel{" + "id=" + id + ", studentInCourseId=" + studentInCourseId + ", topicId=" + topicId + ", startDate=" + startDate + ", deadlineDate=" + deadlineDate + ", status=" + status + '}';
     }
 }

@@ -58,7 +58,7 @@
     <%
         ArrayList<CourseDTO> courseList;
         CourseBUS courseBUS = new CourseBUS();
-        for (int i = 1; i <= 3; i++) {
+        for (int i = 1; i <= rowsOfPage; i++) {
             CategoryModel category = categories.get(i - 1);
     %>
     <section class="categoryName">

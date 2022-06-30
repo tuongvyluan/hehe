@@ -13,14 +13,12 @@ public class StudentInCourseDTO {
     private int studentInCourseId;
     private int studentId;
     private int courseId;
-    private int displayIndex;
     private String status;
 
-    public StudentInCourseDTO(int studentInCourseId, int studentId, int courseId, int displayIndex, String status) {
+    public StudentInCourseDTO(int studentInCourseId, int studentId, int courseId, String status) {
         this.studentInCourseId = studentInCourseId;
         this.studentId = studentId;
         this.courseId = courseId;
-        this.displayIndex = displayIndex;
         this.status = status;
     }
 
@@ -51,14 +49,6 @@ public class StudentInCourseDTO {
         this.courseId = courseId;
     }
 
-    public int getDisplayIndex() {
-        return displayIndex;
-    }
-
-    public void setDisplayIndex(int displayIndex) {
-        this.displayIndex = displayIndex;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -69,6 +59,6 @@ public class StudentInCourseDTO {
 
     @Override
     public String toString() {
-        return "StudentInCourseDTO{" + "studentInCourseId=" + studentInCourseId + ", studentId=" + studentId + ", courseId=" + courseId + ", displayIndex=" + displayIndex + ", status=" + status + '}';
+        return "StudentInCourseDTO{" + "studentInCourseId=" + studentInCourseId + ", studentId=" + studentId + ", courseId=" + courseId + ", status=" + status + '}';
     }
 }

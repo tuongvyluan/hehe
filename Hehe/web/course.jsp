@@ -35,12 +35,12 @@
   </head>
   <body>
     <%
-        //Prevent everyone else except the login student go to this page
         AuthorBUS authorBUS = new AuthorBUS();
         TopicBUS topicBUS = new TopicBUS();
         CourseModel course = (CourseModel) request.getAttribute("CURRENT_COURSE");
         ArrayList<SectionDTO> sections = (ArrayList) request.getAttribute("SECTION_LIST");
         CategoryBUS categoryBUS = new CategoryBUS();
+        StudentDTO student = (StudentDTO) session.getAttribute("CURRENT_STUDENT");
         if (course == null || sections == null) {
             response.sendRedirect("home.jsp");
             return;
@@ -58,10 +58,16 @@
         <div class="banner__content__detail">
           <span>Created by <%= authorBUS.get(course.getAuthorId()).getFullName()%> </span>
         </div>
+        <form name="EnrollCourse" method="POST" action="MainController">
+          <input hidden="" name="controller" value="StudentInCourse">
+          <input hidden="" name="action" value="EnrollCourse">
+          <input hidden="" name="courseId" value="<%= course.getCourseId()%>">
 
-        <div>
-          <button class="enrollBtn">Enroll now</button>
-        </div>
+          <div>
+            <button class="enrollBtn">Enroll now</button>
+          </div>
+        </form>
+
       </div>
     </section>
 

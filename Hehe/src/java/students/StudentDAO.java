@@ -46,7 +46,7 @@ public class StudentDAO {
         if (pageNumber <= 0) {
             pageNumber = 1;
         }
-        
+
         if (rowsOfPage <= 0) {
             rowsOfPage = 1;
         }
@@ -142,10 +142,10 @@ public class StudentDAO {
                 ptm = conn.prepareStatement(CREATE_STUDENT);
                 ptm.setString(1, student.getEmail());
                 ptm.setString(2, student.getPassword());
-                ptm.setString(3, student.getFirstName());
-                ptm.setString(4, student.getLastName());
-                ptm.setString(5, student.getDob().toString());
-                ptm.setString(6, student.getPhoneNumber());
+                ptm.setString(3, student.getFirstName() == null ? "" : student.getFirstName());
+                ptm.setString(4, student.getLastName() == null ? "" : student.getLastName());
+                ptm.setString(5, student.getLastName() == null ? LocalDate.now().toString() : student.getDob().toString());
+                ptm.setString(6, student.getPhoneNumber() == null ? "" : student.getPhoneNumber());
                 check = ptm.executeUpdate() == 1;
             }
         } catch (ClassNotFoundException | SQLException e) {

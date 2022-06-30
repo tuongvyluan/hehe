@@ -4,30 +4,25 @@
  */
 package studentInTopics;
 
-import studentInCourses.StudentInCourseDTO;
-import topics.TopicDTO;
-
 /**
  *
  * @author Luan Tuong Vy
  */
 public class StudentInTopicDTO {
-    
+
     private int id;
-    private StudentInCourseDTO studentCourse;
-    private TopicDTO topic;
-    private double startDate;
-    private double deadlineDate;
+    private int studentInCourseId;
+    private int topicId;
+    private String status;
 
     public StudentInTopicDTO() {
     }
 
-    public StudentInTopicDTO(int id, StudentInCourseDTO studentCourse, TopicDTO topic, double startDate, double deadlineDate) {
+    public StudentInTopicDTO(int id, int studentInCourseId, int topicId, String status) {
         this.id = id;
-        this.studentCourse = studentCourse;
-        this.topic = topic;
-        this.startDate = startDate;
-        this.deadlineDate = deadlineDate;
+        this.studentInCourseId = studentInCourseId;
+        this.topicId = topicId;
+        this.status = status;
     }
 
     public int getId() {
@@ -38,40 +33,32 @@ public class StudentInTopicDTO {
         this.id = id;
     }
 
-    public StudentInCourseDTO getStudentCourse() {
-        return studentCourse;
+    public int getStudentInCourseId() {
+        return studentInCourseId;
     }
 
-    public void setStudentCourse(StudentInCourseDTO studentCourse) {
-        this.studentCourse = studentCourse;
+    public void setStudentInCourseId(int studentInCourseId) {
+        this.studentInCourseId = studentInCourseId;
     }
 
-    public TopicDTO getTopic() {
-        return topic;
+    public int getTopicId() {
+        return topicId;
     }
 
-    public void setTopic(TopicDTO topic) {
-        this.topic = topic;
+    public void setTopicId(int topicId) {
+        this.topicId = topicId;
     }
 
-    public double getStartDate() {
-        return startDate;
+    public String getStatus() {
+        return status;
     }
 
-    public void setStartDate(double startDate) {
-        this.startDate = startDate;
-    }
-
-    public double getDeadlineDate() {
-        return deadlineDate;
-    }
-
-    public void setDeadlineDate(double deadlineDate) {
-        this.deadlineDate = deadlineDate;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override
     public String toString() {
-        return "StudentInTopicDTO{" + "id=" + id + ", studentCourse=" + studentCourse + ", topic=" + topic + ", startDate=" + startDate + ", deadlineDate=" + deadlineDate + '}';
+        return "StudentInTopicDTO{" + "id=" + id + ", studentInCourseId=" + studentInCourseId + ", topicId=" + topicId + ", status=" + status + '}';
     }
 }

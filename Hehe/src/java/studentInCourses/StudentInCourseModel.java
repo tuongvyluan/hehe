@@ -4,6 +4,8 @@
  */
 package studentInCourses;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Luan Tuong Vy
@@ -13,17 +15,15 @@ public class StudentInCourseModel {
     private int studentInCourseId;
     private int studentId;
     private int courseId;
-    private int displayIndex;
     private String certificate;
-    private double startDate;
-    private double deadlineDate;
+    private LocalDate startDate;
+    private LocalDate deadlineDate;
     private String status;
 
-    public StudentInCourseModel(int studentInCourseId, int studentId, int courseId, int displayIndex, String certificate, double startDate, double deadlineDate, String status) {
+    public StudentInCourseModel(int studentInCourseId, int studentId, int courseId, String certificate, LocalDate startDate, LocalDate deadlineDate, String status) {
         this.studentInCourseId = studentInCourseId;
         this.studentId = studentId;
         this.courseId = courseId;
-        this.displayIndex = displayIndex;
         this.certificate = certificate;
         this.startDate = startDate;
         this.deadlineDate = deadlineDate;
@@ -57,14 +57,6 @@ public class StudentInCourseModel {
         this.courseId = courseId;
     }
 
-    public int getDisplayIndex() {
-        return displayIndex;
-    }
-
-    public void setDisplayIndex(int displayIndex) {
-        this.displayIndex = displayIndex;
-    }
-
     public String getCertificate() {
         return certificate;
     }
@@ -73,19 +65,19 @@ public class StudentInCourseModel {
         this.certificate = certificate;
     }
 
-    public double getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(double startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public double getDeadlineDate() {
+    public LocalDate getDeadlineDate() {
         return deadlineDate;
     }
 
-    public void setDeadlineDate(double deadlineDate) {
+    public void setDeadlineDate(LocalDate deadlineDate) {
         this.deadlineDate = deadlineDate;
     }
 
@@ -98,12 +90,12 @@ public class StudentInCourseModel {
     }
     
     public StudentInCourseDTO toDTO() {
-        return new StudentInCourseDTO(studentInCourseId, studentId, courseId, displayIndex, status);
+        return new StudentInCourseDTO(studentInCourseId, studentId, courseId, status);
     }
 
     @Override
     public String toString() {
-        return "StudentInCourseModel{" + "studentInCourseId=" + studentInCourseId + ", studentId=" + studentId + ", courseId=" + courseId + ", displayIndex=" + displayIndex + ", certificate=" + certificate + ", startDate=" + startDate + ", deadlineDate=" + deadlineDate + ", status=" + status + '}';
+        return "StudentInCourseModel{" + "studentInCourseId=" + studentInCourseId + ", studentId=" + studentId + ", courseId=" + courseId + ", certificate=" + certificate + ", startDate=" + startDate + ", deadlineDate=" + deadlineDate + ", status=" + status + '}';
     }
     
     

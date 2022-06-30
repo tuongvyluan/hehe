@@ -9,15 +9,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import students.StudentDAO;
 import utils.DBUtils;
+import utils.MyUtils;
 
 /**
  *
  * @author Luan Tuong Vy
  */
 public class StudentInCourseDAO {
-    
+
     private StudentInCourseDTO studentInCourseDTO;
     private StudentInCourseModel studentInCourseModel;
     private StudentDAO studentDAO;
@@ -25,14 +27,18 @@ public class StudentInCourseDAO {
 
     //Fields
     private final String STUDENT_IN_COURSE_DTO_FIELDS = "Id, StudentId, CourseId, "
-            + "DisplayIndex, Status";
+            + "Status";
+    private final String STUDENT_IN_COURSE_MODEL_FIELDS = "Id, StudentId, CourseId, "
+            + "StartDate, DeadlineDate, Certificate, Status";
 
     //Sql queries
-    private final String CHECK_ENROLLMENT = "SELECT " + STUDENT_IN_COURSE_DTO_FIELDS
+    private final String GET_ENROLLMENT = "SELECT " + STUDENT_IN_COURSE_MODEL_FIELDS
             + " FROM StudentInCourse WHERE StudentId=? AND CourseId=?";
 
-    
-    // Not completed
+    private final String ENROLL = "INSERT INTO StudentInCourse (StudentId, CourseId, "
+            + "StartDate, DeadlineDate, Status) VALUES (?,?,?,?,?,?)";
+
+    // Not completed?
     public StudentInCourseModel getModel(int studentId, int courseId) throws SQLException {
         studentInCourseModel = null;
         Connection conn = null;
@@ -41,7 +47,7 @@ public class StudentInCourseDAO {
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(CHECK_ENROLLMENT);
+                ptm = conn.prepareStatement(GET_ENROLLMENT);
                 ptm.setInt(1, studentId);
                 ptm.setInt(2, courseId);
                 rs = ptm.executeQuery();
@@ -50,8 +56,10 @@ public class StudentInCourseDAO {
                     studentInCourseModel.setCourseId(courseId);
                     studentInCourseModel.setStudentId(studentId);
                     studentInCourseModel.setStudentInCourseId(rs.getInt("Id"));
-                    studentInCourseModel.setDisplayIndex(rs.getInt("DisplayIndex"));
                     studentInCourseModel.setStatus(rs.getString("Status"));
+                    studentInCourseModel.setCertificate(rs.getString("Certificate"));
+                    studentInCourseModel.setStartDate(MyUtils.convertDateToLocalDate(rs.getDate("StartDate")));
+                    studentInCourseModel.setDeadlineDate(MyUtils.convertDateToLocalDate(rs.getDate("DeadlineDate")));
                 }
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -69,7 +77,7 @@ public class StudentInCourseDAO {
         }
         return studentInCourseModel;
     }
-    
+
     public StudentInCourseDTO getDTO(int studentId, int courseId) throws SQLException {
         studentInCourseDTO = null;
         Connection conn = null;
@@ -78,7 +86,7 @@ public class StudentInCourseDAO {
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(CHECK_ENROLLMENT);
+                ptm = conn.prepareStatement(GET_ENROLLMENT);
                 ptm.setInt(1, studentId);
                 ptm.setInt(2, courseId);
                 rs = ptm.executeQuery();
@@ -87,7 +95,6 @@ public class StudentInCourseDAO {
                     studentInCourseModel.setCourseId(courseId);
                     studentInCourseModel.setStudentId(studentId);
                     studentInCourseDTO.setStudentInCourseId(rs.getInt("Id"));
-                    studentInCourseDTO.setDisplayIndex(rs.getInt("DisplayIndex"));
                     studentInCourseDTO.setStatus(rs.getString("Status"));
                 }
             }
@@ -105,5 +112,32 @@ public class StudentInCourseDAO {
             }
         }
         return studentInCourseDTO;
+    }
+
+    public StudentInCourseModel insert(int studentId, int courseId) throws SQLException {
+        studentInCourseModel = null;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(ENROLL);
+                ptm.setInt(1, studentId);
+                ptm.setInt(2, courseId);
+                if (ptm.executeUpdate() == 1) {
+                    studentInCourseModel = getModel(studentId, courseId);
+                }
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return studentInCourseModel;
     }
 }

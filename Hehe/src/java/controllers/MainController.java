@@ -25,6 +25,7 @@ public class MainController extends HttpServlet {
     private final String AUTHOR = "Author";
     private final String COURSE = "Course";
     private final String VIEW_COURSE = "ViewCourse";
+    private final String STUDENT_IN_COURSE = "StudentInCourse";
 
     // Controller, Destination String
     private final String ERROR = "error.jsp";
@@ -37,10 +38,10 @@ public class MainController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
-        HttpSession session = request.getSession();
-        StudentDTO currentStudent = (StudentDTO) session.getAttribute("LOGIN_STUDENT");
 
         try {
+            HttpSession session = request.getSession();
+            StudentDTO currentStudent = (StudentDTO) session.getAttribute("LOGIN_STUDENT");
             String controller = request.getParameter("controller");
             System.out.println("Before switch");
             switch (controller) {
@@ -72,6 +73,11 @@ public class MainController extends HttpServlet {
                         }
                     }
                     url = COURSE_CONTROLLER;
+                    break;
+                }
+
+                case STUDENT_IN_COURSE: {
+                    url = STUDENT_IN_COURSE_CONTROLLER;
                     break;
                 }
             }

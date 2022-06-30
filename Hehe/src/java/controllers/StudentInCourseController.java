@@ -11,9 +11,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import sections.SectionBUS;
 import sections.SectionDTO;
+import studentInCourses.StudentInCourseBUS;
 import studentInCourses.StudentInCourseModel;
+import students.StudentDTO;
 
 /**
  *
@@ -24,18 +27,22 @@ public class StudentInCourseController extends HttpServlet {
 
     //Action String
     private final String VIEW_COURSE = "ViewCourse";
+    private final String ENROLL_COURSE = "EnrollCourse";
 
     //Destination String
     private final String ERROR = "error.jsp";
     private final String HOME = "home.jsp";
     private final String COURSE = "course.jsp";
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = HOME;
         StudentInCourseModel studentCourse;
         SectionBUS sectionBUS = new SectionBUS();
+        StudentInCourseBUS studentInCourseBUS = new StudentInCourseBUS();
+        HttpSession session = request.getSession();
+        StudentDTO currentStudent = (StudentDTO) session.getAttribute("LOGIN_STUDENT");
         try {
             String action = request.getParameter("action");
             int courseId = Integer.parseInt(request.getParameter("courseId"));
@@ -46,6 +53,11 @@ public class StudentInCourseController extends HttpServlet {
                     request.setAttribute("STUDENT_COURSE", studentCourse);
                     request.setAttribute("SECTION_LIST", sections);
                     url = COURSE;
+                    break;
+                }
+                case ENROLL_COURSE: {
+                    if (currentStudent != null) {
+                    }
                     break;
                 }
             }

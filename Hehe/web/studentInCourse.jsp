@@ -4,6 +4,7 @@
     Author     : Luan Tuong Vy
 --%>
 
+<%@page import="courses.CourseBUS"%>
 <%@page import="courses.CourseModel"%>
 <%@page import="sections.SectionDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -20,8 +21,9 @@
     <%
         //Prevent everyone else except the login student go to this page
         AuthorBUS authorBUS = new AuthorBUS();
+        CourseBUS courseBUS = new CourseBUS();
         StudentInCourseModel studentCourse = (StudentInCourseModel) request.getAttribute("STUDENT_COURSE");
-        CourseModel course = studentCourse.getCourse();
+        CourseModel course = courseBUS.get(studentCourse.getCourseId());
         ArrayList<SectionDTO> sections = (ArrayList) request.getAttribute("SECTION_LIST");
         if (studentCourse == null || course == null || sections == null) {
             response.sendRedirect("home.jsp");
