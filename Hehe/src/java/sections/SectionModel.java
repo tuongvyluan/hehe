@@ -76,6 +76,10 @@ public class SectionModel {
     public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
     }
+    
+    public SectionDTO toDTO() {
+        return new SectionDTO(sectionId, courseId, sectionName, displayIndex);
+    }
 
     @Override
     public String toString() {

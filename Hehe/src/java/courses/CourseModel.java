@@ -27,9 +27,9 @@ public class CourseModel {
         this.updatedAt = updatedAt;
         this.duration = duration;
     }
-    
-    public CourseModel(){
-        
+
+    public CourseModel() {
+
     }
 
     public CourseModel(int courseId, int authorId, int categoryId, String courseName, String description, double price, double duration) {
@@ -120,6 +120,19 @@ public class CourseModel {
 
     public void setDuration(double duration) {
         this.duration = duration;
+    }
+
+    public CourseDTO toDTO() {
+        return new CourseDTO(courseId, categoryId, courseName);
+    }
+
+    @Override
+    public String toString() {
+        return "CourseModel{" + "courseId=" + courseId + ", authorId="
+                + authorId + ", categoryId=" + categoryId + ", courseName="
+                + courseName + ", description=" + description + ", status="
+                + status + ", price=" + price + ", createdAt=" + createdAt
+                + ", updatedAt=" + updatedAt + ", duration=" + duration + '}';
     }
 
 }

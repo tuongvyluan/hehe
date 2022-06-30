@@ -5,12 +5,15 @@
 package controllers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import sections.SectionBUS;
+import sections.SectionDTO;
+import studentInCourses.StudentInCourseModel;
 
 /**
  *
@@ -19,11 +22,38 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "StudentInCourseController", urlPatterns = {"/StudentInCourseController"})
 public class StudentInCourseController extends HttpServlet {
 
+    //Action String
+    private final String VIEW_COURSE = "ViewCourse";
+
+    //Destination String
+    private final String ERROR = "error.jsp";
+    private final String HOME = "home.jsp";
+    private final String COURSE = "course.jsp";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+        String url = HOME;
+        StudentInCourseModel studentCourse;
+        SectionBUS sectionBUS = new SectionBUS();
+        try {
+            String action = request.getParameter("action");
+            int courseId = Integer.parseInt(request.getParameter("courseId"));
+            switch (action) {
+                case VIEW_COURSE: {
+                    studentCourse = (StudentInCourseModel) request.getAttribute("STUDENT_COURSE");
+                    ArrayList<SectionDTO> sections = sectionBUS.get(courseId);
+                    request.setAttribute("STUDENT_COURSE", studentCourse);
+                    request.setAttribute("SECTION_LIST", sections);
+                    url = COURSE;
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            log("Error at MainController: " + e.toString());
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
