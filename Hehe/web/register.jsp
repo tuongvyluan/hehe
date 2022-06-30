@@ -48,6 +48,7 @@
           <form name="Register" method="POST" action="MainController"
                 class="login100-form validate-form">
             <input hidden="" name="action" value="RegisterStudent">
+            <input hidden="" name="controller" value="Student">
             <span class="login100-form-title p-b-39">
               Register
             </span>
