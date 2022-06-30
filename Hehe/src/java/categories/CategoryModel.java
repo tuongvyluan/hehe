@@ -1,70 +1,73 @@
 package categories;
 
-public class CategoryModel {
-    int categoryId;
-    String categoryName;
-    String description;
-    int status;
-    String createdAt;
-    String updatedAt;
+import java.time.LocalDate;
 
-    public CategoryModel(int categoryId, String categoryName, String description, int status, String createdAt,
-	    String updatedAt) {
-	super();
-	this.categoryId = categoryId;
-	this.categoryName = categoryName;
-	this.description = description;
-	this.status = status;
-	this.createdAt = createdAt;
-	this.updatedAt = updatedAt;
+public class CategoryModel {
+
+    private int categoryId;
+    private String categoryName;
+    private String description;
+    private String status;
+    private LocalDate updatedAt;
+
+    public CategoryModel() {
+    }
+
+    public CategoryModel(int categoryId, String categoryName, String description) {
+        super();
+        this.categoryId = categoryId;
+        this.categoryName = categoryName;
+        this.description = description;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public LocalDate getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDate updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public int getCategoryId() {
-	return categoryId;
+        return categoryId;
     }
 
     public void setCategoryId(int categoryId) {
-	this.categoryId = categoryId;
+        this.categoryId = categoryId;
     }
 
-    public String getCategoryNameName() {
-	return categoryName;
+    public String getCategoryName() {
+        return categoryName;
     }
 
     public void setCategoryName(String categoryName) {
-	this.categoryName = categoryName;
+        this.categoryName = categoryName;
     }
 
     public String getDescription() {
-	return description;
+        return description;
     }
 
     public void setDescription(String description) {
-	this.description = description;
+        this.description = description;
     }
 
-    public int getStatus() {
-	return status;
+    public CategoryDTO toDTO() {
+        return new CategoryDTO(categoryId, categoryName);
     }
 
-    public void setStatus(int status) {
-	this.status = status;
+    @Override
+    public String toString() {
+        return "CategoryModel{" + "categoryId=" + categoryId + ", categoryName="
+                + categoryName + ", description=" + description + ", status="
+                + status + ", updatedAt=" + updatedAt + '}';
     }
-
-    public String getCreatedAt() {
-	return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-	this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-	return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-	this.updatedAt = updatedAt;
-    }
-
 }

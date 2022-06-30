@@ -1,100 +1,99 @@
 package authors;
 
 public class AuthorModel {
-    int authorId;
-    String roleId;
-    String firstName;
-    String lastName;
-    String phoneName;
-    String email;
-    String password;
-    String createdAt;
-    String updatedAt;
 
-    public AuthorModel(int authorId, String roleId, String firstName, String lastName, String phoneName, String email,
-	    String password, String createdAt, String updatedAt) {
-	super();
-	this.authorId = authorId;
-	this.roleId = roleId;
-	this.firstName = firstName;
-	this.lastName = lastName;
-	this.phoneName = phoneName;
-	this.email = email;
-	this.password = password;
-	this.createdAt = createdAt;
-	this.updatedAt = updatedAt;
+    private int authorId;
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
+    private String email;
+    private String password;
+    private String createdAt;
+    private String updatedAt;
+
+    public AuthorModel(int authorId, String firstName, String lastName, String phoneName, String email,
+            String password, String createdAt, String updatedAt) {
+        super();
+        this.authorId = authorId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneName;
+        this.email = email;
+        this.password = password;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     public int getAuthorId() {
-	return authorId;
+        return authorId;
     }
 
     public void setAuthorId(int authorId) {
-	this.authorId = authorId;
-    }
-
-    public String getRoleId() {
-	return roleId;
-    }
-
-    public void setRoleId(String roleId) {
-	this.roleId = roleId;
+        this.authorId = authorId;
     }
 
     public String getFirstName() {
-	return firstName;
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
-	this.firstName = firstName;
+        this.firstName = firstName;
     }
 
     public String getLastName() {
-	return lastName;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
-	this.lastName = lastName;
+        this.lastName = lastName;
     }
 
-    public String getPhoneName() {
-	return phoneName;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhoneName(String phoneName) {
-	this.phoneName = phoneName;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {
-	return email;
+        return email;
     }
 
     public void setEmail(String email) {
-	this.email = email;
+        this.email = email;
     }
 
     public String getPassword() {
-	return password;
+        return password;
     }
 
     public void setPassword(String password) {
-	this.password = password;
+        this.password = password;
     }
 
     public String getCreatedAt() {
-	return createdAt;
+        return createdAt;
     }
 
     public void setCreatedAt(String createdAt) {
-	this.createdAt = createdAt;
+        this.createdAt = createdAt;
     }
 
     public String getUpdatedAt() {
-	return updatedAt;
+        return updatedAt;
     }
 
     public void setUpdatedAt(String updatedAt) {
-	this.updatedAt = updatedAt;
+        this.updatedAt = updatedAt;
+    }
+    
+    public AuthorDTO toDTO() {
+        return new AuthorDTO(authorId, firstName, lastName, email);
     }
 
+    @Override
+    public String toString() {
+        return "AuthorModel{" + "authorId=" + authorId + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneName=" + phoneNumber + ", email=" + email + ", password=" + password + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + '}';
+    }
 }
