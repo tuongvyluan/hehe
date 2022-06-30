@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group/>
+=======
+        <group>
+            <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/topics/TopicDTO.java</file>
+            <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/studentInTopics/StudentInTopicDTO.java</file>
+            <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/topics/TopicModel.java</file>
+        </group>
+>>>>>>> dc5aa5848397d557150439374146fcfe5975f38d
     </open-files>
 </project-private>

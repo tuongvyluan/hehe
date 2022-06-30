@@ -1,5 +1,10 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package topics;
 
+<<<<<<< HEAD
 public class TopicDTO {
 
     int topicId;
@@ -31,6 +36,35 @@ public class TopicDTO {
         this.description = null;
         this.status = 0;
         this.displayIndex = 0;
+=======
+import courses.CourseDTO;
+import sections.SectionDTO;
+
+/**
+ *
+ * @author Luan Tuong Vy
+ */
+public class TopicDTO {
+    
+    private int topicId;
+    private SectionDTO section;
+    private CourseDTO course;
+    private String topicName;
+    private int status;
+    private int displayIndex;
+
+    public TopicDTO() {
+    }
+
+    public TopicDTO(int topicId, SectionDTO section, CourseDTO course,
+            String topicName, int status, int displayIndex) {
+        this.topicId = topicId;
+        this.section = section;
+        this.course = course;
+        this.topicName = topicName;
+        this.status = status;
+        this.displayIndex = displayIndex;
+>>>>>>> dc5aa5848397d557150439374146fcfe5975f38d
     }
 
     public int getTopicId() {
@@ -41,6 +75,7 @@ public class TopicDTO {
         this.topicId = topicId;
     }
 
+<<<<<<< HEAD
     public int getSectionId() {
         return sectionId;
     }
@@ -55,6 +90,22 @@ public class TopicDTO {
 
     public void setCourseId(int courseId) {
         this.courseId = courseId;
+=======
+    public SectionDTO getSection() {
+        return section;
+    }
+
+    public void setSection(SectionDTO section) {
+        this.section = section;
+    }
+
+    public CourseDTO getCourse() {
+        return course;
+    }
+
+    public void setCourse(CourseDTO course) {
+        this.course = course;
+>>>>>>> dc5aa5848397d557150439374146fcfe5975f38d
     }
 
     public String getTopicName() {
@@ -63,6 +114,7 @@ public class TopicDTO {
 
     public void setTopicName(String topicName) {
         this.topicName = topicName;
+<<<<<<< HEAD
     }
 
     public String getDescription() {
@@ -71,6 +123,8 @@ public class TopicDTO {
 
     public void setDescription(String description) {
         this.description = description;
+=======
+>>>>>>> dc5aa5848397d557150439374146fcfe5975f38d
     }
 
     public int getStatus() {
@@ -91,6 +145,12 @@ public class TopicDTO {
 
     @Override
     public String toString() {
+<<<<<<< HEAD
         return "TopicDTO{" + "topicId=" + topicId + ", sectionId=" + sectionId + ", courseId=" + courseId + ", topicName=" + topicName + ", description=" + description + ", status=" + status + ", displayIndex=" + displayIndex + "}";
+=======
+        return "TopicDTO{" + "topicId=" + topicId + ", section=" + section +
+                ", course=" + course + ", topicName=" + topicName + ", status=" +
+                status + ", displayIndex=" + displayIndex + '}';
+>>>>>>> dc5aa5848397d557150439374146fcfe5975f38d
     }
 }

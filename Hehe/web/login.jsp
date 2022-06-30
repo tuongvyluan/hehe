@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -6,6 +7,16 @@
 
         <!--===============================================================================================-->	
         <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+=======
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+
+        <!--===============================================================================================-->
+        <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+>>>>>>> dc5aa5848397d557150439374146fcfe5975f38d
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
         <!--===============================================================================================-->
@@ -14,13 +25,13 @@
         <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-        <!--===============================================================================================-->	
+        <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-        <!--===============================================================================================-->	
+        <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="css/util.css">
@@ -30,6 +41,10 @@
 
         <title>Login </title>
     </head>
+<<<<<<< HEAD
+=======
+
+>>>>>>> dc5aa5848397d557150439374146fcfe5975f38d
     <body>
         <header>
             <%@ include file="header.jsp" %>
@@ -42,16 +57,31 @@
                             Login
                         </span>
 
+<<<<<<< HEAD
                         <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is required">
                             <span class="label-input100">Username</span>
                             <input class="input100" type="text" name="username" type="email" id="mail" required="" title="The domain portion of the email address is invalid (the portion after the @)." pattern="^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*(\.\w{2,})+$" placeholder="Type your username">
                             <span class="error" aria-live="polite"></span>
+=======
+                        <!-- pattern="^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*(\.\w{2,})+$"
+                                 -->
+                        <div class="wrap-input100 validate-input m-b-23" data-validate="Email is required">
+                            <span class="label-input100">Email</span>
+                            <input value="${param.email}" id="email" class="input100" type="text" name="email"
+                                   placeholder="Type your email"
+                                title="The domain portion of the email address is invalid (the portion after the @).">
+>>>>>>> dc5aa5848397d557150439374146fcfe5975f38d
                             <span class="focus-input100" data-symbol="&#xf206;"></span>
                         </div>
 
                         <div class="wrap-input100 validate-input" data-validate="Password is required">
                             <span class="label-input100">Password</span>
+<<<<<<< HEAD
                             <input class="input100" type="password" name="pass" required="" placeholder="Type your password">
+=======
+                            <input value="${param.password}" id="password" class="input100" type="password"
+                                name="password" placeholder="Type your password">
+>>>>>>> dc5aa5848397d557150439374146fcfe5975f38d
                             <span class="focus-input100" data-symbol="&#xf190;"></span>
                         </div>
 
@@ -94,6 +124,7 @@
                     </form>
                 </div>
             </div>
+<<<<<<< HEAD
         </div>
         <footer>
             <%@ include file="footer.jsp" %>
@@ -101,3 +132,12 @@
         <script src="js/validate.js"></script>
     </body>
 </html>
+=======
+            <footer>
+                <%@ include file="footer.jsp" %>
+            </footer>
+            <script src="js/validate.js"></script>
+    </body>
+
+    </html>
+>>>>>>> dc5aa5848397d557150439374146fcfe5975f38d
