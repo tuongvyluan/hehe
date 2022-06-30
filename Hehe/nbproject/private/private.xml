@@ -3,18 +3,31 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/studentInCourses/StudentInCourseDTO.java</file>
             <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/studentInTopics/StudentInTopicModel.java</file>
             <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/courses/CourseBUS.java</file>
             <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/students/StudentDAO.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/D:/Learning/SEM5/SWP/HeheProject/hehe/Hehe/web/header.jsp</file>
+            <file>file:/D:/Learning/SEM5/SWP/HeheProject/hehe/Hehe/web/js/login.js</file>
+=======
+>>>>>>> d5dd2235897e2175c12b20b6f6a3d3411087caca
             <file>file:/D:/Homework/SWP/hehe/Hehe/web/course.jsp</file>
             <file>file:/D:/Homework/SWP/hehe/Hehe/web/studentInCourse.jsp</file>
             <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/studentInCourses/StudentInCourseBUS.java</file>
             <file>file:/D:/Homework/SWP/hehe/Hehe/web/studyPage.html</file>
+<<<<<<< HEAD
             <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/controllers/MainController.java</file>
             <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/studentInCourses/StudentInCourseModel.java</file>
             <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/controllers/StudentInCourseController.java</file>
             <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/studentInCourses/StudentInCourseDAO.java</file>
+=======
+            <file>file:/D:/Homework/SWP/hehe/Hehe/web/login.jsp</file>
+            <file>file:/D:/Homework/SWP/hehe/Hehe/web/header.jsp</file>
+>>>>>>> db182382debb6d8fe03a2f8e6221c61c361dd277
+>>>>>>> d5dd2235897e2175c12b20b6f6a3d3411087caca
         </group>
     </open-files>
 </project-private>
