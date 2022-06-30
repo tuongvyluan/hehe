@@ -1,12 +1,12 @@
 package studentInQuizzes;
 
-public class StudentInQuizDTO {
+public class StudentInQuizModel {
     int studentInQuizId;
     int studentTopicId;
     int quizId;
     String createdAt;
 
-    public StudentInQuizDTO(int studentInQuizId, int studentTopicId, int quizId, String createdAt) {
+    public StudentInQuizModel(int studentInQuizId, int studentTopicId, int quizId, String createdAt) {
 	super();
 	this.studentInQuizId = studentInQuizId;
 	this.studentTopicId = studentTopicId;

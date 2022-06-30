@@ -1,12 +1,12 @@
 package studentAnswers;
 
-public class StudentAnswerDTO {
+public class StudentAnswerModel {
     int studentAnswerId;
     int studentQuizId;
     int answerId;
     String createdAt;
 
-    public StudentAnswerDTO(int studentAnswerId, int studentQuizId, int answerId, String createdAt) {
+    public StudentAnswerModel(int studentAnswerId, int studentQuizId, int answerId, String createdAt) {
 	super();
 	this.studentAnswerId = studentAnswerId;
 	this.studentQuizId = studentQuizId;

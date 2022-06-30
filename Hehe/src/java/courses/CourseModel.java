@@ -1,5 +1,13 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package courses;
 
+/**
+ *
+ * @author Luan Tuong Vy
+ */
 public class CourseModel {
 
     private int courseId;
@@ -13,8 +21,9 @@ public class CourseModel {
     private String updatedAt;
     private double duration;
 
-    public CourseModel(int courseId, int authorId, int categoryId, String courseName, String description, int status,
-            double price, String createdAt, String updatedAt, double duration) {
+    public CourseModel(int courseId, int authorId, int categoryId, String courseName,
+            String description, int status, double price, String createdAt,
+            String updatedAt, double duration) {
         super();
         this.courseId = courseId;
         this.authorId = authorId;
@@ -32,7 +41,8 @@ public class CourseModel {
 
     }
 
-    public CourseModel(int courseId, int authorId, int categoryId, String courseName, String description, double price, double duration) {
+    public CourseModel(int courseId, int authorId, int categoryId,
+            String courseName, String description, double price, double duration) {
         this.courseId = courseId;
         this.authorId = authorId;
         this.categoryId = categoryId;
@@ -123,7 +133,7 @@ public class CourseModel {
     }
 
     public CourseDTO toDTO() {
-        return new CourseDTO(courseId, categoryId, courseName);
+        return new CourseDTO(courseId, categoryId, authorId, courseName, duration);
     }
 
     @Override

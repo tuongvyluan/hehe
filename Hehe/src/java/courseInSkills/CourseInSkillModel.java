@@ -1,11 +1,11 @@
 package courseInSkills;
 
-public class CourseInSkillDTO {
+public class CourseInSkillModel {
     int courseInSkillId;
     int skillId;
     int courseId;
 
-    public CourseInSkillDTO(int courseInSkillId, int skillId, int courseId) {
+    public CourseInSkillModel(int courseInSkillId, int skillId, int courseId) {
 	super();
 	this.courseInSkillId = courseInSkillId;
 	this.skillId = skillId;

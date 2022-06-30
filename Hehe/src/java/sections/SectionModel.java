@@ -1,7 +1,15 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package sections;
 
 import java.time.LocalDate;
 
+/**
+ *
+ * @author Luan Tuong Vy
+ */
 public class SectionModel {
 
     private int sectionId;
@@ -76,7 +84,7 @@ public class SectionModel {
     public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
     }
-    
+
     public SectionDTO toDTO() {
         return new SectionDTO(sectionId, courseId, sectionName, displayIndex);
     }

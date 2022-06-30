@@ -17,7 +17,7 @@ import utils.DBUtils;
  * @author Luan Tuong Vy
  */
 public class StudentInCourseDAO {
-
+    
     private StudentInCourseDTO studentInCourseDTO;
     private StudentInCourseModel studentInCourseModel;
     private StudentDAO studentDAO;
@@ -47,8 +47,8 @@ public class StudentInCourseDAO {
                 rs = ptm.executeQuery();
                 if (rs.next()) {
                     studentInCourseModel = new StudentInCourseModel();
-                    studentInCourseModel.setCourse(courseDAO.get(courseId));
-                    studentInCourseModel.setStudent(studentDAO.get(studentId));
+                    studentInCourseModel.setCourseId(courseId);
+                    studentInCourseModel.setStudentId(studentId);
                     studentInCourseModel.setStudentInCourseId(rs.getInt("Id"));
                     studentInCourseModel.setDisplayIndex(rs.getInt("DisplayIndex"));
                     studentInCourseModel.setStatus(rs.getString("Status"));
@@ -84,8 +84,8 @@ public class StudentInCourseDAO {
                 rs = ptm.executeQuery();
                 if (rs.next()) {
                     studentInCourseDTO = new StudentInCourseDTO();
-                    studentInCourseDTO.setCourse(courseDAO.get(courseId));
-                    studentInCourseDTO.setStudent(studentDAO.get(studentId));
+                    studentInCourseModel.setCourseId(courseId);
+                    studentInCourseModel.setStudentId(studentId);
                     studentInCourseDTO.setStudentInCourseId(rs.getInt("Id"));
                     studentInCourseDTO.setDisplayIndex(rs.getInt("DisplayIndex"));
                     studentInCourseDTO.setStatus(rs.getString("Status"));

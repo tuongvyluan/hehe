@@ -1,10 +1,10 @@
 package skills;
 
-public class SkillDTO {
+public class SkillModel {
     int skillId;
     String skillName;
 
-    public SkillDTO(int skillId, String skillName) {
+    public SkillModel(int skillId, String skillName) {
 	super();
 	this.skillId = skillId;
 	this.skillName = skillName;

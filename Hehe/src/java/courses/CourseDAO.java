@@ -35,7 +35,7 @@ public class CourseDAO {
     //SQL query
     private final String GET_COURSES = DECLARE_PAGINATION + "SELECT " + COURSE_DTO_FIELDS
             + " FROM Course ORDER BY UpdatedAt " + PAGINATION;
-    private final String GET_COURSES_BY_CATEGORY = DECLARE_PAGINATION + "SELECT Id, Name"
+    private final String GET_COURSES_BY_CATEGORY = DECLARE_PAGINATION + "SELECT Id, Name, AuthorId, Duration"
             + " FROM Course WHERE CategoryId = ? ORDER BY UpdatedAt " + PAGINATION;
     private final String GET_COURSE = "SELECT " + COURSE_MODEL_FIELDS
             + " FROM Course WHERE Id=?";
@@ -108,7 +108,9 @@ public class CourseDAO {
                 while (rs.next()) {
                     courseDTO = new CourseDTO();
                     courseDTO.setCourseId(rs.getInt("Id"));
+                    courseDTO.setAuthorId(rs.getInt("AuthorId"));
                     courseDTO.setCourseName(rs.getString("Name"));
+                    courseDTO.setDuration(rs.getDouble("Duration"));
                     list.add(courseDTO);
                 }
             }

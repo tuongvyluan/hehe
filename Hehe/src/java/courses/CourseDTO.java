@@ -12,15 +12,19 @@ public class CourseDTO {
     
     private int courseId;
     private int categoryId;
+    private int authorId;
     private String courseName;
+    private double duration;
 
     public CourseDTO() {
     }
     
-    public CourseDTO(int courseId, int categoryId, String courseName) {
+    public CourseDTO(int courseId, int categoryId, int authorId, String courseName, double duration) {
         this.courseId = courseId;
         this.categoryId = categoryId;
+        this.authorId = authorId;
         this.courseName = courseName;
+        this.duration = duration;
     }
 
     public int getCourseId() {
@@ -39,6 +43,14 @@ public class CourseDTO {
         this.categoryId = categoryId;
     }
 
+    public int getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(int authorId) {
+        this.authorId = authorId;
+    }
+
     public String getCourseName() {
         return courseName;
     }
@@ -47,9 +59,17 @@ public class CourseDTO {
         this.courseName = courseName;
     }
 
+    public double getDuration() {
+        return duration;
+    }
+
+    public void setDuration(double duration) {
+        this.duration = duration;
+    }
+
     @Override
     public String toString() {
-        return "CourseDTO{" + "courseId=" + courseId + ", categoryId=" + categoryId + ", courseName=" + courseName + '}';
+        return "CourseDTO{" + "courseId=" + courseId + ", categoryId=" + categoryId + ", authorId=" + authorId + ", courseName=" + courseName + ", duration=" + duration + '}';
     }
     
 }

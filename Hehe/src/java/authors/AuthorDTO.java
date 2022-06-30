@@ -56,10 +56,13 @@ public class AuthorDTO {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
 
     @Override
     public String toString() {
         return "AuthorDTO{" + "authorId=" + authorId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + '}';
     }
-
 }

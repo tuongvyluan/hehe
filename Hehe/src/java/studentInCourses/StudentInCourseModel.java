@@ -1,38 +1,36 @@
-/**
- *
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package studentInCourses;
 
-import courses.CourseModel;
-import students.StudentModel;
-
 /**
- * @author Tuong Vy Luan
  *
+ * @author Luan Tuong Vy
  */
 public class StudentInCourseModel {
-
+    
     private int studentInCourseId;
-    private StudentModel student;
-    private CourseModel course;
+    private int studentId;
+    private int courseId;
     private int displayIndex;
     private String certificate;
     private double startDate;
     private double deadlineDate;
     private String status;
 
-    public StudentInCourseModel() {
-    }
-
-    public StudentInCourseModel(int studentInCourseId, StudentModel student, CourseModel course, int displayIndex, String certificate, double startDate, double deadlineDate, String status) {
+    public StudentInCourseModel(int studentInCourseId, int studentId, int courseId, int displayIndex, String certificate, double startDate, double deadlineDate, String status) {
         this.studentInCourseId = studentInCourseId;
-        this.student = student;
-        this.course = course;
+        this.studentId = studentId;
+        this.courseId = courseId;
         this.displayIndex = displayIndex;
         this.certificate = certificate;
         this.startDate = startDate;
         this.deadlineDate = deadlineDate;
         this.status = status;
+    }
+
+    public StudentInCourseModel() {
     }
 
     public int getStudentInCourseId() {
@@ -43,20 +41,20 @@ public class StudentInCourseModel {
         this.studentInCourseId = studentInCourseId;
     }
 
-    public StudentModel getStudent() {
-        return student;
+    public int getStudentId() {
+        return studentId;
     }
 
-    public void setStudent(StudentModel student) {
-        this.student = student;
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
-    public CourseModel getCourse() {
-        return course;
+    public int getCourseId() {
+        return courseId;
     }
 
-    public void setCourse(CourseModel course) {
-        this.course = course;
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
     public int getDisplayIndex() {
@@ -98,9 +96,15 @@ public class StudentInCourseModel {
     public void setStatus(String status) {
         this.status = status;
     }
+    
+    public StudentInCourseDTO toDTO() {
+        return new StudentInCourseDTO(studentInCourseId, studentId, courseId, displayIndex, status);
+    }
 
     @Override
     public String toString() {
-        return "StudentInCourseModel{" + "studentInCourseId=" + studentInCourseId + ", student=" + student + ", course=" + course + ", displayIndex=" + displayIndex + ", certificate=" + certificate + ", startDate=" + startDate + ", deadlineDate=" + deadlineDate + ", status=" + status + '}';
+        return "StudentInCourseModel{" + "studentInCourseId=" + studentInCourseId + ", studentId=" + studentId + ", courseId=" + courseId + ", displayIndex=" + displayIndex + ", certificate=" + certificate + ", startDate=" + startDate + ", deadlineDate=" + deadlineDate + ", status=" + status + '}';
     }
+    
+    
 }
