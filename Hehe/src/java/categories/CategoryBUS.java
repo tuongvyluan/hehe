@@ -26,4 +26,11 @@ public class CategoryBUS {
         CategoryDTO category = dao.get(categoryId);
         return category;
     }
+    
+    public int count() throws SQLException {
+        dao = new CategoryDAO();
+        int count = 0;
+        count = dao.count();
+        return count;
+    }
 }

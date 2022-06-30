@@ -47,10 +47,15 @@
     <%
         int pageNumber = 1;
         int rowsOfPage = 3;
+        CategoryBUS categoryBUS = new CategoryBUS();
+        int count = categoryBUS.count();
+        int totalPage = count / 3;
+        if (totalPage * 3 < count) {
+            totalPage++;
+        }
         if (request.getParameter("page") != null) {
             pageNumber = Integer.parseInt(request.getParameter("page"));
         }
-        CategoryBUS categoryBUS = new CategoryBUS();
         AuthorBUS authorBUS = new AuthorBUS();
         ArrayList<CategoryModel> categories = categoryBUS.getCategories(pageNumber, rowsOfPage);
     %>
@@ -106,7 +111,13 @@
     <%
         }
     %>
-
+    <%
+        for (int i = 1; i <= totalPage; i++) {
+    %>
+    <%= i%>
+    <%
+        }
+    %>
   </body>
   <!-- Swiper JS -->
   <script src="js/swiper-bundle.min.js"></script>
