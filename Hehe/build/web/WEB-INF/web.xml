@@ -26,6 +26,9 @@
         <welcome-file>study.jsp</welcome-file>
 =======
         <welcome-file>login.jsp</welcome-file>
+<<<<<<< HEAD
+>>>>>>> dc5aa5848397d557150439374146fcfe5975f38d
+=======
 >>>>>>> dc5aa5848397d557150439374146fcfe5975f38d
     </welcome-file-list>
 </web-app>
