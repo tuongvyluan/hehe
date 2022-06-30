@@ -16,6 +16,7 @@ html {
   align-items: center;
   overflow: hidden;
   /* border-radius: 30px; */
+  margin-bottom: 30px;
 }
 .home__content {
   text-align: left;
