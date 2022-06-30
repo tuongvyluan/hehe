@@ -1,4 +1,6 @@
 <%@page import="students.StudentDTO"%>
+<%@page import="sections.SectionDTO"%>
+<%@page import="topics.TopicDTO"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
