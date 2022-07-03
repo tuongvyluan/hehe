@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package answers;
+package quizzes;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,16 +13,17 @@ import utils.DBUtils;
 
 /**
  *
- * @author ADMIN
+ * @author admin
  */
-public class AnswerDAO {
-        private AnswerDTO answerDTO;
+public class QuizDAO {
+
+    private QuizDTO quizDTO;
 
     //Sql queries
-    private final String GET_ANSWER_BY_QUIZ = "SELECT Id, QuizId, Content, IsCorrect FROM Answer Where QuizId=?";
+    private final String GET_QUIZ_BY_TOPIC = "SELECT Id, TopicId, Content, Date, NumberAnswers FROM Quiz Where TopicId=?";
 
-    public ArrayList<AnswerDTO> get(int topicId) throws SQLException {
-        ArrayList<AnswerDTO> list = new ArrayList<>();
+    public ArrayList<QuizDTO> get(int topicId) throws SQLException {
+        ArrayList<QuizDTO> list = new ArrayList<>();
         Connection conn = null;
         PreparedStatement ptm = null;
         ResultSet rs = null;
@@ -30,16 +31,17 @@ public class AnswerDAO {
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(GET_ANSWER_BY_QUIZ);
+                ptm = conn.prepareStatement(GET_QUIZ_BY_TOPIC);
                 ptm.setInt(1, topicId);
                 rs = ptm.executeQuery();
                 while (rs.next()) {
-                    answerDTO = new AnswerDTO();
-                    answerDTO.setAnswerId(rs.getInt("Id"));
-                    answerDTO.setQuizId(rs.getInt("QuizId"));
-                    answerDTO.setContent(rs.getString("Content"));
-                    answerDTO.setCorrect(rs.getBoolean("IsCorrect"));
-                    list.add(answerDTO);
+                    quizDTO = new QuizDTO();
+                    quizDTO.setQuizId(rs.getInt("Id"));
+                    quizDTO.setTopicId(rs.getInt("TopicId"));
+                    quizDTO.setContent(rs.getString("Content"));
+                    quizDTO.setDate(rs.getDate("Date"));
+                    quizDTO.setNumberAnswers(rs.getInt("NumberAnswers"));
+                    list.add(quizDTO);
                 }
             }
         } catch (ClassNotFoundException | SQLException e) {

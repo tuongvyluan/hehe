@@ -100,18 +100,16 @@
             <div class="accordion-body">
               <ol>
                 <%
-
                     ArrayList<TopicDTO> topicList;
                     topicList = topicBUS.get(section.getSectionId());
                     if (topicList != null && topicList.isEmpty() == false) {
                         for (TopicDTO topicDTO : topicList) {
                 %>
-                <li><a href="#"><%= topicDTO.getTopicName()%></a></li>
+                <li><a href="study.jsp?id=<%=topicDTO.getTopicId()%>"><%= topicDTO.getTopicName()%></a></li>
                   <%
                           }
                       }
                   %>
-
               </ol>
             </div>
           </div>

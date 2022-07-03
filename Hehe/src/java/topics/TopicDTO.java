@@ -17,6 +17,11 @@ public class TopicDTO {
     private int displayIndex;
 
     public TopicDTO() {
+        this.topicId = 0;
+        this.sectionId = 0;
+        this.courseId = 0;
+        this.topicName = null;
+        this.displayIndex = 0;
     }
 
     public TopicDTO(int topicId, int sectionId, int courseId, String topicName, int displayIndex) {
