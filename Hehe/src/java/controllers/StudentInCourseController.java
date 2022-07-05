@@ -33,6 +33,7 @@ public class StudentInCourseController extends HttpServlet {
 
     //Destination String
     private final String ERROR = "error.jsp";
+    private final String LOGIN = "login.jsp";
     private final String HOME = "home.jsp";
     private final String COURSE = "course.jsp";
     private final String STUDENT_COURSE = "studentInCourse.jsp";
@@ -74,6 +75,9 @@ public class StudentInCourseController extends HttpServlet {
                             url = STUDENT_COURSE;
                             break;
                         }
+                    } else {
+                        url = LOGIN;
+                        break;
                     }
                     url = COURSE;
                     break;
