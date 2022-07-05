@@ -29,14 +29,15 @@ public class StudentInCourseDAO {
     private final String STUDENT_IN_COURSE_DTO_FIELDS = "Id, StudentId, CourseId, "
             + "Status";
     private final String STUDENT_IN_COURSE_MODEL_FIELDS = "Id, StudentId, CourseId, "
-            + "StartDate, DeadlineDate, Certificate, Status";
+            + "Certificate, Status";
 
     //Sql queries
     private final String GET_ENROLLMENT = "SELECT " + STUDENT_IN_COURSE_MODEL_FIELDS
             + " FROM StudentInCourse WHERE StudentId=? AND CourseId=?";
 
-    private final String ENROLL = "INSERT INTO StudentInCourse (StudentId, CourseId, "
-            + "StartDate, DeadlineDate, Status) VALUES (?,?,?,?,?,?)";
+    private final String ENROLL = "INSERT INTO StudentInCourse "
+            + "(StudentId, CourseId, StartDate, Certificate, Status) "
+            + "VALUES (?,?,?,?,?)";
 
     // Not completed?
     public StudentInCourseModel getModel(int studentId, int courseId) throws SQLException {
@@ -58,8 +59,6 @@ public class StudentInCourseDAO {
                     studentInCourseModel.setStudentInCourseId(rs.getInt("Id"));
                     studentInCourseModel.setStatus(rs.getString("Status"));
                     studentInCourseModel.setCertificate(rs.getString("Certificate"));
-                    studentInCourseModel.setStartDate(MyUtils.convertDateToLocalDate(rs.getDate("StartDate")));
-                    studentInCourseModel.setDeadlineDate(MyUtils.convertDateToLocalDate(rs.getDate("DeadlineDate")));
                 }
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -124,6 +123,9 @@ public class StudentInCourseDAO {
                 ptm = conn.prepareStatement(ENROLL);
                 ptm.setInt(1, studentId);
                 ptm.setInt(2, courseId);
+                ptm.setString(3, LocalDate.now().toString());
+                ptm.setString(4, "null");
+                ptm.setString(5, "Studying");
                 if (ptm.executeUpdate() == 1) {
                     studentInCourseModel = getModel(studentId, courseId);
                 }

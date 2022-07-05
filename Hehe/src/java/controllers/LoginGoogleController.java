@@ -39,6 +39,7 @@ public class LoginGoogleController extends HttpServlet {
         StudentError studentError = null;
         try {
             String code = request.getParameter("code");
+            System.out.println(code);
             if (code == null || code.isEmpty()) {
                 RequestDispatcher dis = request.getRequestDispatcher("login.jsp");
                 dis.forward(request, response);
@@ -61,6 +62,10 @@ public class LoginGoogleController extends HttpServlet {
                         HttpSession session = request.getSession();
                         session.setAttribute("LOGIN_STUDENT", studentUser.toDTO());
                     }
+                } else {
+                    url = HOME;
+                    HttpSession session = request.getSession();
+                    session.setAttribute("LOGIN_STUDENT", studentUser.toDTO());
                 }
 
             }

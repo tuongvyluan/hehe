@@ -27,6 +27,7 @@ public class GoogleUtils {
                 .execute().returnContent().asString();
         JsonObject jobj = new Gson().fromJson(response, JsonObject.class);
         String accessToken = jobj.get("access_token").toString().replaceAll("\"", "");
+        System.out.println("Access token: " + accessToken);
         return accessToken;
     }
 
@@ -34,7 +35,6 @@ public class GoogleUtils {
         String link = Constants.GOOGLE_LINK_GET_USER_INFO + accessToken;
         String response = Request.Get(link).execute().returnContent().asString();
         GooglePojo googlePojo = new Gson().fromJson(response, GooglePojo.class);
-        System.out.println(googlePojo);
         return googlePojo;
     }
 }

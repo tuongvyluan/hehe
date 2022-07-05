@@ -19,6 +19,7 @@ public class StudentInCourseBUS {
     public StudentInCourseModel enrollCourse(int studentId, int courseId) {
         StudentInCourseModel enrollment = null;
         try {
+            dao = new StudentInCourseDAO();
             enrollment = dao.insert(studentId, courseId);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

@@ -4,6 +4,7 @@
     Author     : Luan Tuong Vy
 --%>
 
+<%@page import="students.StudentDTO"%>
 <%@page import="authors.AuthorBUS"%>
 <%@page import="courses.CourseBUS"%>
 <%@page import="courses.CourseDTO"%>
@@ -58,6 +59,7 @@
         }
         AuthorBUS authorBUS = new AuthorBUS();
         ArrayList<CategoryModel> categories = categoryBUS.getCategories(pageNumber, rowsOfPage);
+        
     %>
 
     <%

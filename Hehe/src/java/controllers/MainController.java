@@ -67,7 +67,7 @@ public class MainController extends HttpServlet {
                                 = studentInCourseDAO.getModel(currentStudent.getId(),
                                         Integer.parseInt(request.getParameter("courseId")));
                         if (studentCourse != null) {
-                            request.setAttribute("STUDENT_COURSE", studentCourse);
+                            request.setAttribute("CURRENT_STUDENT_COURSE", studentCourse);
                             url = STUDENT_IN_COURSE_CONTROLLER;
                             break;
                         }

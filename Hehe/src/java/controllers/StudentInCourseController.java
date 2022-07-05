@@ -4,6 +4,8 @@
  */
 package controllers;
 
+import courses.CourseBUS;
+import courses.CourseModel;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -33,6 +35,7 @@ public class StudentInCourseController extends HttpServlet {
     private final String ERROR = "error.jsp";
     private final String HOME = "home.jsp";
     private final String COURSE = "course.jsp";
+    private final String STUDENT_COURSE = "studentInCourse.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -42,22 +45,37 @@ public class StudentInCourseController extends HttpServlet {
         SectionBUS sectionBUS = new SectionBUS();
         StudentInCourseBUS studentInCourseBUS = new StudentInCourseBUS();
         HttpSession session = request.getSession();
+        CourseBUS courseBUS = new CourseBUS();
         StudentDTO currentStudent = (StudentDTO) session.getAttribute("LOGIN_STUDENT");
         try {
             String action = request.getParameter("action");
             int courseId = Integer.parseInt(request.getParameter("courseId"));
             switch (action) {
                 case VIEW_COURSE: {
-                    studentCourse = (StudentInCourseModel) request.getAttribute("STUDENT_COURSE");
+                    studentCourse = (StudentInCourseModel) request.getAttribute("CURRENT_STUDENT_COURSE");
+                    courseId = studentCourse.getCourseId();
+                    CourseModel course = courseBUS.get(courseId);
                     ArrayList<SectionDTO> sections = sectionBUS.get(courseId);
-                    request.setAttribute("STUDENT_COURSE", studentCourse);
                     request.setAttribute("SECTION_LIST", sections);
-                    url = COURSE;
+                    request.setAttribute("COURSE", course);
+                    url = STUDENT_COURSE;
                     break;
                 }
                 case ENROLL_COURSE: {
                     if (currentStudent != null) {
+                        int studentId = currentStudent.getId();
+                        studentCourse = studentInCourseBUS.enrollCourse(studentId, courseId);
+                        if (studentCourse != null) {
+                            ArrayList<SectionDTO> sections = sectionBUS.get(courseId);
+                            request.setAttribute("CURRENT_STUDENT_COURSE", studentCourse);
+                            request.setAttribute("SECTION_LIST", sections);
+                            CourseModel course = courseBUS.get(courseId);
+                            request.setAttribute("COURSE", course);
+                            url = STUDENT_COURSE;
+                            break;
+                        }
                     }
+                    url = COURSE;
                     break;
                 }
             }
