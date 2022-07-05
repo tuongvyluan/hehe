@@ -5,11 +5,14 @@
 package controllers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import studentInCourses.StudentInCourseDAO;
+import studentInCourses.StudentInCourseModel;
+import students.StudentDTO;
 
 /**
  *
@@ -17,26 +20,60 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class MainController extends HttpServlet {
 
-    // Action String
-    private final String LOGIN_STUDENT = "LoginStudent";
-    private final String LOGIN_AUTHOR = "LoginAuthor";
-    
+    // Controller param
+    private final String STUDENT = "Student";
+    private final String AUTHOR = "Author";
+    private final String COURSE = "Course";
+    private final String VIEW_COURSE = "ViewCourse";
+
     // Controller, Destination String
     private final String ERROR = "error.jsp";
     private final String STUDENT_CONTROLLER = "StudentController";
     private final String AUTHOR_CONTROLLER = "AuthorController";
+    private final String COURSE_CONTROLLER = "CourseController";
+    private final String STUDENT_IN_COURSE_CONTROLLER = "StudentInCourseController";
 
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
+        HttpSession session = request.getSession();
+        StudentDTO currentStudent = (StudentDTO) session.getAttribute("LOGIN_STUDENT");
+
         try {
-            String action = request.getParameter("action");
-            if (LOGIN_STUDENT.equals(action)) {
-                url = STUDENT_CONTROLLER;
-            } else if (LOGIN_AUTHOR.equals(action)) {
-                url = AUTHOR_CONTROLLER;
+            String controller = request.getParameter("controller");
+            System.out.println("Before switch");
+            switch (controller) {
+                case STUDENT: {
+                    url = STUDENT_CONTROLLER;
+                    break;
+                }
+
+                case AUTHOR: {
+                    url = AUTHOR_CONTROLLER;
+                    break;
+                }
+
+                case COURSE: {
+                    url = COURSE_CONTROLLER;
+                    break;
+                }
+
+                case VIEW_COURSE: {
+                    if (currentStudent != null) {
+                        StudentInCourseDAO studentInCourseDAO = new StudentInCourseDAO();
+                        StudentInCourseModel studentCourse
+                                = studentInCourseDAO.getModel(currentStudent.getId(),
+                                        Integer.parseInt(request.getParameter("courseId")));
+                        if (studentCourse != null) {
+                            request.setAttribute("STUDENT_COURSE", studentCourse);
+                            url = STUDENT_IN_COURSE_CONTROLLER;
+                            break;
+                        }
+                    }
+                    url = COURSE_CONTROLLER;
+                    break;
+                }
             }
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());

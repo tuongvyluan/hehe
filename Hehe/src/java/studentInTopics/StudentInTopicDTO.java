@@ -1,60 +1,77 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package studentInTopics;
 
+import studentInCourses.StudentInCourseDTO;
+import topics.TopicDTO;
+
+/**
+ *
+ * @author Luan Tuong Vy
+ */
 public class StudentInTopicDTO {
-    int studentInTopicId;
-    int studentCourseId;
-    int topicId;
-    double startDate;
-    double deadlineDate;
+    
+    private int id;
+    private StudentInCourseDTO studentCourse;
+    private TopicDTO topic;
+    private double startDate;
+    private double deadlineDate;
 
-    public StudentInTopicDTO(int studentInTopicId, int studentCourseId, int topicId, double startDate,
-	    double deadlineDate) {
-	super();
-	this.studentInTopicId = studentInTopicId;
-	this.studentCourseId = studentCourseId;
-	this.topicId = topicId;
-	this.startDate = startDate;
-	this.deadlineDate = deadlineDate;
+    public StudentInTopicDTO() {
     }
 
-    public int getStudentInTopicId() {
-	return studentInTopicId;
+    public StudentInTopicDTO(int id, StudentInCourseDTO studentCourse, TopicDTO topic, double startDate, double deadlineDate) {
+        this.id = id;
+        this.studentCourse = studentCourse;
+        this.topic = topic;
+        this.startDate = startDate;
+        this.deadlineDate = deadlineDate;
     }
 
-    public void setStudentInTopicId(int studentInTopicId) {
-	this.studentInTopicId = studentInTopicId;
+    public int getId() {
+        return id;
     }
 
-    public int getStudentCourseId() {
-	return studentCourseId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setStudentCourseId(int studentCourseId) {
-	this.studentCourseId = studentCourseId;
+    public StudentInCourseDTO getStudentCourse() {
+        return studentCourse;
     }
 
-    public int getTopicId() {
-	return topicId;
+    public void setStudentCourse(StudentInCourseDTO studentCourse) {
+        this.studentCourse = studentCourse;
     }
 
-    public void setTopicId(int topicId) {
-	this.topicId = topicId;
+    public TopicDTO getTopic() {
+        return topic;
+    }
+
+    public void setTopic(TopicDTO topic) {
+        this.topic = topic;
     }
 
     public double getStartDate() {
-	return startDate;
+        return startDate;
     }
 
     public void setStartDate(double startDate) {
-	this.startDate = startDate;
+        this.startDate = startDate;
     }
 
     public double getDeadlineDate() {
-	return deadlineDate;
+        return deadlineDate;
     }
 
     public void setDeadlineDate(double deadlineDate) {
-	this.deadlineDate = deadlineDate;
+        this.deadlineDate = deadlineDate;
     }
 
+    @Override
+    public String toString() {
+        return "StudentInTopicDTO{" + "id=" + id + ", studentCourse=" + studentCourse + ", topic=" + topic + ", startDate=" + startDate + ", deadlineDate=" + deadlineDate + '}';
+    }
 }

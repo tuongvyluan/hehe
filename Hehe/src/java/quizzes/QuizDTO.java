@@ -1,15 +1,29 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package quizzes;
 
 import java.sql.Date;
 
+/**
+ *
+ * @author admin
+ */
 public class QuizDTO {
     int quizId;
     int topicId;
     String content;
     Date date;
     int numberAnswers;
-    String createdAt;
-    String updatedAt;
+    
+    public QuizDTO() {
+	this.quizId = 0;
+	this.topicId = 0;
+	this.content = null;
+	this.date = null;
+	this.numberAnswers = 0;
+    }
 
     public QuizDTO(int quizId, int topicId, String content, Date date, int numberAnswers, String createdAt,
 	    String updatedAt) {
@@ -19,8 +33,6 @@ public class QuizDTO {
 	this.content = content;
 	this.date = date;
 	this.numberAnswers = numberAnswers;
-	this.createdAt = createdAt;
-	this.updatedAt = updatedAt;
     }
 
     public int getQuizId() {
@@ -62,21 +74,4 @@ public class QuizDTO {
     public void setNumberAnswers(int numberAnswers) {
 	this.numberAnswers = numberAnswers;
     }
-
-    public String getCreatedAt() {
-	return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-	this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-	return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-	this.updatedAt = updatedAt;
-    }
-
 }
