@@ -1,0 +1,98 @@
+html {
+  box-sizing: border-box;
+  /* margin: 2rem; */
+}
+
+/* -----------home section---------------- */
+.home {
+  position: relative;
+  height: 600px; 
+  background-image: url(../images/studyremovebg-preview.png),linear-gradient(to bottom right,#1877f2 30%, #66ffff 100%); 
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position:right;
+  margin: 5px auto;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  /* border-radius: 30px; */
+}
+.home__content {
+  text-align: left;
+  /* margin-top: 2em;    */
+  margin-left: 5%;
+  width: 50%; 
+}
+.home h1 {
+  text-transform: uppercase;
+  font-weight: 800;
+  text-align: left;
+  font-size: 5rem;
+  color: #dcebfd;
+  text-shadow: 0.5px 0.5px  10px #2085f3;
+}
+.home p{
+  font-size: 1.5rem;
+  font-weight: 700;
+  width: 80%;
+  color: #bad6fb;
+}
+.home__btn {
+  text-transform: uppercase;
+  font-size: 2rem;
+  border: none;
+  border-radius: 15px;
+  padding: 0.2em 1em;
+  font-weight: 800;
+
+  color: #dcebfd ;
+  background-color: #2085f3;
+  box-shadow: 2px 2px 5px #62f8fe;
+  transition: 0.5s;
+}
+.home__btn:hover{
+  transform: translate(0, -10px);
+  background-color: #bad6fb ;
+  color: #1877f2;
+  box-shadow: 10px 10px 5px #33a7f7;
+}
+
+/* -------------------end home section --------------------------- */
+/* ---------------------------Cards Course Section------------------------ */
+
+.onGoing, .categoryName{
+   width: 90%;
+   margin: auto;
+}
+
+/*------------------------End cards course section------------------------ */
+
+@media only screen and (max-width: 800px){
+  .home{
+    height: 300px; 
+  }
+  .home__content {
+    text-align: left;
+    /* margin-top: 2em;    */
+    margin-left: 5%;
+    width: 80%; 
+  }
+  .home h1 {
+    font-size: 2rem;
+    font-weight: 900;
+  }
+  .home p{
+    font-size: 1rem;
+  }
+  .home__btn{
+    font-size: 1rem;
+  }
+
+}
+@media only screen and (max-width: 1100px){
+  .home{
+    background-blend-mode: multiply;
+  }
+}
+
+  /* -------------------end home section --------------------------- */
