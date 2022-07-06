@@ -96,7 +96,7 @@ public class StudentController extends HttpServlet {
                 }
             }
         } catch (SQLException e) {
-            log("Error at MainController: " + e.toString());
+            log("Error at StudentController: " + e.toString());
         } finally {
             request.setAttribute("ERROR", error);
             request.getRequestDispatcher(url).forward(request, response);

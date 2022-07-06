@@ -1,8 +1,6 @@
 package topics;
 
-import courses.CourseModel;
 import java.time.LocalDate;
-import sections.SectionModel;
 
 public class TopicModel {
 
@@ -11,6 +9,7 @@ public class TopicModel {
     private int courseId;
     private String topicName;
     private String description;
+    private String status;
     private int displayIndex;
     private LocalDate createdAt;
     private LocalDate updatedAt;
@@ -19,12 +18,15 @@ public class TopicModel {
 
     }
 
-    public TopicModel(int topicId, int sectionId, int courseId, String topicName, String description, int displayIndex, LocalDate createdAt, LocalDate updatedAt) {
+    public TopicModel(int topicId, int sectionId, int courseId, String topicName,
+            String description, String status, int displayIndex, LocalDate createdAt,
+            LocalDate updatedAt) {
         this.topicId = topicId;
         this.sectionId = sectionId;
         this.courseId = courseId;
         this.topicName = topicName;
         this.description = description;
+        this.status = status;
         this.displayIndex = displayIndex;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -70,6 +72,14 @@ public class TopicModel {
         this.description = description;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public int getDisplayIndex() {
         return displayIndex;
     }
@@ -93,12 +103,17 @@ public class TopicModel {
     public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
     }
+    
+    public TopicDTO toDTO() {
+        return new TopicDTO(topicId, sectionId, courseId, topicName, displayIndex);
+    }
 
     @Override
     public String toString() {
-        return "TopicModel{" + "topicId=" + topicId + ", sectionId="
-                + sectionId + ", courseId=" + courseId + ", topicName="
-                + topicName + ", description=" + description + ", displayIndex="
-                + displayIndex + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + '}';
+        return "TopicModel{" + "topicId=" + topicId + ", sectionId=" + sectionId
+                + ", courseId=" + courseId + ", topicName=" + topicName
+                + ", description=" + description + ", status=" + status
+                + ", displayIndex=" + displayIndex + ", createdAt=" + createdAt
+                + ", updatedAt=" + updatedAt + '}';
     }
 }

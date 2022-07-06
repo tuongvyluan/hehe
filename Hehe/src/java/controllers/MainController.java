@@ -33,6 +33,7 @@ public class MainController extends HttpServlet {
     private final String AUTHOR_CONTROLLER = "AuthorController";
     private final String COURSE_CONTROLLER = "CourseController";
     private final String STUDENT_IN_COURSE_CONTROLLER = "StudentInCourseController";
+    private final String TOPIC_CONTROLLER = "TopicController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -78,6 +79,11 @@ public class MainController extends HttpServlet {
 
                 case STUDENT_IN_COURSE: {
                     url = STUDENT_IN_COURSE_CONTROLLER;
+                    break;
+                }
+                
+                case TOPIC_CONTROLLER: {
+                    url = TOPIC_CONTROLLER;
                     break;
                 }
             }

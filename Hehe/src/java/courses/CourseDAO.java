@@ -36,7 +36,7 @@ public class CourseDAO {
     private final String GET_COURSES = DECLARE_PAGINATION + "SELECT " + COURSE_DTO_FIELDS
             + " FROM Course ORDER BY UpdatedAt " + PAGINATION;
     private final String GET_COURSES_BY_CATEGORY = DECLARE_PAGINATION + "SELECT Id, Name, AuthorId, Duration"
-            + " FROM Course WHERE CategoryId = ? ORDER BY UpdatedAt " + PAGINATION;
+            + " FROM Course WHERE Status='Active' AND CategoryId = ? ORDER BY UpdatedAt " + PAGINATION;
     private final String GET_COURSE = "SELECT " + COURSE_MODEL_FIELDS
             + " FROM Course WHERE Id=?";
 

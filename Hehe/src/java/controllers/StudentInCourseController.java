@@ -84,7 +84,7 @@ public class StudentInCourseController extends HttpServlet {
                 }
             }
         } catch (Exception e) {
-            log("Error at MainController: " + e.toString());
+            log("Error at StudentInCourseController: " + e.toString());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

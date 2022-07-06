@@ -40,7 +40,7 @@
         CourseModel course = (CourseModel) request.getAttribute("CURRENT_COURSE");
         ArrayList<SectionDTO> sections = (ArrayList) request.getAttribute("SECTION_LIST");
         CategoryBUS categoryBUS = new CategoryBUS();
-        StudentDTO student = (StudentDTO) session.getAttribute("CURRENT_STUDENT");
+        StudentDTO student = (StudentDTO) session.getAttribute("LOGIN_STUDENT");
         if (course == null || sections == null) {
             response.sendRedirect("home.jsp");
             return;
@@ -58,7 +58,7 @@
         <div class="banner__content__detail">
           <span>Created by <%= authorBUS.get(course.getAuthorId()).getFullName()%> </span>
         </div>
-        <form name="EnrollCourse" method="POST" action="MainController">
+        <form name="EnrollCourse" method="POST" action="MainController" id="course">
           <input hidden="" name="controller" value="StudentInCourse">
           <input hidden="" name="action" value="EnrollCourse">
           <input hidden="" name="courseId" value="<%= course.getCourseId()%>">
@@ -66,6 +66,21 @@
           <div>
             <button class="enrollBtn">Enroll now</button>
           </div>
+
+          <% if (student == null) {
+          %>
+          <div>
+            <a style="color: #8E57B7; font-size: 70%; text-decoration: none; font-weight: 600;" href="login.jsp">Please login to continue</a>
+          </div>
+          <%
+          } else {
+          %>
+          <div>
+            <a href="#" onclick="submit_form()" style="color: #8E57B7; font-size: 70%; text-decoration: none; font-weight: 600;">Please enroll course to study.</a>
+          </div>
+          <%
+              }
+          %>
         </form>
 
       </div>
@@ -112,11 +127,13 @@
                     if (topicList != null && topicList.isEmpty() == false) {
                         for (TopicDTO topicDTO : topicList) {
                 %>
-                <li><a href="#"><%= topicDTO.getTopicName()%></a></li>
-                  <%
-                          }
-                      }
-                  %>
+                <li>
+                  <p><%= topicDTO.getTopicName()%></p>
+                </li>
+                <%
+                        }
+                    }
+                %>
 
               </ol>
             </div>
@@ -126,6 +143,12 @@
             }
         %>
     </section>
+    <script>
+        function submit_form() {
+            var form = document.getElementById('course');
+            form.submit();
+        }
+    </script>
     <script
         src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"

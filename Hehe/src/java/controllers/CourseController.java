@@ -52,7 +52,7 @@ public class CourseController extends HttpServlet {
                 }
             }
         } catch (Exception e) {
-            log("Error at MainController: " + e.toString());
+            log("Error at CourseController: " + e.toString());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

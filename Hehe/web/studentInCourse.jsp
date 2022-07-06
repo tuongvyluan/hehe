@@ -22,7 +22,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/studyPage.css" />
+    <link rel="stylesheet" href="css/studyPageEnrolled.css" />
     <link
         rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -49,7 +49,7 @@
         CategoryBUS categoryBUS = new CategoryBUS();
         StudentDTO student = (StudentDTO) session.getAttribute("LOGIN_STUDENT");
         if (course == null || sections == null || student == null) {
-            response.sendRedirect("home.jsp");
+            response.sendRedirect("login.jsp");
             return;
         }
     %>
@@ -68,7 +68,9 @@
         <div class="enrolled">
           Enrolled
         </div>
-
+        <div class="duration">
+          Duration: <%= course.getDuration() %> hours
+        </div>
       </div>
     </section>
 
@@ -113,11 +115,18 @@
                     if (topicList != null && topicList.isEmpty() == false) {
                         for (TopicDTO topicDTO : topicList) {
                 %>
-                <li><a href="#"><%= topicDTO.getTopicName()%></a></li>
-                  <%
-                          }
-                      }
-                  %>
+                <li>
+                  <form name="ViewTopic" method="POST" action="MainController" id="topic<%= topicDTO.getTopicId()%>">
+                    <input type="hidden" name="controller" value="TopicController">
+                    <input type="hidden" name="action" value="ViewTopic">
+                    <input type="hidden" name="topicId" value="<%= topicDTO.getTopicId()%>">
+                  </form>
+                  <a onclick="submit_form('topic<%= topicDTO.getTopicId()%>')" href="#"><%= topicDTO.getTopicName()%></a>
+                </li>
+                <%
+                        }
+                    }
+                %>
 
               </ol>
             </div>
@@ -127,6 +136,12 @@
             }
         %>
     </section>
+    <script>
+        function submit_form(form_id) {
+            var form = document.getElementById(form_id);
+            form.submit();
+        }
+    </script>
     <script
         src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"

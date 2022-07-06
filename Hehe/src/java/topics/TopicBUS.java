@@ -21,4 +21,10 @@ public class TopicBUS {
         ArrayList<TopicDTO> list = dao.get(sectionId);
         return list;
     }
+    
+    public TopicModel getContent(int topicId) throws SQLException {
+        dao = new TopicDAO();
+        topicModel = dao.getContent(topicId);
+        return topicModel;
+    }
 }
