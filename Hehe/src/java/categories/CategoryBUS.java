@@ -4,18 +4,33 @@
  */
 package categories;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Locale.Category;
 
 /**
  *
  * @author Luan Tuong Vy
  */
 public class CategoryBUS {
-    
-    public ArrayList<Category> getCategories(int pageNumber, int rowsOfPage) {
-        ArrayList<Category> list = null;
-        
+
+    private CategoryDAO dao;
+
+    public ArrayList<CategoryModel> getCategories(int pageNumber, int rowsOfPage) throws SQLException {
+        dao = new CategoryDAO();
+        ArrayList<CategoryModel> list = dao.get(pageNumber, rowsOfPage);
         return list;
+    }
+
+    public CategoryDTO get(int categoryId) throws SQLException {
+        dao = new CategoryDAO();
+        CategoryDTO category = dao.get(categoryId);
+        return category;
+    }
+
+    public int count() throws SQLException {
+        dao = new CategoryDAO();
+        int count = 0;
+        count = dao.count();
+        return count;
     }
 }

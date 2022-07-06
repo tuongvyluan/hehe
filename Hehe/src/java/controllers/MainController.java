@@ -9,35 +9,77 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import studentInCourses.StudentInCourseDAO;
+import studentInCourses.StudentInCourseModel;
+import students.StudentDTO;
 
 /**
  *
  * @author Luan Tuong Vy
  */
 public class MainController extends HttpServlet {
-    
+
     // Controller param
     private final String STUDENT = "Student";
     private final String AUTHOR = "Author";
-    
+    private final String COURSE = "Course";
+    private final String VIEW_COURSE = "ViewCourse";
+    private final String STUDENT_IN_COURSE = "StudentInCourse";
+
     // Controller, Destination String
     private final String ERROR = "error.jsp";
     private final String STUDENT_CONTROLLER = "StudentController";
     private final String AUTHOR_CONTROLLER = "AuthorController";
+    private final String COURSE_CONTROLLER = "CourseController";
+    private final String STUDENT_IN_COURSE_CONTROLLER = "StudentInCourseController";
 
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
+
         try {
+            HttpSession session = request.getSession();
+            StudentDTO currentStudent = (StudentDTO) session.getAttribute("LOGIN_STUDENT");
             String controller = request.getParameter("controller");
-            if (STUDENT.equals(controller)) {
-                url = STUDENT_CONTROLLER;
-            } else if (AUTHOR.equals(controller)) {
-                url = AUTHOR_CONTROLLER;
-            } else if (STUDENT.equals(controller)) {
-                url = STUDENT_CONTROLLER;
+            System.out.println("Before switch");
+            switch (controller) {
+                case STUDENT: {
+                    url = STUDENT_CONTROLLER;
+                    break;
+                }
+
+                case AUTHOR: {
+                    url = AUTHOR_CONTROLLER;
+                    break;
+                }
+
+                case COURSE: {
+                    url = COURSE_CONTROLLER;
+                    break;
+                }
+
+                case VIEW_COURSE: {
+                    if (currentStudent != null) {
+                        StudentInCourseDAO studentInCourseDAO = new StudentInCourseDAO();
+                        StudentInCourseModel studentCourse
+                                = studentInCourseDAO.getModel(currentStudent.getId(),
+                                        Integer.parseInt(request.getParameter("courseId")));
+                        if (studentCourse != null) {
+                            request.setAttribute("CURRENT_STUDENT_COURSE", studentCourse);
+                            url = STUDENT_IN_COURSE_CONTROLLER;
+                            break;
+                        }
+                    }
+                    url = COURSE_CONTROLLER;
+                    break;
+                }
+
+                case STUDENT_IN_COURSE: {
+                    url = STUDENT_IN_COURSE_CONTROLLER;
+                    break;
+                }
             }
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());

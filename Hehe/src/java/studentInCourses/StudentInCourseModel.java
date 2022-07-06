@@ -1,97 +1,92 @@
-/**
- * 
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package studentInCourses;
 
+import java.time.LocalDate;
+
 /**
- * @author Tuong Vy Luan
  *
+ * @author Luan Tuong Vy
  */
-
 public class StudentInCourseModel {
-    int studentInCourseId;
-    int studentId;
-    int courseId;
-    int displayIndex;
-    String certificate;
-    double startDate;
-    double deadlineDate;
-    int status;
+    
+    private int studentInCourseId;
+    private int studentId;
+    private int courseId;
+    private String certificate;
+    private LocalDate startDate;
+    private String status;
 
-    public StudentInCourseModel(int studentInCourseId, int studentId, int courseId, int displayIndex, String certificate,
-	    double startDate, double deadlineDate, int status) {
-	super();
-	this.studentInCourseId = studentInCourseId;
-	this.studentId = studentId;
-	this.courseId = courseId;
-	this.displayIndex = displayIndex;
-	this.certificate = certificate;
-	this.startDate = startDate;
-	this.deadlineDate = deadlineDate;
-	this.status = status;
+    public StudentInCourseModel(int studentInCourseId, int studentId, int courseId, String certificate, LocalDate startDate, String status) {
+        this.studentInCourseId = studentInCourseId;
+        this.studentId = studentId;
+        this.courseId = courseId;
+        this.certificate = certificate;
+        this.startDate = startDate;
+        this.status = status;
+    }
+
+    public StudentInCourseModel() {
     }
 
     public int getStudentInCourseId() {
-	return studentInCourseId;
+        return studentInCourseId;
     }
 
     public void setStudentInCourseId(int studentInCourseId) {
-	this.studentInCourseId = studentInCourseId;
+        this.studentInCourseId = studentInCourseId;
     }
 
     public int getStudentId() {
-	return studentId;
+        return studentId;
     }
 
     public void setStudentId(int studentId) {
-	this.studentId = studentId;
+        this.studentId = studentId;
     }
 
     public int getCourseId() {
-	return courseId;
+        return courseId;
     }
 
     public void setCourseId(int courseId) {
-	this.courseId = courseId;
-    }
-
-    public int getDisplayIndex() {
-	return displayIndex;
-    }
-
-    public void setDisplayIndex(int displayIndex) {
-	this.displayIndex = displayIndex;
+        this.courseId = courseId;
     }
 
     public String getCertificate() {
-	return certificate;
+        return certificate;
     }
 
     public void setCertificate(String certificate) {
-	this.certificate = certificate;
+        this.certificate = certificate;
     }
 
-    public double getStartDate() {
-	return startDate;
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public void setStartDate(double startDate) {
-	this.startDate = startDate;
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
 
-    public double getDeadlineDate() {
-	return deadlineDate;
+    public String getStatus() {
+        return status;
     }
 
-    public void setDeadlineDate(double deadlineDate) {
-	this.deadlineDate = deadlineDate;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
+    public StudentInCourseDTO toDTO() {
+        return new StudentInCourseDTO(studentInCourseId, studentId, courseId, status);
     }
 
-    public int getStatus() {
-	return status;
+    @Override
+    public String toString() {
+        return "StudentInCourseModel{" + "studentInCourseId=" + studentInCourseId + ", studentId=" + studentId + ", courseId=" + courseId + ", certificate=" + certificate + ", startDate=" + startDate + ", status=" + status + '}';
     }
-
-    public void setStatus(int status) {
-	this.status = status;
-    }
+    
+    
 }

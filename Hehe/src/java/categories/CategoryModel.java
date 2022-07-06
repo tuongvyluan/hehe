@@ -4,23 +4,36 @@ import java.time.LocalDate;
 
 public class CategoryModel {
 
-    int categoryId;
-    String categoryName;
-    String description;
-    String status;
-    LocalDate createdAt;
-    LocalDate updatedAt;
+    private int categoryId;
+    private String categoryName;
+    private String description;
+    private String status;
+    private LocalDate updatedAt;
 
     public CategoryModel() {
     }
 
-    public CategoryModel(int categoryId, String categoryName, String description,
-            String status) {
+    public CategoryModel(int categoryId, String categoryName, String description) {
         super();
         this.categoryId = categoryId;
         this.categoryName = categoryName;
         this.description = description;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
         this.status = status;
+    }
+
+    public LocalDate getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDate updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public int getCategoryId() {
@@ -31,7 +44,7 @@ public class CategoryModel {
         this.categoryId = categoryId;
     }
 
-    public String getCategoryNameName() {
+    public String getCategoryName() {
         return categoryName;
     }
 
@@ -47,35 +60,15 @@ public class CategoryModel {
         this.description = description;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public LocalDate getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDate createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDate getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDate updatedAt) {
-        this.updatedAt = updatedAt;
+    public CategoryDTO toDTO() {
+        return new CategoryDTO(categoryId, categoryName);
     }
 
     @Override
     public String toString() {
         return "CategoryModel{" + "categoryId=" + categoryId + ", categoryName="
                 + categoryName + ", description=" + description + ", status="
-                + status + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + '}';
+                + status + ", updatedAt=" + updatedAt + '}';
     }
     
 }

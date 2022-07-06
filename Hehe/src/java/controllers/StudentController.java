@@ -32,6 +32,7 @@ public class StudentController extends HttpServlet {
     private final String ERROR = "error.jsp";
     private final String LOGIN = "login.jsp";
     private final String REGISTER = "register.jsp";
+    private final String HOME = "home.jsp";
     private final String STUDENT_PROFILE = "profile.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -56,7 +57,7 @@ public class StudentController extends HttpServlet {
                     student = studentBUS.checkLogin(email, password);
                     if (student != null) {
                         session.setAttribute("LOGIN_STUDENT", student.toDTO());
-                        url = STUDENT_PROFILE;
+                        url = HOME;
                     } else {
                         url = LOGIN;
                     }
