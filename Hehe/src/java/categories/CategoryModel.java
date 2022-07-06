@@ -70,4 +70,5 @@ public class CategoryModel {
                 + categoryName + ", description=" + description + ", status="
                 + status + ", updatedAt=" + updatedAt + '}';
     }
+    
 }

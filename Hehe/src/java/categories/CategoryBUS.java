@@ -20,13 +20,13 @@ public class CategoryBUS {
         ArrayList<CategoryModel> list = dao.get(pageNumber, rowsOfPage);
         return list;
     }
-    
+
     public CategoryDTO get(int categoryId) throws SQLException {
         dao = new CategoryDAO();
         CategoryDTO category = dao.get(categoryId);
         return category;
     }
-    
+
     public int count() throws SQLException {
         dao = new CategoryDAO();
         int count = 0;
