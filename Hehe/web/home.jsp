@@ -32,6 +32,43 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/HomeTran.css" />
+    <style>
+      .pagination {
+          display: flex;
+          position: relative;
+          font-family: "Poppins", sans-serif;
+          font-weight: 600;
+          align-items: center;
+          justify-content: center;
+      }
+
+      .pagination a {
+          color: black;
+          float: left;
+          padding: 8px 16px;
+          text-decoration: none;
+          transition: background-color 0.3s;
+          border: none;
+          border-radius: 20%;
+          background-color: #e9efff;
+          margin: 0 4px;
+      }
+
+      .pagination a.active {
+          background-color: #1877f2;
+          color: white;
+          border: 1px solid #1877f2;
+      }
+
+      .pagination a:hover:not(.active) {
+          background-color: #c3efff;
+      }
+      .pagination a {
+          text-align: center;
+      }
+      
+      
+    </style>
     <title>Hehe Code</title>
   </head>
   <body>
@@ -57,12 +94,17 @@
         if (request.getParameter("page") != null) {
             pageNumber = Integer.parseInt(request.getParameter("page"));
         }
+        if (pageNumber > totalPage) {
+            pageNumber = totalPage;
+        }
         AuthorBUS authorBUS = new AuthorBUS();
         ArrayList<CategoryModel> categories = categoryBUS.getCategories(pageNumber, rowsOfPage);
-        
+
     %>
 
-    <%
+    <%        if (rowsOfPage > categories.size()) {
+            rowsOfPage = categories.size();
+        }
         ArrayList<CourseDTO> courseList;
         CourseBUS courseBUS = new CourseBUS();
         for (int i = 1; i <= rowsOfPage; i++) {
@@ -113,13 +155,29 @@
     <%
         }
     %>
-    <%
-        for (int i = 1; i <= totalPage; i++) {
-    %>
-    <%= i%>
-    <%
-        }
-    %>
+    <div class="pagination">
+      <a href="#">&laquo;</a>
+      
+      <%
+          for (int i = 1; i < pageNumber; i++) {
+      %>
+      <a href="./home.jsp?page=<%= i %>"><%= i%></a>
+      <%
+          }
+      %>
+      
+      <a href="" class="active"><%= pageNumber%></a>
+      
+      <%
+          for (int i = pageNumber + 1; i <= totalPage; i++) {
+      %>
+      <a href="./home.jsp?page=<%= i %>"><%= i%></a>
+      <%
+          }
+      %>
+      
+      <a href="#">&raquo;</a>
+    </div>
   </body>
   <!-- Swiper JS -->
   <script src="js/swiper-bundle.min.js"></script>

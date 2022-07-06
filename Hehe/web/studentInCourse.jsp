@@ -68,9 +68,6 @@
         <div class="enrolled">
           Enrolled
         </div>
-        <div class="deadline">
-          Deadline: 29 Aug 2022 
-        </div>
 
       </div>
     </section>

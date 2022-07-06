@@ -16,16 +16,16 @@ import utils.DBUtils;
  * @author Luan Tuong Vy
  */
 public class TopicDAO {
-    
+
     private TopicDTO topicDTO;
-    
+
     //Fields
     private final String TOPIC_DTO_FIELDS = "Id, SectionId, CourseId, Name, DisplayIndex";
-    
+
     //Sql queries
     private final String GET_TOPICS_BY_SECTION = "SELECT " + TOPIC_DTO_FIELDS
             + " FROM Topic WHERE SectionId=? ORDER BY DisplayIndex";
-    
+
     public ArrayList<TopicDTO> get(int sectionId) throws SQLException {
         ArrayList<TopicDTO> list = new ArrayList<>();
         Connection conn = null;

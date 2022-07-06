@@ -8,16 +8,14 @@ public class StudentInTopicModel {
     private int studentInCourseId;
     private int topicId;
     private LocalDate startDate;
-    private LocalDate deadlineDate;
     private String status; //removed
 
     public StudentInTopicModel(int id, int studentInCourseId, int topicId,
-            LocalDate startDate, LocalDate deadlineDate, String status) {
+            LocalDate startDate, String status) {
         this.id = id;
         this.studentInCourseId = studentInCourseId;
         this.topicId = topicId;
         this.startDate = startDate;
-        this.deadlineDate = deadlineDate;
         this.status = status;
     }
 
@@ -56,14 +54,6 @@ public class StudentInTopicModel {
         this.startDate = startDate;
     }
 
-    public LocalDate getDeadlineDate() {
-        return deadlineDate;
-    }
-
-    public void setDeadlineDate(LocalDate deadlineDate) {
-        this.deadlineDate = deadlineDate;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -78,6 +68,6 @@ public class StudentInTopicModel {
 
     @Override
     public String toString() {
-        return "StudentInTopicModel{" + "id=" + id + ", studentInCourseId=" + studentInCourseId + ", topicId=" + topicId + ", startDate=" + startDate + ", deadlineDate=" + deadlineDate + ", status=" + status + '}';
+        return "StudentInTopicModel{" + "id=" + id + ", studentInCourseId=" + studentInCourseId + ", topicId=" + topicId + ", startDate=" + startDate + ", status=" + status + '}';
     }
 }
