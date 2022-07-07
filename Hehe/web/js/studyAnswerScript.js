@@ -23,50 +23,7 @@
 //     };
 
 //multiple choice handler
-$(document).ready(function () {
-    var ans = 2;
-    switch (ans) {
-        case 1:     // single select
-            $('li.answer-select').click(function (e) {
-                $(this).toggleClass('selected').siblings().removeClass('selected');
-                if (!$(e.target).is('input[type="checkbox"]')) {
-                    var $checkbox = $(this).find('input[type="checkbox"]');
-                    $checkbox.prop('checked', !$checkbox.prop('checked'));
-                    selectOnlyThis($checkbox.prop('id'));
-                }
-            })
-            break;
-        case 2: // multiple select
-            $('li.answer-select').click(function (e) {
-                $(this).toggleClass('selected');
-                if (!$(e.target).is('input[type="checkbox"]')) {
-                    var $checkbox = $(this).find('input[type="checkbox"]');
-                    $checkbox.prop('checked', !$checkbox.prop('checked'));
-                }
-            })
-            break;
-    }
-})
 
-function selectOnlyThis(id) {
-    if (document.getElementById(id).checked) {
-        for (var i = 1; i <= 4; i++) {
-            document.getElementById('answer' + i).checked = false;
-        }
-        document.getElementById(id).checked = true;
-    }
-}
-
-function check() {
-    for (var i = 1; i <= 4; i++) {
-        if (document.getElementById('answer' + i).checked == true) {
-            console.log('checked' + i)
-        } else {
-            console.log('not checked' + i)
-        }
-    }
-
-}
 
 //reset the selection
 document.getElementById('reset').addEventListener('click', () => {

@@ -113,7 +113,7 @@
                     %>
                     <li class="answer-select" id="answer-select">
                       <div class="select">
-                        <input type="checkbox" id="answer1" class="answer" name="answer" value="A"
+                        <input type="checkbox" id="answer<%= i + 1%>" class="answer" name="answer" value="A"
                                form="answerForm">
                         <span class="checkmark"></span>
                       </div>
@@ -151,6 +151,52 @@
         </div>
       </div>
     </main>
+    <script>
+        $(document).ready(function () {
+            var ans = 1;
+            switch (ans) {
+                case 1:     // single select
+                    $('li.answer-select').click(function (e) {
+                        $(this).toggleClass('selected').siblings().removeClass('selected');
+                        if (!$(e.target).is('input[type="checkbox"]')) {
+                            var $checkbox = $(this).find('input[type="checkbox"]');
+                            $checkbox.prop('checked', !$checkbox.prop('checked'));
+                            selectOnlyThis($checkbox.prop('id'));
+                        }
+                    })
+                    break;
+                case 2: // multiple select
+                    $('li.answer-select').click(function (e) {
+                        $(this).toggleClass('selected');
+                        if (!$(e.target).is('input[type="checkbox"]')) {
+                            var $checkbox = $(this).find('input[type="checkbox"]');
+                            $checkbox.prop('checked', !$checkbox.prop('checked'));
+                        }
+                    })
+                    break;
+            }
+        })
+
+        function selectOnlyThis(id) {
+            if (document.getElementById(id).checked) {
+                for (var i = 1; i <= 4; i++) {
+                    document.getElementById('answer' + i).checked = false;
+                }
+                document.getElementById(id).checked = true;
+            }
+        }
+
+        function check() {
+            for (var i = 1; i <= 4; i++) {
+                if (document.getElementById('answer' + i).checked == true) {
+                    console.log('checked' + i)
+                } else {
+                    console.log('not checked' + i)
+                }
+            }
+
+        }
+    </script>
   </body>
 
 </html>
