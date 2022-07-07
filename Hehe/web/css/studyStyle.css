@@ -1,19 +1,10 @@
-html,
-body {
-    display: flex;
-    flex-flow: column;
-    height: 100%;
-    margin: 0;
-}
+
 
 header {
     flex: 0 1 auto;
 }
 
-main {
-    overflow: hidden;
-    flex: 1 1 auto;
-}
+
 
 ul.single-select {
     list-style: none;
@@ -34,54 +25,22 @@ img {
     margin: 0;
 }
 
-.draggable {
-    /* Indicate the element draggable */
-    cursor: move;
 
-    /* It will be positioned absolutely */
-    position: absolute;
 
-    /* Doesn't allow to select the content inside */
-    user-select: none;
+.resizer {
+    display: none;
 }
 
-.container {
-    display: flex;
-    /* Misc */
-    height: 100%;
-    min-width: 100%;
-}
 
 .container__left {
-    width: 50%;
+    width: 100%;
 
     /* Misc */
     align-items: center;
-    display: flex;
     justify-content: center;
     height: 100%;
     min-width: 100px;
 }
-
-.resizer {
-    background-color: #2b7fd8;
-    cursor: e-resize;
-    height: 100%;
-    width: 2px;
-}
-
-.button-resize {
-    position: relative;
-    background-color: rgb(135, 175, 62);
-    top: 50%;
-    right: 18px;
-    height: 30px;
-    width: 40px;
-    cursor: pointer;
-    box-shadow: 0 3px 5px 0 #000;
-    border-radius: 50px;
-}
-
 .container__right {
     /* Take the remaining width */
     flex: 1;
@@ -91,6 +50,7 @@ img {
     justify-content: center;
     height: 100%;
     background-color: #1e1f26;
+    width: 100%;
     min-width: 305px;
     position:relative;
 }
@@ -116,10 +76,7 @@ img {
 }
 
 .right-header {
-    height: 7.5vh;
     width: 100%;
-    position: absolute;
-    top: 0;
     background-color: rgb(35, 36, 50);
     padding: 0 10px;
 }
@@ -157,11 +114,8 @@ img {
 }
 
 .answer {
-    height: 85vh;
-    overflow: auto;
+    overflow: hidden;
     width: 100%;
-    position: absolute;
-    top: 7.5vh;
 }
 
 .answer-input {
@@ -247,12 +201,9 @@ input:checked~.checkmark {
 }
 
 .right-footer {
-    height: 7.5vh;
     width: 100%;
     background-color: rgb(35, 36, 50);
     padding: 0 10px;
-    position: absolute;
-    bottom: 0;
     display: flex;
     align-items: center;
 }
@@ -335,4 +286,125 @@ input:checked~.checkmark {
     align-items: center;
     font-size: 22px;
     padding: 30px;
+}
+
+@media screen and (min-width: 768px) {
+    html,
+    body {
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+        margin: 0;
+    }
+
+    .container {
+        display: flex;
+        /* Misc */
+        height: 100%;
+        min-width: 100%;
+    }
+
+    main {
+        overflow: hidden;
+        flex: 1 1 auto;
+    }
+
+    .draggable {
+        /* Indicate the element draggable */
+        cursor: move;
+
+        /* It will be positioned absolutely */
+        position: absolute;
+
+        /* Doesn't allow to select the content inside */
+        user-select: none;
+    }
+
+    .container__left {
+        width: 50%;
+
+        /* Misc */
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        min-width: 100px;
+    }
+
+    .resizer {
+        display: block;
+        background-color: #2b7fd8;
+        cursor: e-resize;
+        height: 100%;
+        width: 2px;
+    }
+
+    .button-resize {
+        position: relative;
+        background-color: rgb(135, 175, 62);
+        top: 50%;
+        right: 18px;
+        height: 30px;
+        width: 40px;
+        cursor: pointer;
+        box-shadow: 0 3px 5px 0 #000;
+        border-radius: 50px;
+    }
+
+    .container__right {
+        /* Take the remaining width */
+        flex: 1;
+        /* Misc */
+        align-items: center;
+        display: block;
+        justify-content: center;
+        height: 100%;
+        background-color: #1e1f26;
+        min-width: 305px;
+        position:relative;
+    }
+
+    .right-header {
+        height: 7.5vh;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        background-color: rgb(35, 36, 50);
+        padding: 0 10px;
+    }
+
+    .reset-header {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .reset-menu {
+        min-height: 40px;
+        padding-left: 0;
+        margin: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .answer {
+        height: 85vh;
+        overflow: auto;
+        width: 100%;
+        position: absolute;
+        top: 7.5vh;
+    }
+
+    .right-footer {
+        height: 7.5vh;
+        width: 100%;
+        background-color: rgb(35, 36, 50);
+        padding: 0 10px;
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+    }
 }
