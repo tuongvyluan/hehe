@@ -1,3 +1,6 @@
+<%@page import="answers.AnswerModel"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="quizzes.QuizModel"%>
 <%@page import="topics.TopicModel"%>
 <%@page import="topics.TopicBUS"%>
 <%@page import="students.StudentDTO"%>
@@ -38,9 +41,11 @@
   </head>
 
   <body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-xl-mode">
-    <% 
+    <%
         StudentDTO student = (StudentDTO) session.getAttribute("LOGIN_STUDENT");
         TopicModel topic = (TopicModel) request.getAttribute("TOPIC");
+        QuizModel quiz = (QuizModel) request.getAttribute("QUIZ");
+        ArrayList<AnswerModel> answerList = (ArrayList<AnswerModel>) request.getAttribute("ANSWERS");
         if (student == null) {
             response.sendRedirect("login.jsp");
             return;
@@ -61,15 +66,22 @@
                 </strong>
               </h3>
               <p style="text-align: justify;">
-                <%= topic.getDescription() %>
+                <%= topic.getDescription()%>
               </p>
               <br>
+              <%
+                  if (quiz != null && answerList != null && !answerList.isEmpty()) {
+              %>
               <h3>Bài tập</h3>
               <ul>
                 <li class="lesson_question" id="question">
-                  Truyền thông dữ liệu là gì?
+                  <%= quiz.getContent()%>
                 </li>
               </ul>
+              <%
+                  }
+              %>
+
             </div>
           </div>
         </div>
@@ -80,19 +92,25 @@
         </div>
         <div class="container__right">
 
-          <form method="post" action="https://www.google.com.vn/?hl=vi" name="answerForm" id="answerForm">
+          <form method="post" action="MainController" name="answerForm" id="answerForm">
             <div class="right-header">
-              <div class="reset-menu">
-                <a class="reset-button" id="reset">
-                  <i class="fa-solid fa-rotate"></i>
-                  <span>Reset</span>
-                </a>
+              <div class="reset-header">
+                <div class="reset-menu">
+                  <a class="reset-button" id="reset">
+                    <i class="fa-solid fa-rotate"></i>
+                    <span>Reset</span>
+                  </a>
+                </div>
               </div>
             </div>
             <div class="answer">
               <div class="answer-input">
                 <div class="answer-list">
                   <ul>
+                    <%
+                        int totalAnswers = answerList.size();
+                        for (int i = 0; i < totalAnswers; i++) {
+                    %>
                     <li class="answer-select" id="answer-select">
                       <div class="select">
                         <input type="checkbox" id="answer1" class="answer" name="answer" value="A"
@@ -100,58 +118,33 @@
                         <span class="checkmark"></span>
                       </div>
                       <div class="answer-content">
-                        <p>A</p>
+                        <p><%= ((char) ('A' + i)) + ". " + answerList.get(i).getContent()%></p>
                       </div>
                     </li>
-                    <li class="answer-select" id="answer-select">
-                      <div class="select">
-                        <input type="checkbox" id="answer2" class="answer" name="answer" value="B"
-                               form="answerForm">
-                        <span class="checkmark"></span>
-                      </div>
-                      <div class="answer-content">
-                        <p>B</p>
-                      </div>
-                    </li>
-                    <li class="answer-select" id="answer-select">
-                      <div class="select">
-                        <input type="checkbox" id="answer3" class="answer" name="answer" value="C"
-                               form="answerForm">
-                        <span class="checkmark"></span>
-                      </div>
-                      <div class="answer-content">
-                        <p>C</p>
-                      </div>
-                    </li>
-                    <li class="answer-select" id="answer-select">
-                      <div class="select">
-                        <input type="checkbox" id="answer4" class="answer" name="answer" value="D"
-                               form="answerForm">
-                        <span class="checkmark"></span>
-                      </div>
-                      <div class="answer-content">
-                        <p>D</p>
-                      </div>
-                    </li>
+                    <%
+                        }
+                    %>
                   </ul>
                 </div>
               </div>
             </div>
             <div class="right-footer">
-              <div class="submit-menu">
-                <a class="previous-button" id="prevbtn">
-                  <!--dung jsp redirect den trang hien tai-->
-                  <i class="fa-solid fa-arrow-left"></i>
-                  <span>Previous</span>
-                </a>
-                <a class="next-button" id="nextbtn">
-                  <span>Next</span>
-                  <i class="fa-solid fa-arrow-right"></i>
-                </a>
-                <a class="submit-button" id="submitbtn" input type="submit" value="Submit" onclick="check();">
-                  <i class="fa-solid fa-floppy-disk"></i>
-                  <span>Submit</span>
-                </a>
+              <div class="submit-footer">
+                <div class="submit-menu">
+                  <a class="previous-button" id="prevbtn">
+                    <!--dung jsp redirect den trang hien tai-->
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Previous</span>
+                  </a>
+                  <a class="next-button" id="nextbtn">
+                    <span>Next</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                  <a class="submit-button" id="submitbtn" input type="submit" value="Submit" onclick="check();">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    <span>Submit</span>
+                  </a>
+                </div>
               </div>
             </div>
           </form>

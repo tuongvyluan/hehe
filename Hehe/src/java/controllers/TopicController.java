@@ -4,14 +4,19 @@
  */
 package controllers;
 
+import answers.AnswerBUS;
+import answers.AnswerModel;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import quizzes.QuizBUS;
+import quizzes.QuizModel;
 import students.StudentDTO;
 import topics.TopicBUS;
 import topics.TopicModel;
@@ -28,8 +33,6 @@ public class TopicController extends HttpServlet {
 
     // Controller, Destination String
     private final String HOME = "home.jsp";
-    private final String STUDENT_IN_COURSE_CONTROLLER = "StudentInCourseController";
-    private final String COURSE_CONTROLLER = "CourseController";
     private final String TOPIC = "topic.jsp";
     private final String LOGIN = "login.jsp";
 
@@ -37,8 +40,13 @@ public class TopicController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = HOME;
-        TopicModel topic = null;
+        TopicModel topic;
+        QuizModel quiz;
+        ArrayList<AnswerModel> answerList;
+
         TopicBUS topicBUS = new TopicBUS();
+        QuizBUS quizBUS = new QuizBUS();
+        AnswerBUS answerBUS = new AnswerBUS();
         HttpSession session = request.getSession();
         StudentDTO student = (StudentDTO) session.getAttribute("LOGIN_STUDENT");
         try {
@@ -48,9 +56,15 @@ public class TopicController extends HttpServlet {
                 case VIEW_TOPIC: {
                     if (student != null) {
                         topic = topicBUS.getContent(topicId);
+                        quiz = quizBUS.getContent(topicId);
+                        answerList = answerBUS.getAnswers(topicId);
                         if (topic != null) {
                             request.setAttribute("TOPIC", topic);
                             url = TOPIC;
+                        }
+                        if (quiz != null && answerList != null && !answerList.isEmpty()) {
+                            request.setAttribute("QUIZ", quiz);
+                            request.setAttribute("ANSWERS", answerList);
                         }
                     } else {
                         url = LOGIN;

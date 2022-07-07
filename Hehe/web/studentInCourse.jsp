@@ -39,17 +39,17 @@
     <%
         AuthorBUS authorBUS = new AuthorBUS();
         TopicBUS topicBUS = new TopicBUS();
-        StudentInCourseModel studentCourse = (StudentInCourseModel) request.getAttribute("CURRENT_STUDENT_COURSE");
-        if (studentCourse == null) {
-            response.sendRedirect("home.jsp");
-            return;
-        }
-        CourseModel course = (CourseModel) request.getAttribute("COURSE");
-        ArrayList<SectionDTO> sections = (ArrayList) request.getAttribute("SECTION_LIST");
         CategoryBUS categoryBUS = new CategoryBUS();
         StudentDTO student = (StudentDTO) session.getAttribute("LOGIN_STUDENT");
-        if (course == null || sections == null || student == null) {
+        if (student == null) {
             response.sendRedirect("login.jsp");
+            return;
+        }
+        StudentInCourseModel studentCourse = (StudentInCourseModel) request.getAttribute("CURRENT_STUDENT_COURSE");
+        CourseModel course = (CourseModel) request.getAttribute("COURSE");
+        ArrayList<SectionDTO> sections = (ArrayList) request.getAttribute("SECTION_LIST");
+        if (course == null || sections == null || studentCourse == null) {
+            response.sendRedirect("home.jsp");
             return;
         }
     %>

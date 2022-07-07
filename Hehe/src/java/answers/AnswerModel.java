@@ -1,69 +1,80 @@
 package answers;
 
 public class AnswerModel {
-    int answerId;
-    int quizId;
-    String content;
-    boolean isCorrect;
-    String createdAt;
-    String updatedAt;
+
+    private int answerId;
+    private int quizId;
+    private String content;
+    private boolean isCorrect;
+    private String createdAt;
+    private String updatedAt;
 
     public AnswerModel(int answerId, int quizId, String content, boolean isCorrect, String createdAt, String updatedAt) {
-	super();
-	this.answerId = answerId;
-	this.quizId = quizId;
-	this.content = content;
-	this.isCorrect = isCorrect;
-	this.createdAt = createdAt;
-	this.updatedAt = updatedAt;
+        this.answerId = answerId;
+        this.quizId = quizId;
+        this.content = content;
+        this.isCorrect = isCorrect;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    public AnswerModel() {
     }
 
     public int getAnswerId() {
-	return answerId;
+        return answerId;
     }
 
     public void setAnswerId(int answerId) {
-	this.answerId = answerId;
+        this.answerId = answerId;
     }
 
     public int getQuizId() {
-	return quizId;
+        return quizId;
     }
 
     public void setQuizId(int quizId) {
-	this.quizId = quizId;
+        this.quizId = quizId;
     }
 
     public String getContent() {
-	return content;
+        return content;
     }
 
     public void setContent(String content) {
-	this.content = content;
+        this.content = content;
     }
 
     public boolean isCorrect() {
-	return isCorrect;
+        return isCorrect;
     }
 
     public void setCorrect(boolean isCorrect) {
-	this.isCorrect = isCorrect;
+        this.isCorrect = isCorrect;
     }
 
     public String getCreatedAt() {
-	return createdAt;
+        return createdAt;
     }
 
     public void setCreatedAt(String createdAt) {
-	this.createdAt = createdAt;
+        this.createdAt = createdAt;
     }
 
     public String getUpdatedAt() {
-	return updatedAt;
+        return updatedAt;
     }
 
     public void setUpdatedAt(String updatedAt) {
-	this.updatedAt = updatedAt;
+        this.updatedAt = updatedAt;
+    }
+    
+    public AnswerDTO toDTO() {
+        return new AnswerDTO(answerId, quizId, isCorrect);
     }
 
+    @Override
+    public String toString() {
+        return "AnswerModel{" + "answerId=" + answerId + ", quizId=" + quizId + ", content=" + content + ", isCorrect=" + isCorrect + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + '}';
+    }
 }

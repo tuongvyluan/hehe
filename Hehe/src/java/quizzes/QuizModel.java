@@ -3,80 +3,70 @@ package quizzes;
 import java.sql.Date;
 
 public class QuizModel {
-    int quizId;
-    int topicId;
-    String content;
-    Date date;
-    int numberAnswers;
-    String createdAt;
-    String updatedAt;
 
-    public QuizModel(int quizId, int topicId, String content, Date date, int numberAnswers, String createdAt,
-	    String updatedAt) {
-	super();
-	this.quizId = quizId;
-	this.topicId = topicId;
-	this.content = content;
-	this.date = date;
-	this.numberAnswers = numberAnswers;
-	this.createdAt = createdAt;
-	this.updatedAt = updatedAt;
+    private int quizId;
+    private int topicId;
+    private String content;
+    private String createdAt;
+    private String updatedAt;
+
+    public QuizModel(int quizId, int topicId, String content, String createdAt, String updatedAt) {
+        this.quizId = quizId;
+        this.topicId = topicId;
+        this.content = content;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    public QuizModel() {
     }
 
     public int getQuizId() {
-	return quizId;
+        return quizId;
     }
 
     public void setQuizId(int quizId) {
-	this.quizId = quizId;
+        this.quizId = quizId;
     }
 
     public int getTopicId() {
-	return topicId;
+        return topicId;
     }
 
     public void setTopicId(int topicId) {
-	this.topicId = topicId;
+        this.topicId = topicId;
     }
 
     public String getContent() {
-	return content;
+        return content;
     }
 
     public void setContent(String content) {
-	this.content = content;
-    }
-
-    public Date getDate() {
-	return date;
-    }
-
-    public void setDate(Date date) {
-	this.date = date;
-    }
-
-    public int getNumberAnswers() {
-	return numberAnswers;
-    }
-
-    public void setNumberAnswers(int numberAnswers) {
-	this.numberAnswers = numberAnswers;
+        this.content = content;
     }
 
     public String getCreatedAt() {
-	return createdAt;
+        return createdAt;
     }
 
     public void setCreatedAt(String createdAt) {
-	this.createdAt = createdAt;
+        this.createdAt = createdAt;
     }
 
     public String getUpdatedAt() {
-	return updatedAt;
+        return updatedAt;
     }
 
     public void setUpdatedAt(String updatedAt) {
-	this.updatedAt = updatedAt;
+        this.updatedAt = updatedAt;
     }
 
+    public QuizDTO toDTO() {
+        return new QuizDTO(quizId, topicId);
+    }
+
+    @Override
+    public String toString() {
+        return "QuizModel{" + "quizId=" + quizId + ", topicId=" + topicId + ", content=" + content + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + '}';
+    }
 }
