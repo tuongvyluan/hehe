@@ -72,7 +72,7 @@
               <%
                   if (quiz != null && answerList != null && !answerList.isEmpty()) {
               %>
-              <h3>Bài tập</h3>
+              <h3><strong></strong>Bài tập</strong></h3>
               <ul>
                 <li class="lesson_question" id="question">
                   <%= quiz.getContent()%>

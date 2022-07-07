@@ -91,7 +91,7 @@ img {
     justify-content: center;
     height: 100%;
     background-color: #1e1f26;
-    min-width: 100px;
+    min-width: 305px;
     position:relative;
 }
 
@@ -177,7 +177,7 @@ img {
 
 .answer-select {
     background-color: #fff;
-    padding: 30px 40px 20px;
+    padding: 30px;
     font-size: 16px;
     line-height: 20px;
     margin-bottom: 15px;
@@ -202,6 +202,7 @@ li.selected {
     margin-right: 18px;
     position: relative;
     display: flex;
+    align-items: center;
     float: left;
     user-select: none;
 }
