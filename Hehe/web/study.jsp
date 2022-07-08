@@ -37,6 +37,9 @@
   </head>
 
   <body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-xl-mode">
+    <header>
+      <%@ include file="header.jsp" %>
+    </header>
 
     <main>
       <div class="container">

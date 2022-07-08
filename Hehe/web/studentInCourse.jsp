@@ -36,6 +36,9 @@
     <title>${requestScope.COURSE.courseName}</title>
   </head>
   <body>
+    <header>
+      <%@ include file="header.jsp" %>
+    </header>
     <%
         AuthorBUS authorBUS = new AuthorBUS();
         TopicBUS topicBUS = new TopicBUS();
@@ -152,5 +155,8 @@
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"
     ></script>
+      <footer>
+        <%@ include file="footerHehe.jsp" %>
+      </footer>
   </body>
 </html>

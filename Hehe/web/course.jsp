@@ -34,6 +34,9 @@
     <title>${requestScope.CURRENT_COURSE.courseName}</title>
   </head>
   <body>
+    <header>
+      <%@ include file="header.jsp" %>
+    </header>
     <%
         AuthorBUS authorBUS = new AuthorBUS();
         TopicBUS topicBUS = new TopicBUS();
@@ -143,6 +146,9 @@
             }
         %>
     </section>
+    <footer>
+      <%@ include file="footerHehe.jsp" %>
+    </footer>
     <script>
         function submit_form() {
             var form = document.getElementById('course');

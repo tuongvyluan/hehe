@@ -72,6 +72,9 @@
     <title>Hehe Code</title>
   </head>
   <body>
+    <header>
+      <%@ include file="header.jsp" %>
+    </header>
     <section class="home" id="home">
       <div class="home__content">
         <h1>Welcome to Hehe code</h1>
@@ -178,6 +181,9 @@
       
       <a href="#">&raquo;</a>
     </div>
+      <footer>
+        <%@ include file="footerHehe.jsp" %>
+      </footer>
   </body>
   <!-- Swiper JS -->
   <script src="js/swiper-bundle.min.js"></script>

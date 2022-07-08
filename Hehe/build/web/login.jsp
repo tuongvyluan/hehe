@@ -33,7 +33,7 @@
 
   <body>
     <header>
-      <%@ include file="header.jsp" %>
+      <%@ include file="headerLogin.jsp" %>
     </header>
     <div class="limiter">
       <div class="container-login100" style="background-image: url('images/loginBackground.jpg');">
@@ -105,7 +105,7 @@
         </div>
       </div>
       <footer>
-        <%@ include file="footer.jsp" %>
+        <%@ include file="footerLogin.jsp" %>
       </footer>
       <script src="js/validate.js"></script>
   </body>

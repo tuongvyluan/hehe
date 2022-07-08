@@ -1,0 +1,100 @@
+/*px
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Jul 7, 2022, 3:50:21 PM
+    Author     : ADMIN
+*/
+
+.footerHehe__all {
+    margin-top: 10px;
+    padding: 20px 0;
+    font-size: 20px;
+}
+
+.footerHehe__all .logo {
+    height: 40%;
+    width: auto;
+}
+
+.footerHehe__all h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.footerHehe__all ul {
+    padding: 0;
+    list-style: none;
+    line-height: 2;
+    margin-bottom: 0;
+}
+
+.footerHehe__all ul a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.footerHehe__all ul a:hover {
+    opacity: 0.8;
+}
+
+@media (max-width:767px) {
+    .footerHehe__all .item:not(.social) {
+        text-align: center;
+        padding-bottom: 20px;
+    }
+}
+
+.footerHehe__all .item.text {
+    margin-bottom: 36px;
+}
+
+@media (max-width:767px) {
+    .footerHehe__all .item.text {
+        margin-bottom: 0;
+    }
+}
+
+.footerHehe__all .item.text p {
+    opacity: 0.6;
+    margin-bottom: 0;
+}
+
+.footerHehe__all .item.social {
+    text-align: center;
+}
+
+@media (max-width:991px) {
+    .footerHehe__all .item.social {
+        text-align: center;
+        margin-top: 20px;
+    }
+}
+
+.footerHehe__all .item.social>a {
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4);
+    margin: 0 8px;
+    opacity: 0.75;
+}
+
+.footerHehe__all .item.social>a:hover {
+    opacity: 0.9;
+}
+
+.footerHehe__all .copyright {
+    text-align: center;
+    padding-top: 24px;
+    opacity: 0.3;
+    font-size: 13px;
+    margin-bottom: 0;
+}
