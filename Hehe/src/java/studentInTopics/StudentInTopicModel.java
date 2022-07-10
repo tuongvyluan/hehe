@@ -8,7 +8,7 @@ public class StudentInTopicModel {
     private int studentInCourseId;
     private int topicId;
     private LocalDate startDate;
-    private String status; //removed
+    private String status;
 
     public StudentInTopicModel(int id, int studentInCourseId, int topicId,
             LocalDate startDate, String status) {
@@ -68,6 +68,9 @@ public class StudentInTopicModel {
 
     @Override
     public String toString() {
-        return "StudentInTopicModel{" + "id=" + id + ", studentInCourseId=" + studentInCourseId + ", topicId=" + topicId + ", startDate=" + startDate + ", status=" + status + '}';
+        return "StudentInTopicModel{" + "id=" + id
+                + ", studentInCourseId=" + studentInCourseId
+                + ", topicId=" + topicId + ", startDate=" + startDate
+                + ", status=" + status + '}';
     }
 }

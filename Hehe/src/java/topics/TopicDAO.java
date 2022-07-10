@@ -21,14 +21,20 @@ public class TopicDAO {
 
     //Fields
     private final String TOPIC_DTO_FIELDS = "Id, SectionId, CourseId, Name, DisplayIndex";
-    private final String TOPIC_CONTENT = "Id, CourseId, Name, Description";
+    private final String TOPIC_CONTENT = "Id, CourseId, Name, DisplayIndex, Description";
 
     //Sql queries
     private final String GET_TOPICS_BY_SECTION = "SELECT " + TOPIC_DTO_FIELDS
             + " FROM Topic WHERE SectionId=? ORDER BY DisplayIndex";
-    
+
     private final String GET_TOPIC_CONTENT = "SELECT " + TOPIC_CONTENT
             + " FROM Topic WHERE Id=?";
+
+    private final String GET_NEXT_TOPIC_CONTENT = "SELECT TOP(1) " + TOPIC_CONTENT
+            + " FROM Topic WHERE CourseId=? AND DisplayIndex>?";
+    
+    private final String GET_PREV_TOPIC_CONTENT = "SELECT TOP(1) " + TOPIC_CONTENT
+            + " FROM Topic WHERE CourseId=? AND DisplayIndex<?";
 
     public ArrayList<TopicDTO> get(int sectionId) throws SQLException {
         ArrayList<TopicDTO> list = new ArrayList<>();
@@ -66,7 +72,7 @@ public class TopicDAO {
         }
         return list;
     }
-    
+
     public TopicModel getContent(int topicId) throws SQLException {
         TopicModel topic = null;
         Connection conn = null;
@@ -84,6 +90,81 @@ public class TopicDAO {
                     topic.setCourseId(rs.getInt("CourseId"));
                     topic.setTopicName(rs.getString("Name"));
                     topic.setDescription(rs.getString("Description"));
+                    topic.setDisplayIndex(rs.getInt("DisplayIndex"));
+                }
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return topic;
+    }
+
+    public TopicModel getNextContent(int courseId, int displayIndex) throws SQLException {
+        TopicModel topic = null;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_NEXT_TOPIC_CONTENT);
+                ptm.setInt(1, courseId);
+                ptm.setInt(2, displayIndex);
+                rs = ptm.executeQuery();
+                if (rs.next()) {
+                    topic = new TopicModel();
+                    topic.setTopicId(rs.getInt("Id"));
+                    topic.setCourseId(rs.getInt("CourseId"));
+                    topic.setTopicName(rs.getString("Name"));
+                    topic.setDescription(rs.getString("Description"));
+                    topic.setDisplayIndex(rs.getInt("DisplayIndex"));
+                }
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return topic;
+    }
+    
+    public TopicModel getPrevContent(int courseId, int displayIndex) throws SQLException {
+        TopicModel topic = null;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_PREV_TOPIC_CONTENT);
+                ptm.setInt(1, courseId);
+                ptm.setInt(2, displayIndex);
+                rs = ptm.executeQuery();
+                if (rs.next()) {
+                    topic = new TopicModel();
+                    topic.setTopicId(rs.getInt("Id"));
+                    topic.setCourseId(rs.getInt("CourseId"));
+                    topic.setTopicName(rs.getString("Name"));
+                    topic.setDescription(rs.getString("Description"));
+                    topic.setDisplayIndex(rs.getInt("DisplayIndex"));
                 }
             }
         } catch (ClassNotFoundException | SQLException e) {

@@ -6,6 +6,7 @@ package topics;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -25,6 +26,18 @@ public class TopicBUS {
     public TopicModel getContent(int topicId) throws SQLException {
         dao = new TopicDAO();
         topicModel = dao.getContent(topicId);
+        return topicModel;
+    }
+    
+    public TopicModel getNextContent(int courseId, int displayIndex) throws SQLException {
+        dao = new TopicDAO();
+        topicModel = dao.getNextContent(courseId, displayIndex);
+        return topicModel;
+    }
+    
+    public TopicModel getPrevContent(int courseId, int displayIndex) throws SQLException {
+        dao = new TopicDAO();
+        topicModel = dao.getPrevContent(courseId, displayIndex);
         return topicModel;
     }
 }

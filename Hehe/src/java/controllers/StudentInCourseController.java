@@ -32,7 +32,6 @@ public class StudentInCourseController extends HttpServlet {
     private final String ENROLL_COURSE = "EnrollCourse";
 
     //Destination String
-    private final String ERROR = "error.jsp";
     private final String LOGIN = "login.jsp";
     private final String HOME = "home.jsp";
     private final String COURSE = "course.jsp";
@@ -45,8 +44,8 @@ public class StudentInCourseController extends HttpServlet {
         StudentInCourseModel studentCourse;
         SectionBUS sectionBUS = new SectionBUS();
         StudentInCourseBUS studentInCourseBUS = new StudentInCourseBUS();
-        HttpSession session = request.getSession();
         CourseBUS courseBUS = new CourseBUS();
+        HttpSession session = request.getSession();
         StudentDTO currentStudent = (StudentDTO) session.getAttribute("LOGIN_STUDENT");
         try {
             String action = request.getParameter("action");
@@ -84,7 +83,7 @@ public class StudentInCourseController extends HttpServlet {
                 }
             }
         } catch (Exception e) {
-            log("Error at StudentInCourseController: " + e.toString());
+            System.out.println("Error at StudentInCourseController: " + e.toString());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

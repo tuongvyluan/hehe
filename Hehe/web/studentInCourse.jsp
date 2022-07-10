@@ -72,7 +72,7 @@
           Enrolled
         </div>
         <div class="duration">
-          Duration: <%= course.getDuration() %> hours
+          Duration: <%= course.getDuration()%> hours
         </div>
       </div>
     </section>
@@ -120,9 +120,10 @@
                 %>
                 <li>
                   <form name="ViewTopic" method="POST" action="MainController" id="topic<%= topicDTO.getTopicId()%>">
-                    <input type="hidden" name="controller" value="TopicController">
+                    <input type="hidden" name="controller" value="Topic">
                     <input type="hidden" name="action" value="ViewTopic">
                     <input type="hidden" name="topicId" value="<%= topicDTO.getTopicId()%>">
+                    <input type="hidden" name="studentCourseId" value="<%= studentCourse.getStudentInCourseId() %>">
                   </form>
                   <a onclick="submit_form('topic<%= topicDTO.getTopicId()%>')" href="#"><%= topicDTO.getTopicName()%></a>
                 </li>
@@ -155,8 +156,8 @@
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"
     ></script>
-      <footer>
-        <%@ include file="footerHehe.jsp" %>
-      </footer>
+    <footer>
+      <%@ include file="footerHehe.jsp" %>
+    </footer>
   </body>
 </html>

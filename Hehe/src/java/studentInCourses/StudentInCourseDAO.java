@@ -4,15 +4,12 @@
  */
 package studentInCourses;
 
-import courses.CourseDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import students.StudentDAO;
 import utils.DBUtils;
-import utils.MyUtils;
 
 /**
  *
@@ -22,8 +19,6 @@ public class StudentInCourseDAO {
 
     private StudentInCourseDTO studentInCourseDTO;
     private StudentInCourseModel studentInCourseModel;
-    private StudentDAO studentDAO;
-    private CourseDAO courseDAO;
 
     //Fields
     private final String STUDENT_IN_COURSE_DTO_FIELDS = "Id, StudentId, CourseId, "
@@ -39,7 +34,6 @@ public class StudentInCourseDAO {
             + "(StudentId, CourseId, StartDate, Certificate, Status) "
             + "VALUES (?,?,?,?,?)";
 
-    // Not completed?
     public StudentInCourseModel getModel(int studentId, int courseId) throws SQLException {
         studentInCourseModel = null;
         Connection conn = null;

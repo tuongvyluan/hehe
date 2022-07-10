@@ -39,7 +39,7 @@
             error = new StudentError();
         }%>
     <header style="">
-      <%@include file="header.jsp" %>
+      <%@include file="headerLogin.jsp" %>
     </header>
     <div class="limiter">
 
@@ -158,7 +158,7 @@
       </div>
     </div>
     <footer>
-      <%@ include file="footer.jsp" %>
+      <%@ include file="footerLogin.jsp" %>
     </footer>
     <script src="js/validate.js"></script>
   </body>

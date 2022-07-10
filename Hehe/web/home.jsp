@@ -78,7 +78,7 @@
     <section class="home" id="home">
       <div class="home__content">
         <h1>Welcome to Hehe code</h1>
-        <p>Learn how to code easy with Hehe code.From now, code is not a pain, code is fun like "HE HE"</p>
+        <p>Learn how to code easy with Hehe code. From now, code is not a pain, code is fun like "HE HE"</p>
         <div class="button">
           <button class="home__btn">explore now !</button>
         </div>

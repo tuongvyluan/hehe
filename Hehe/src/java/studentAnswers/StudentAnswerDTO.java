@@ -1,18 +1,26 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package studentAnswers;
 
-public class StudentAnswerModel {
-
+/**
+ *
+ * @author Luan Tuong Vy
+ */
+public class StudentAnswerDTO {
+    
     private int studentAnswerId;
     private int studentQuizId;
     private int answerId;
-    private String createdAt;
 
-    public StudentAnswerModel(int studentAnswerId, int studentQuizId, int answerId, String createdAt) {
-        super();
+    public StudentAnswerDTO() {
+    }
+
+    public StudentAnswerDTO(int studentAnswerId, int studentQuizId, int answerId) {
         this.studentAnswerId = studentAnswerId;
         this.studentQuizId = studentQuizId;
         this.answerId = answerId;
-        this.createdAt = createdAt;
     }
 
     public int getStudentAnswerId() {
@@ -39,20 +47,8 @@ public class StudentAnswerModel {
         this.answerId = answerId;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-    
-    public StudentAnswerDTO toDTO() {
-        return new StudentAnswerDTO(studentAnswerId, studentQuizId, answerId);
-    }
-
     @Override
     public String toString() {
-        return "StudentAnswerModel{" + "studentAnswerId=" + studentAnswerId + ", studentQuizId=" + studentQuizId + ", answerId=" + answerId + ", createdAt=" + createdAt + '}';
+        return "StudentAnswerDTO{" + "studentAnswerId=" + studentAnswerId + ", studentQuizId=" + studentQuizId + ", answerId=" + answerId + '}';
     }
 }

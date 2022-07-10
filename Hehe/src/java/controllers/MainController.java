@@ -26,14 +26,18 @@ public class MainController extends HttpServlet {
     private final String COURSE = "Course";
     private final String VIEW_COURSE = "ViewCourse";
     private final String STUDENT_IN_COURSE = "StudentInCourse";
+    private final String TOPIC = "Topic";
+    private final String STUDENT_IN_TOPIC = "StudentInTopic";
 
     // Controller, Destination String
     private final String ERROR = "error.jsp";
+    private final String DEFAULT = "home.jsp";
     private final String STUDENT_CONTROLLER = "StudentController";
     private final String AUTHOR_CONTROLLER = "AuthorController";
     private final String COURSE_CONTROLLER = "CourseController";
     private final String STUDENT_IN_COURSE_CONTROLLER = "StudentInCourseController";
     private final String TOPIC_CONTROLLER = "TopicController";
+    private final String STUDENT_IN_TOPIC_CONTROLLER = "StudentInTopicController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -44,7 +48,6 @@ public class MainController extends HttpServlet {
             HttpSession session = request.getSession();
             StudentDTO currentStudent = (StudentDTO) session.getAttribute("LOGIN_STUDENT");
             String controller = request.getParameter("controller");
-            System.out.println("Before switch");
             switch (controller) {
                 case STUDENT: {
                     url = STUDENT_CONTROLLER;
@@ -82,8 +85,18 @@ public class MainController extends HttpServlet {
                     break;
                 }
                 
-                case TOPIC_CONTROLLER: {
+                case TOPIC: {
                     url = TOPIC_CONTROLLER;
+                    break;
+                }
+                
+                case STUDENT_IN_TOPIC: {
+                    url = STUDENT_IN_TOPIC_CONTROLLER;
+                    break;
+                }
+                
+                default: {
+                    url = DEFAULT;
                     break;
                 }
             }

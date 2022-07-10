@@ -45,13 +45,12 @@
         StudentDTO student = (StudentDTO) session.getAttribute("LOGIN_STUDENT");
         TopicModel topic = (TopicModel) request.getAttribute("TOPIC");
         QuizModel quiz = (QuizModel) request.getAttribute("QUIZ");
-        Integer studentCourseId = (Integer) request.getAttribute("STUDENT_COURSE_ID");
         ArrayList<AnswerModel> answerList = (ArrayList<AnswerModel>) request.getAttribute("ANSWERS");
         if (student == null) {
             response.sendRedirect("login.jsp");
             return;
         }
-        if (topic == null || studentCourseId == null) {
+        if (topic == null) {
             response.sendRedirect("home.jsp");
             return;
         }
@@ -61,9 +60,6 @@
         <div class="container__left">
           <div class="lesson">
             <div class="lesson_content">
-              <%
-                  if (!topic.getDescription().isBlank()) {
-              %>
               <h3 style="text-align: justify;">
                 <strong>
                   Lý Thuyết
@@ -73,10 +69,6 @@
                 <%= topic.getDescription()%>
               </p>
               <br>
-              <%
-                  }
-              %>
-
               <%
                   if (quiz != null && answerList != null && !answerList.isEmpty()) {
               %>
@@ -112,12 +104,9 @@
           </div>
 
           <form method="post" action="MainController" name="answerForm" id="answerForm">
-            <input type="hidden" name="controller" value="StudentInTopic">
+            <input type="hidden" name="controller" value="StudentInQuizController">
             <input type="hidden" name="action" value="SubmitQuiz">
-            <input type="hidden" name="quizId" value="<%= quiz.getQuizId()%>">
-            <input type="hidden" name="topicId" value="<%= topic.getTopicId()%>">
-            <input type="hidden" name="studentCourseId" value="<%= studentCourseId%>">
-
+            <input type="hidden" name="quizId" value="<%= quiz.getQuizId() %>">
             <div class="answer">
               <div class="answer-input">
                 <div class="answer-list">
@@ -149,28 +138,26 @@
                 </div>
               </div>
             </div>
-            <input type="hidden" name="correctAns" value="<%= countCorrect%>">
+            <input type="hidden" name="correctAns" value="<%= countCorrect %>">
           </form>
           <div class="right-footer">
             <div class="submit-footer">
               <div class="submit-menu">
 
                 <form name="ViewNextTopic" method="POST" action="MainController" id="next">
-                  <input type="hidden" name="controller" value="Topic">
+                  <input type="hidden" name="controller" value="TopicController">
                   <input type="hidden" name="action" value="ViewNextTopic">
                   <input type="hidden" name="displayIndex" value="<%= topic.getDisplayIndex()%>">
                   <input type="hidden" name="courseId" value="<%= topic.getCourseId()%>">
-                  <input type="hidden" name="studentCourseId" value="<%= studentCourseId%>">
                 </form>
 
                 <form name="ViewPrevTopic" method="POST" action="MainController" id="prev">
-                  <input type="hidden" name="controller" value="Topic">
+                  <input type="hidden" name="controller" value="TopicController">
                   <input type="hidden" name="action" value="ViewPrevTopic">
                   <input type="hidden" name="displayIndex" value="<%= topic.getDisplayIndex()%>">
                   <input type="hidden" name="courseId" value="<%= topic.getCourseId()%>">
-                  <input type="hidden" name="studentCourseId" value="<%= studentCourseId%>">
                 </form>
-
+                
                 <%
                     if (topic.getDisplayIndex() > 1) {
                 %>
@@ -186,10 +173,6 @@
                 <a class="next-button" id="nextbtn" href="#" onclick="submit_form('next')">
                   <span>Next</span>
                   <i class="fa-solid fa-arrow-right"></i>
-                </a>
-                <a class="submit-button" id="submitbtn" input type="submit" value="Submit" onclick="submit_form('answerForm');">
-                  <i class="fa-solid fa-floppy-disk"></i>
-                  <span>Submit</span>
                 </a>
               </div>
             </div>
