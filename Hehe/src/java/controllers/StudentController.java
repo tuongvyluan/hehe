@@ -24,6 +24,7 @@ public class StudentController extends HttpServlet {
 
     // Action String
     private final String LOGIN_STUDENT = "LoginStudent";
+    private final String LOGOUT_STUDENT = "LogoutStudent";
     private final String REGISTER_STUDENT = "RegisterStudent";
     private final String EDIT_PROFILE = "EditProfile";
     private final String CANCEL_EDIT_PROFILE = "CancelEditProfile";
@@ -93,6 +94,14 @@ public class StudentController extends HttpServlet {
 //                    }
                     url = STUDENT_PROFILE;
                     break;
+                }
+
+                case LOGOUT_STUDENT: {
+                    session = request.getSession(false);
+                    if (session != null) {
+                        session.invalidate();
+                        url = LOGIN;
+                    }
                 }
             }
         } catch (SQLException e) {

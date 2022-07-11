@@ -19,6 +19,7 @@ import studentInQuizzes.StudentInQuizModel;
 import studentInTopics.StudentInTopicBUS;
 import studentInTopics.StudentInTopicDTO;
 import students.StudentDTO;
+import topics.TopicModel;
 
 /**
  *

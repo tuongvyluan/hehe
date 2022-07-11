@@ -21,6 +21,7 @@
       <ul class="header__nav-links">
         <li><a href="home.jsp">Learning</a></li>
         <li><a href="profile.jsp">Profile</a></li>
+        <li><a href="MainController?controller=Student&action=LogoutStudent">Logout</a></li>
       </ul>
     </nav>
     <script src="js/header.js"></script>
