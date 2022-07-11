@@ -25,6 +25,7 @@
 //multiple choice handler
 
 
+
 //reset the selection
 document.getElementById('reset').addEventListener('click', () => {
     var selectedAnswer = document.querySelectorAll(".selected");
@@ -38,7 +39,12 @@ document.getElementById('reset').addEventListener('click', () => {
 })
 
 //submit the answer
-function submitAnswers() {
-    var form = document.getElementById('answerForm');
-    form.submit();
-}
+//function check() {
+//    for (var i = 1; i <= 4; i++) {
+//        if (document.getElementById('answer' + i).checked == true) {
+//            console.log('checked' + i)
+//        } else {
+//            console.log('not checked' + i)
+//        }
+//    }
+//}
