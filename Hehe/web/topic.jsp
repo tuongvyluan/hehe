@@ -199,6 +199,11 @@
     </main>
     <script>
         $(document).ready(function () {
+            for (var i = 1; i <= <%= answerList.size()%>; i++) {
+                    if (document.getElementById('answer' + i).checked == true) {
+                        document.getElementById('answer' + i).parentNode.parentNode.classList.add("selected")
+                    }
+                }     
             var ans = 1;
       <%
           if (countCorrect > 1) {
