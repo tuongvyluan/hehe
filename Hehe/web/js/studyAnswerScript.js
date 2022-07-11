@@ -22,9 +22,6 @@
 //          }
 //     };
 
-//multiple choice handler
-
-
 //reset the selection
 document.getElementById('reset').addEventListener('click', () => {
     var selectedAnswer = document.querySelectorAll(".selected");
@@ -35,7 +32,20 @@ document.getElementById('reset').addEventListener('click', () => {
     for (var checkbox of checkboxes) {
         checkbox.checked = false;
     }
+}
 })
+
+//setInterval((checkTargetValue), 100);
+//
+//function checkTargetValue() {
+//    var checkboxes = document.querySelectorAll("input");
+//    var selectedAnswer = document.querySelectorAll(".selected");
+//    for (var i = 0; i < selectedAnswer.length; i++) {
+//        if (selectedAnswer[i].className = "answer-select") {
+//
+//        }
+//    }
+//}
 
 //submit the answer
 function submitAnswers() {

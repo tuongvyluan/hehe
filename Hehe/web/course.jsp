@@ -99,6 +99,7 @@
       <h1>Course Curriculum</h1>
       <%
           SectionDTO section;
+          int topicCount = 1;
           for (int i = 0; i < sections.size(); i++) {
               section = sections.get(i);
       %>
@@ -122,7 +123,7 @@
               aria-labelledby="<%= "panelsStayOpen-heading" + i%>"
               >
             <div class="accordion-body">
-              <ol>
+              <ul>
                 <%
 
                     ArrayList<TopicDTO> topicList;
@@ -131,14 +132,14 @@
                         for (TopicDTO topicDTO : topicList) {
                 %>
                 <li>
-                  <p><%= topicDTO.getTopicName()%></p>
+                  <p><%= topicCount++ + ". " + topicDTO.getTopicName()%></p>
                 </li>
                 <%
                         }
                     }
                 %>
 
-              </ol>
+              </ul>
             </div>
           </div>
         </div>

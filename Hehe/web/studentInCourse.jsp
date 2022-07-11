@@ -87,6 +87,7 @@
       <h1>Course Curriculum</h1>
       <%
           SectionDTO section;
+          int topicCount = 1;
           for (int i = 0; i < sections.size(); i++) {
               section = sections.get(i);
       %>
@@ -110,7 +111,7 @@
               aria-labelledby="<%= "panelsStayOpen-heading" + i%>"
               >
             <div class="accordion-body">
-              <ol>
+              <ul style="list-style-type: none;">
                 <%
 
                     ArrayList<TopicDTO> topicList;
@@ -123,16 +124,16 @@
                     <input type="hidden" name="controller" value="Topic">
                     <input type="hidden" name="action" value="ViewTopic">
                     <input type="hidden" name="topicId" value="<%= topicDTO.getTopicId()%>">
-                    <input type="hidden" name="studentCourseId" value="<%= studentCourse.getStudentInCourseId() %>">
+                    <input type="hidden" name="studentCourseId" value="<%= studentCourse.getStudentInCourseId()%>">
                   </form>
-                  <a onclick="submit_form('topic<%= topicDTO.getTopicId()%>')" href="#"><%= topicDTO.getTopicName()%></a>
+                  <a onclick="submit_form('topic<%= topicDTO.getTopicId()%>')" href="#"><%= topicCount++ + ". " + topicDTO.getTopicName()%></a>
                 </li>
                 <%
                         }
                     }
                 %>
 
-              </ol>
+              </ul>
             </div>
           </div>
         </div>

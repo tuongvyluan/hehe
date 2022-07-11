@@ -93,7 +93,7 @@
                 </a>
               </div>
             </div>
-            <div class="answer">
+            <div class="answer" onload="resetChoice()">
               <div class="answer-input">
                 <div class="answer-list">
                   <ul>

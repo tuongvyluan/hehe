@@ -41,6 +41,9 @@
   </head>
 
   <body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-xl-mode">
+    <header>
+      <%@ include file="header.jsp" %>
+    </header>
     <%
         StudentDTO student = (StudentDTO) session.getAttribute("LOGIN_STUDENT");
         TopicModel topic = (TopicModel) request.getAttribute("TOPIC");

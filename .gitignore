@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 /.metadata/
-/Hehe/nbproject/private/
-/Hehe/build/
-/Hehe/dist/
-=======
 # NetBeans specific #
 Hehe/nbproject/private/
 Hehe/build/
@@ -20,7 +15,3 @@ Hehe/nb-configuration.xml
 *.jar
 *.war
 *.ear
-<<<<<<< HEAD
-=======
->>>>>>> feature_home_vy
->>>>>>> master
