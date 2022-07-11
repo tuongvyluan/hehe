@@ -65,10 +65,9 @@ public class StudentInTopicController extends HttpServlet {
 
                         //Check whether student answers are correct or not
                         AnswerBUS answerBUS = new AnswerBUS();
-                        ArrayList<Integer> wrongAnswers;
+                        boolean submissionResult;
                         int quizId = Integer.parseInt(request.getParameter("quizId"));
                         int correctAns = Integer.parseInt(request.getParameter("correctAns"));
-                        request.setAttribute("CORRECT_ANS", correctAns);
 
                         Integer answerId = null;
                         ArrayList<Integer> answerIds = null;
@@ -79,28 +78,28 @@ public class StudentInTopicController extends HttpServlet {
                             for (int i = 0; i < size; i++) {
                                 answerIds.add(Integer.parseInt(answers[i]));
                             }
-                            wrongAnswers = answerBUS.checkMultipleAnswerQuiz(answerIds, quizId);
+                            submissionResult = answerBUS.checkMultipleAnswerQuiz(answerIds, quizId);
                             request.setAttribute("STUDENT_ANSWERS", answerIds);
                         } else {
                             answerId = Integer.parseInt(request.getParameter("answers"));
-                            wrongAnswers = answerBUS.checkSingleAnswerQuiz(answerId, quizId);
+                            submissionResult = answerBUS.checkSingleAnswerQuiz(answerId, quizId);
                             request.setAttribute("STUDENT_ANSWER", answerId);
                         }
 
-                        request.setAttribute("WRONG_ANSWERS", wrongAnswers);
+                        request.setAttribute("SUBMISSION_RESULT", submissionResult);
 
                         //Check whether this is student first attempt
                         //If first: Create student in topic with proper status
                         //Else: Update status to completed if this attempt is successful
                         studentTopic = studentInTopicBUS.getDTO(studentCourseId, topicId);
                         if (studentTopic == null) {
-                            if (!wrongAnswers.isEmpty()) {
-                                studentTopic = studentInTopicBUS.insert(studentCourseId, topicId, STUDENT_TOPIC_STATUS_STUDYING);
-                            } else {
+                            if (submissionResult) {
                                 studentTopic = studentInTopicBUS.insert(studentCourseId, topicId, STUDENT_TOPIC_STATUS_COMPLETED);
+                            } else {
+                                studentTopic = studentInTopicBUS.insert(studentCourseId, topicId, STUDENT_TOPIC_STATUS_STUDYING);
                             }
                         } else {
-                            if (wrongAnswers.isEmpty()) {
+                            if (submissionResult) {
                                 studentTopic = studentInTopicBUS.updateStatus(studentTopic.getId(), STUDENT_TOPIC_STATUS_COMPLETED);
                             }
                         }

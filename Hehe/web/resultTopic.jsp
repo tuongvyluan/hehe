@@ -43,17 +43,16 @@
   <body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-xl-mode">
 
     <%
-        ArrayList<Integer> wrongAnswers = (ArrayList<Integer>) request.getAttribute("WRONG_ANSWERS");
-        if (wrongAnswers.isEmpty()) {
+        boolean submissionResult = (Boolean) request.getAttribute("SUBMISSION_RESULT");
+        if (submissionResult) {
     %>
     CORRECT
     <%
     } else {
+    %>INCORRECT<%
+    }
     %>
-    INCORRECT
-    <%
-        }
-    %>
+
   </body>
 
 </html>

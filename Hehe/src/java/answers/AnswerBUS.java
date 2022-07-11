@@ -21,8 +21,8 @@ public class AnswerBUS {
         return list;
     }
 
-    public ArrayList<Integer> checkMultipleAnswerQuiz(ArrayList<Integer> answerIds, int quizId) throws SQLException {
-        ArrayList<Integer> wrongAnswers = new ArrayList<>();
+    public boolean checkMultipleAnswerQuiz(ArrayList<Integer> answerIds, int quizId) throws SQLException {
+        boolean check = false;
         dao = new AnswerDAO();
         ArrayList<Integer> result = dao.getCorrectAnswers(quizId);
         int resultSize = result.size();
@@ -37,20 +37,21 @@ public class AnswerBUS {
                 }
             }
             if (!found) {
-                wrongAnswers.add(answerIds.get(i));
+                check = found;
+                break;
             }
         }
 
-        return wrongAnswers;
+        return check;
     }
 
-    public ArrayList<Integer> checkSingleAnswerQuiz(Integer answerId, int quizId) throws SQLException {
+    public boolean checkSingleAnswerQuiz(Integer answerId, int quizId) throws SQLException {
+        boolean check = false;
         dao = new AnswerDAO();
-        ArrayList<Integer> list = new ArrayList();
         ArrayList<Integer> result = dao.getCorrectAnswers(quizId);
-        if (answerId.intValue() != result.get(0).intValue()) {
-            list.add(answerId);
+        if (answerId.intValue() == result.get(0).intValue()) {
+            check = true;
         }
-        return list;
+        return check;
     }
 }
