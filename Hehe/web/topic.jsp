@@ -196,70 +196,155 @@
                     </div>
                 </div>
             </div>
-        </main>
-        <script>
-            $(document).ready(function () {
-                for (var i = 1; i <= <%= answerList.size()%>; i++) {
-                    if (document.getElementById('answer' + i).checked == true) {
-                        document.getElementById('answer' + i).parentNode.parentNode.classList.add("selected")
+            <input type="hidden" name="correctAns" value="<%= countCorrect%>">
+            </form>
+            <div class="right-footer">
+                <div class="submit-footer">
+                    <div class="submit-menu">
+
+                        <form name="ViewNextTopic" method="POST" action="MainController" id="next">
+                            <input type="hidden" name="controller" value="Topic">
+                            <input type="hidden" name="action" value="ViewNextTopic">
+                            <input type="hidden" name="displayIndex" value="<%= topic.getDisplayIndex()%>">
+                            <input type="hidden" name="courseId" value="<%= topic.getCourseId()%>">
+                            <input type="hidden" name="studentCourseId" value="<%= studentCourseId%>">
+                        </form>
+
+                        <form name="ViewPrevTopic" method="POST" action="MainController" id="prev">
+                            <input type="hidden" name="controller" value="Topic">
+                            <input type="hidden" name="action" value="ViewPrevTopic">
+                            <input type="hidden" name="displayIndex" value="<%= topic.getDisplayIndex()%>">
+                            <input type="hidden" name="courseId" value="<%= topic.getCourseId()%>">
+                            <input type="hidden" name="studentCourseId" value="<%= studentCourseId%>">
+                        </form>
+
+                        <%
+                            if (topic.getDisplayIndex() > 1) {
+                        %>
+                        <a class="previous-button" id="prevbtn" href="#" onclick="submit_form('prev')">
+                            <!--dung jsp redirect den trang hien tai-->
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span>Previous</span>
+                        </a>
+                        <%
+                            }
+                        %>
+
+                        <a class="next-button" id="nextbtn" href="#" onclick="submit_form('next')">
+                            <span>Next</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a class="submit-button" id="submitbtn" input type="submit" value="Submit" onclick="submit_form('answerForm');">
+                            <i class="fa-solid fa-floppy-disk"></i>
+                            <span>Submit</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+    $(document).ready(function () {
+        for (var i = 1; i <= <%= answerList.size()%>; i++) {
+            if (document.getElementById('answer' + i).checked == true) {
+                document.getElementById('answer' + i).parentNode.parentNode.classList.add("selected");
+            }
+        }
+        var ans = 1;
+    <%
+        if (countCorrect > 1) {
+    %>
+        ans = 2;
+    <%
+        }
+    %>
+        switch (ans) {
+            case 1:     // single select
+                $('li.answer-select').click(function (e) {
+                    $(this).toggleClass('selected').siblings().removeClass('selected');
+                    if (!$(e.target).is('input[type="checkbox"]')) {
+                        var $checkbox = $(this).find('input[type="checkbox"]');
+                        $checkbox.prop('checked', !$checkbox.prop('checked'));
+                        selectOnlyThis($checkbox.prop('id'));
                     }
-                }
-                var ans = 1;
-            <%
-                if (countCorrect > 1) {
-            %>
-                ans = 2;
-            <%
-                }
-            %>
-                switch (ans) {
-                    case 1:     // single select
-                        $('li.answer-select').click(function (e) {
-                            $(this).toggleClass('selected').siblings().removeClass('selected');
-                            if (!$(e.target).is('input[type="checkbox"]')) {
-                                var $checkbox = $(this).find('input[type="checkbox"]');
-                                $checkbox.prop('checked', !$checkbox.prop('checked'));
-                                selectOnlyThis($checkbox.prop('id'));
-                            }
-                        })
-                        break;
-                    case 2: // multiple select
-                        $('li.answer-select').click(function (e) {
-                            $(this).toggleClass('selected');
-                            if (!$(e.target).is('input[type="checkbox"]')) {
-                                var $checkbox = $(this).find('input[type="checkbox"]');
-                                $checkbox.prop('checked', !$checkbox.prop('checked'));
-                            }
-                        })
-                        break;
-                }
-            })
+                });
+                break;
+            case 2: // multiple select
+                $('li.answer-select').click(function (e) {
+                    $(this).toggleClass('selected');
+                    if (!$(e.target).is('input[type="checkbox"]')) {
+                        var $checkbox = $(this).find('input[type="checkbox"]');
+                        $checkbox.prop('checked', !$checkbox.prop('checked'));
+                    }
+                });
+                break;
+        }
+    });
+
+    function selectOnlyThis(id) {
+    if (document.getElementById(id).checked) {
+    for (var i = 1; i <= <%= answerList.size()%>; i++) {
+    if (document.getElementById('answer' + i).checked == true) {
+    document.getElementById('answer' + i).parentNode.parentNode.classList.add("selected")
+    }
+    }
+    var ans = 1;
+    <%
+        if (countCorrect > 1) {
+    %>
+    ans = 2;
+    <%
+        }
+    %>
+    switch (ans) {
+    case 1:     // single select
+            $('li.answer-select').click(function (e) {
+    $(this).toggleClass('selected').siblings().removeClass('selected');
+            if (!$(e.target).is('input[type="checkbox"]')) {
+    var $checkbox = $(this).find('input[type="checkbox"]');
+            $checkbox.prop('checked', !$checkbox.prop('checked'));
+            selectOnlyThis($checkbox.prop('id'));
+    }
+    })
+            break;
+            case 2: // multiple select
+            $('li.answer-select').click(function (e) {
+    $(this).toggleClass('selected');
+            if (!$(e.target).is('input[type="checkbox"]')) {
+    var $checkbox = $(this).find('input[type="checkbox"]');
+            $checkbox.prop('checked', !$checkbox.prop('checked'));
+    }
+    })
+            break;
+    }
+    })
 
             function selectOnlyThis(id) {
-                if (document.getElementById(id).checked) {
-                    for (var i = 1; i <= <%= answerList.size()%>; i++) {
-                        document.getElementById('answer' + i).checked = false;
-                    }
-                    document.getElementById(id).checked = true;
-                }
+            if (document.getElementById(id).checked) {
+            for (var i = 1; i <= <%= answerList.size()%>; i++) {
+            document.getElementById('answer' + i).checked = false;
+            }
+            document.getElementById(id).checked = true;
+            }
             }
 
-            //        function check() {
-            //            for (var i = 1; i <= <%= answerList.size()%>; i++) {
-            //                if (document.getElementById('answer' + i).checked == true) {
-            //                    console.log('checked' + i)
-            //                } else {
-            //                    console.log('not checked' + i)
-            //                }
-            //            }
-            //            
-            //        }
+    //        function check() {
+    //            for (var i = 1; i <= <%= answerList.size()%>; i++) {
+    //                if (document.getElementById('answer' + i).checked == true) {
+    //                    console.log('checked' + i)
+    //                } else {
+    //                    console.log('not checked' + i)
+    //                }
+    //            }
+    //            
+    //        }
 
-            function submit_form(form_id) {
-                var form = document.getElementById(form_id);
-                form.submit();
-            }
-        </script>
-    </body>
+    function submit_form(form_id) {
+    var form = document.getElementById(form_id);
+            form.submit();
+    };
+</script>
+</body>
 
 </html>
