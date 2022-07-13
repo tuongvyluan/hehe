@@ -104,9 +104,6 @@
           </div>
 
           <form method="post" action="MainController" name="answerForm" id="answerForm">
-            <input type="hidden" name="controller" value="StudentInQuizController">
-            <input type="hidden" name="action" value="SubmitQuiz">
-            <input type="hidden" name="quizId" value="<%= quiz.getQuizId() %>">
             <div class="answer">
               <div class="answer-input">
                 <div class="answer-list">
@@ -119,7 +116,20 @@
                             currentAns = answerList.get(i);
                             if (currentAns.isCorrect()) {
                                 countCorrect++;
-                            }
+
+                    %>
+                    <li class="answer-select" id="answer-select">
+                      <div class="select">
+                        <input type="checkbox" id="answer<%= i + 1%>" class="answer" name="answers" value="<%= currentAns.getAnswerId()%>"
+                               form="answerForm" checked>
+                        <span class="checkmark"></span>
+                      </div>
+                      <div class="answer-content">
+                        <p><%= ((char) ('A' + i)) + ". " + currentAns.getContent()%></p>
+                      </div>
+                    </li>
+                    <%
+                    } else {
                     %>
                     <li class="answer-select" id="answer-select">
                       <div class="select">
@@ -132,32 +142,32 @@
                       </div>
                     </li>
                     <%
+                            }
                         }
                     %>
                   </ul>
                 </div>
               </div>
             </div>
-            <input type="hidden" name="correctAns" value="<%= countCorrect %>">
           </form>
           <div class="right-footer">
             <div class="submit-footer">
               <div class="submit-menu">
 
                 <form name="ViewNextTopic" method="POST" action="MainController" id="next">
-                  <input type="hidden" name="controller" value="TopicController">
+                  <input type="hidden" name="controller" value="Topic">
                   <input type="hidden" name="action" value="ViewNextTopic">
                   <input type="hidden" name="displayIndex" value="<%= topic.getDisplayIndex()%>">
                   <input type="hidden" name="courseId" value="<%= topic.getCourseId()%>">
                 </form>
 
                 <form name="ViewPrevTopic" method="POST" action="MainController" id="prev">
-                  <input type="hidden" name="controller" value="TopicController">
+                  <input type="hidden" name="controller" value="Topic">
                   <input type="hidden" name="action" value="ViewPrevTopic">
                   <input type="hidden" name="displayIndex" value="<%= topic.getDisplayIndex()%>">
                   <input type="hidden" name="courseId" value="<%= topic.getCourseId()%>">
                 </form>
-                
+
                 <%
                     if (topic.getDisplayIndex() > 1) {
                 %>
@@ -182,6 +192,11 @@
     </main>
     <script>
         $(document).ready(function () {
+            for (var i = 1; i <= <%= answerList.size()%>; i++) {
+                if (document.getElementById('answer' + i).checked == true) {
+                    document.getElementById('answer' + i).parentNode.parentNode.classList.add("selected");
+                }
+            }
             var ans = 1;
       <%
           if (countCorrect > 1) {

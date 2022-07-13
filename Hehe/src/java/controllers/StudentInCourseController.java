@@ -18,6 +18,7 @@ import sections.SectionBUS;
 import sections.SectionDTO;
 import studentInCourses.StudentInCourseBUS;
 import studentInCourses.StudentInCourseModel;
+import studentInTopics.StudentInTopicBUS;
 import students.StudentDTO;
 
 /**
@@ -52,10 +53,13 @@ public class StudentInCourseController extends HttpServlet {
             int courseId = Integer.parseInt(request.getParameter("courseId"));
             switch (action) {
                 case VIEW_COURSE: {
+                    StudentInTopicBUS studentTopicBUS = new StudentInTopicBUS();
                     studentCourse = (StudentInCourseModel) request.getAttribute("CURRENT_STUDENT_COURSE");
                     courseId = studentCourse.getCourseId();
                     CourseModel course = courseBUS.get(courseId);
                     ArrayList<SectionDTO> sections = sectionBUS.get(courseId);
+                    ArrayList<Integer> completedTopicIds = studentTopicBUS.getCompletedTopics(studentCourse.getStudentInCourseId());
+                    request.setAttribute("COMPLETE_TOPIC_IDS", completedTopicIds);
                     request.setAttribute("SECTION_LIST", sections);
                     request.setAttribute("COURSE", course);
                     url = STUDENT_COURSE;

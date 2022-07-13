@@ -123,7 +123,7 @@
               aria-labelledby="<%= "panelsStayOpen-heading" + i%>"
               >
             <div class="accordion-body">
-              <ul>
+              <ul style="list-style-type: none;">
                 <%
 
                     ArrayList<TopicDTO> topicList;

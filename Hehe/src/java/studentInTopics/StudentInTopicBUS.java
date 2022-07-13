@@ -5,6 +5,7 @@
 package studentInTopics;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -31,5 +32,10 @@ public class StudentInTopicBUS {
         dao = new StudentInTopicDAO();
         dto = dao.updateStatus(studentTopicId, status);
         return dto;
+    }
+    
+    public ArrayList<Integer> getCompletedTopics(int studentCourseId) throws SQLException {
+        dao = new StudentInTopicDAO();
+        return dao.getCompletedTopics(studentCourseId);
     }
 }

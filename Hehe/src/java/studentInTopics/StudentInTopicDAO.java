@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import utils.DBUtils;
 
 /**
@@ -32,6 +33,9 @@ public class StudentInTopicDAO {
     private final String INSERT = "INSERT INTO StudentInTopic "
             + "(StudentCourseId, TopicId, Status) "
             + "VALUES (?,?,?)";
+    
+    private final String GET_COMPLETED_TOPIC = "SELECT TopicId FROM StudentInTopic "
+            + "WHERE StudentCourseId=? AND Status='Completed' ORDER BY TopicId";
 
     private final String UPDATE = "UPDATE StudentInTopic SET Status=? WHERE Id=?";
     
@@ -159,5 +163,36 @@ public class StudentInTopicDAO {
             }
         }
         return studentInTopicDTO;
+    }
+    
+    public ArrayList<Integer> getCompletedTopics(int studentCourseId) throws SQLException {
+        ArrayList<Integer> list = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_COMPLETED_TOPIC);
+                ptm.setInt(1, studentCourseId);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    list.add(rs.getInt("TopicId"));
+                }
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return list;
     }
 }

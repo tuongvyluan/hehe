@@ -39,11 +39,8 @@
     <meta name="generator" content="Nicepage 4.12.5, nicepage.com">
     <title>${requestScope.TOPIC.topicName}</title>
   </head>
-
   <body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-xl-mode">
-    <header>
-      <%@ include file="header.jsp" %>
-    </header>
+    
     <%
         StudentDTO student = (StudentDTO) session.getAttribute("LOGIN_STUDENT");
         TopicModel topic = (TopicModel) request.getAttribute("TOPIC");
@@ -202,13 +199,18 @@
     </main>
     <script>
         $(document).ready(function () {
+            for (var i = 1; i <= <%= answerList.size()%>; i++) {
+                if (document.getElementById('answer' + i).checked == true) {
+                    document.getElementById('answer' + i).parentNode.parentNode.classList.add("selected");
+                }
+            }
             var ans = 1;
       <%
-          if (countCorrect > 1) {
+            if (countCorrect > 1) {
       %>
             ans = 2;
       <%
-          }
+            }
       %>
             switch (ans) {
                 case 1:     // single select
@@ -242,16 +244,16 @@
             }
         }
 
-//        function check() {
-//            for (var i = 1; i <= <%= answerList.size()%>; i++) {
-//                if (document.getElementById('answer' + i).checked == true) {
-//                    console.log('checked' + i)
-//                } else {
-//                    console.log('not checked' + i)
-//                }
-//            }
-//            
-//        }
+        //        function check() {
+        //            for (var i = 1; i <= <%= answerList.size()%>; i++) {
+        //                if (document.getElementById('answer' + i).checked == true) {
+        //                    console.log('checked' + i)
+        //                } else {
+        //                    console.log('not checked' + i)
+        //                }
+        //            }
+        //            
+        //        }
 
         function submit_form(form_id) {
             var form = document.getElementById(form_id);

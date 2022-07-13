@@ -51,6 +51,8 @@
         StudentInCourseModel studentCourse = (StudentInCourseModel) request.getAttribute("CURRENT_STUDENT_COURSE");
         CourseModel course = (CourseModel) request.getAttribute("COURSE");
         ArrayList<SectionDTO> sections = (ArrayList) request.getAttribute("SECTION_LIST");
+        ArrayList<Integer> completedTopicIds = (ArrayList) request.getAttribute("COMPLETE_TOPIC_IDS");
+        int totalCompletedTopic = completedTopicIds.size();
         if (course == null || sections == null || studentCourse == null) {
             response.sendRedirect("home.jsp");
             return;
@@ -88,6 +90,7 @@
       <%
           SectionDTO section;
           int topicCount = 1;
+          int completedTopicCount = 0;
           for (int i = 0; i < sections.size(); i++) {
               section = sections.get(i);
       %>
@@ -118,6 +121,20 @@
                     topicList = topicBUS.get(section.getSectionId());
                     if (topicList != null && topicList.isEmpty() == false) {
                         for (TopicDTO topicDTO : topicList) {
+                            if (completedTopicCount < totalCompletedTopic && completedTopicIds.get(completedTopicCount).intValue() == topicDTO.getTopicId()) {
+                                completedTopicCount++;
+                %>
+                <li>
+                  <form name="ViewTopic" method="POST" action="MainController" id="topic<%= topicDTO.getTopicId()%>">
+                    <input type="hidden" name="controller" value="Topic">
+                    <input type="hidden" name="action" value="ViewCompletedTopic">
+                    <input type="hidden" name="topicId" value="<%= topicDTO.getTopicId()%>">
+                    <input type="hidden" name="studentCourseId" value="<%= studentCourse.getStudentInCourseId()%>">
+                  </form>
+                  <a style="color: #62C584;" onclick="submit_form('topic<%= topicDTO.getTopicId()%>')" href="#"><%= topicCount++ + ". " + topicDTO.getTopicName()%></a>
+                </li>
+                <%
+                } else {
                 %>
                 <li>
                   <form name="ViewTopic" method="POST" action="MainController" id="topic<%= topicDTO.getTopicId()%>">
@@ -129,6 +146,7 @@
                   <a onclick="submit_form('topic<%= topicDTO.getTopicId()%>')" href="#"><%= topicCount++ + ". " + topicDTO.getTopicName()%></a>
                 </li>
                 <%
+                            }
                         }
                     }
                 %>

@@ -66,54 +66,56 @@ public class TopicController extends HttpServlet {
                 request.setAttribute("STUDENT_COURSE_ID", studentCourseId);
 
                 switch (action) {
-                    
+
                     case VIEW_TOPIC: {
                         topicId = Integer.parseInt(request.getParameter("topicId"));
                         studentTopic = studentInTopicBUS.getDTO(studentCourseId, topicId);
+                        if (studentTopic == null) {
+                            topic = topicBUS.getContent(topicId);
+                            quiz = quizBUS.getContent(topic.getTopicId());
+                            answerList = null;
+                            request.setAttribute("TOPIC", topic);
+                            System.out.println(topic.toString());
+                            if (quiz != null) {
+                                request.setAttribute("QUIZ", quiz);
+                                answerList = answerBUS.getAnswers(quiz.getQuizId());
+                            }
+                            if (answerList != null && !answerList.isEmpty()) {
+                                request.setAttribute("ANSWERS", answerList);
+                                url = TOPIC;
+                            }
+                        }
                         // Not completed: Show history of quiz attempts if
                         // studentTopic is not null and having status "Studying"
                         //....
-                        
-                        topic = topicBUS.getContent(topicId);
-                        quiz = quizBUS.getContent(topic.getTopicId());
-                        answerList = null;
-                        request.setAttribute("TOPIC", topic);
-                        System.out.println(topic.toString());
-                        if (quiz != null) {
-                            request.setAttribute("QUIZ", quiz);
-                            answerList = answerBUS.getAnswers(quiz.getQuizId());
-                        }
-                        if (answerList != null && !answerList.isEmpty()) {
-                            request.setAttribute("ANSWERS", answerList);
-                            url = TOPIC;
-                        }
+
                         break;
                     }
 
                     case VIEW_COMPLETED_TOPIC: {
                         topicId = Integer.parseInt(request.getParameter("topicId"));
                         studentTopic = studentInTopicBUS.getDTO(studentCourseId, topicId);
+                        if (studentTopic != null) {
+                            topic = topicBUS.getContent(topicId);
+                            quiz = quizBUS.getContent(topic.getTopicId());
+                            answerList = null;
+                            request.setAttribute("TOPIC", topic);
+                            if (quiz != null) {
+                                request.setAttribute("QUIZ", quiz);
+                                answerList = answerBUS.getAnswers(quiz.getQuizId());
+                            }
+                            if (answerList != null && !answerList.isEmpty()) {
+                                request.setAttribute("ANSWERS", answerList);
+                                url = COMPLETED_TOPIC;
+                            }
+                        }
                         // Not completed: Show history of quiz attempts
                         //....
-                        
-                        topic = topicBUS.getContent(topicId);
-                        quiz = quizBUS.getContent(topic.getTopicId());
-                        answerList = null;
-                        request.setAttribute("TOPIC", topic);
-                        System.out.println(topic.toString());
-                        if (quiz != null) {
-                            request.setAttribute("QUIZ", quiz);
-                            answerList = answerBUS.getAnswers(quiz.getQuizId());
-                        }
-                        if (answerList != null && !answerList.isEmpty()) {
-                            request.setAttribute("ANSWERS", answerList);
-                            url = COMPLETED_TOPIC;
-                        }
+
                         break;
                     }
 
                     case VIEW_NEXT_TOPIC: {
-
                         int displayIndex = Integer.parseInt(request.getParameter("displayIndex"));
                         int courseId = Integer.parseInt(request.getParameter("courseId"));
                         topic = topicBUS.getNextContent(courseId, displayIndex);
@@ -127,8 +129,11 @@ public class TopicController extends HttpServlet {
                         if (answerList != null && !answerList.isEmpty()) {
                             request.setAttribute("ANSWERS", answerList);
                             url = TOPIC;
+                        }                        
+                        studentTopic = studentInTopicBUS.getDTO(studentCourseId, topic.getTopicId());
+                        if (studentTopic != null) {
+                            url = COMPLETED_TOPIC;
                         }
-
                         break;
                     }
 
@@ -147,8 +152,11 @@ public class TopicController extends HttpServlet {
                         if (answerList != null && !answerList.isEmpty()) {
                             request.setAttribute("ANSWERS", answerList);
                             url = TOPIC;
+                        }                        
+                        studentTopic = studentInTopicBUS.getDTO(studentCourseId, topic.getTopicId());
+                        if (studentTopic != null) {
+                            url = COMPLETED_TOPIC;
                         }
-
                         break;
                     }
                 }

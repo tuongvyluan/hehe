@@ -1,5 +1,3 @@
-
-
 // ✅ Change (replace) the text for question
 // div.innerHTML = `<span style="background-color: lime">Replacement HTML</span>`;
 
@@ -18,22 +16,23 @@
 //          {
 //              var row = results.rows.item(i);
 //              alert(row['number']);
-//              alert(row['name']);                 
+//              alert(row['name']);
 //          }
 //     };
 
+//multiple choice handler
+
 //reset the selection
 document.getElementById('reset').addEventListener('click', () => {
-    var selectedAnswer = document.querySelectorAll(".selected");
-    for (var i = 0; i < selectedAnswer.length; i++) {
-        selectedAnswer[i].className = "answer-select";
-    }
-    var checkboxes = document.querySelectorAll("input");
-    for (var checkbox of checkboxes) {
-        checkbox.checked = false;
-    }
-}
-})
+	var selectedAnswer = document.querySelectorAll('.selected');
+	for (var i = 0; i < selectedAnswer.length; i++) {
+		selectedAnswer[i].className = 'answer-select';
+	}
+	var checkboxes = document.querySelectorAll('input');
+	for (var checkbox of checkboxes) {
+		checkbox.checked = false;
+	}
+});
 
 //setInterval((checkTargetValue), 100);
 //
@@ -48,7 +47,12 @@ document.getElementById('reset').addEventListener('click', () => {
 //}
 
 //submit the answer
-function submitAnswers() {
-    var form = document.getElementById('answerForm');
-    form.submit();
-}
+//function check() {
+//    for (var i = 1; i <= 4; i++) {
+//        if (document.getElementById('answer' + i).checked == true) {
+//            console.log('checked' + i)
+//        } else {
+//            console.log('not checked' + i)
+//        }
+//    }
+//}
