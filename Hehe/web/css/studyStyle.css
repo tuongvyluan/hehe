@@ -1,7 +1,6 @@
-header {
-    flex: 0 1 auto;
+main{
+    margin-left: 65px;
 }
-
 ul.single-select {
     list-style: none;
 }

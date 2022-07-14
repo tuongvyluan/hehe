@@ -70,25 +70,25 @@ public class TopicController extends HttpServlet {
                     case VIEW_TOPIC: {
                         topicId = Integer.parseInt(request.getParameter("topicId"));
                         studentTopic = studentInTopicBUS.getDTO(studentCourseId, topicId);
-                        if (studentTopic == null) {
-                            topic = topicBUS.getContent(topicId);
-                            quiz = quizBUS.getContent(topic.getTopicId());
-                            answerList = null;
-                            request.setAttribute("TOPIC", topic);
-                            System.out.println(topic.toString());
-                            if (quiz != null) {
-                                request.setAttribute("QUIZ", quiz);
-                                answerList = answerBUS.getAnswers(quiz.getQuizId());
-                            }
-                            if (answerList != null && !answerList.isEmpty()) {
-                                request.setAttribute("ANSWERS", answerList);
-                                url = TOPIC;
-                            }
+                        topic = topicBUS.getContent(topicId);
+                        quiz = quizBUS.getContent(topic.getTopicId());
+                        answerList = null;
+                        request.setAttribute("TOPIC", topic);
+                        System.out.println(topic.toString());
+                        if (quiz != null) {
+                            request.setAttribute("QUIZ", quiz);
+                            answerList = answerBUS.getAnswers(quiz.getQuizId());
                         }
+                        if (answerList != null && !answerList.isEmpty()) {
+                            request.setAttribute("ANSWERS", answerList);
+                            url = TOPIC;
+                        }
+
+                        request.setAttribute("STUDENT_TOPIC", studentTopic);
+
                         // Not completed: Show history of quiz attempts if
                         // studentTopic is not null and having status "Studying"
                         //....
-
                         break;
                     }
 
@@ -108,6 +108,7 @@ public class TopicController extends HttpServlet {
                                 request.setAttribute("ANSWERS", answerList);
                                 url = COMPLETED_TOPIC;
                             }
+                            request.setAttribute("STUDENT_TOPIC", studentTopic);
                         }
                         // Not completed: Show history of quiz attempts
                         //....
@@ -129,9 +130,9 @@ public class TopicController extends HttpServlet {
                         if (answerList != null && !answerList.isEmpty()) {
                             request.setAttribute("ANSWERS", answerList);
                             url = TOPIC;
-                        }                        
+                        }
                         studentTopic = studentInTopicBUS.getDTO(studentCourseId, topic.getTopicId());
-                        if (studentTopic != null) {
+                        if (studentTopic != null && "Completed".equals(studentTopic.getStatus())) {
                             url = COMPLETED_TOPIC;
                         }
                         break;
@@ -152,9 +153,9 @@ public class TopicController extends HttpServlet {
                         if (answerList != null && !answerList.isEmpty()) {
                             request.setAttribute("ANSWERS", answerList);
                             url = TOPIC;
-                        }                        
+                        }
                         studentTopic = studentInTopicBUS.getDTO(studentCourseId, topic.getTopicId());
-                        if (studentTopic != null) {
+                        if (studentTopic != null && "Completed".equals(studentTopic.getStatus())) {
                             url = COMPLETED_TOPIC;
                         }
                         break;

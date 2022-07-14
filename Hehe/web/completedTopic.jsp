@@ -1,3 +1,4 @@
+<%@page import="studentInTopics.StudentInTopicDTO"%>
 <%@page import="answers.AnswerModel"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="quizzes.QuizModel"%>
@@ -37,6 +38,11 @@
     <script class="u-script" type="text/javascript" src="js/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="js/nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 4.12.5, nicepage.com">
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="css/styleSideNavBar.css">
+
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <title>${requestScope.TOPIC.topicName}</title>
   </head>
 
@@ -45,20 +51,95 @@
         StudentDTO student = (StudentDTO) session.getAttribute("LOGIN_STUDENT");
         TopicModel topic = (TopicModel) request.getAttribute("TOPIC");
         QuizModel quiz = (QuizModel) request.getAttribute("QUIZ");
+        Integer studentCourseId = (Integer) request.getAttribute("STUDENT_COURSE_ID");
         ArrayList<AnswerModel> answerList = (ArrayList<AnswerModel>) request.getAttribute("ANSWERS");
         if (student == null) {
             response.sendRedirect("login.jsp");
             return;
         }
-        if (topic == null) {
+        if (topic == null || studentCourseId == null) {
             response.sendRedirect("home.jsp");
             return;
         }
+        StudentInTopicDTO studentTopic = null;
+        if (request.getAttribute("STUDENT_TOPIC") != null) {
+            studentTopic = (StudentInTopicDTO) request.getAttribute("STUDENT_TOPIC");
+            if (!studentTopic.getStatus().equals("Completed")) {
+                response.sendRedirect("topic.jsp");
+            }
+        }
     %>
+    <nav class="sidebar close">
+      <header>
+        <div class="image-text">
+          <span class="image">
+            <a href="home.jsp"><img src="images/logo-removebg-preview.png" alt=""></a>
+          </span>
+
+          <div class="text logo-text">
+            <span class="name">Hehe Code</span>
+
+          </div>
+        </div>
+
+      </header>
+
+      <div class="menu-bar">
+        <div class="menu">
+          <ul class="menu-links">
+            <li class="nav-link">
+              <a href="#" onclick="showTab('topic', 'history')">
+                <i class='bx bx-book-open icon' ></i>
+                <span class="text nav-text">Show lesson</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="#" onclick="showTab('history', 'topic')">
+                <i class='bx bx-stopwatch icon' ></i>
+                <span class="text nav-text">History</span>
+              </a>
+            </li>
+
+
+
+          </ul>
+        </div>
+
+        <div class="bottom-content">
+          <li class="">
+            <a href="#" onclick="submit_form('back_to_course')">
+              <i class='bx bx-log-out icon' ></i>
+              <span class="text nav-text">Back to course</span>
+            </a>
+          </li>
+        </div>
+      </div>
+      <form name="ViewCourse" method="POST" action="MainController" id="back_to_course">
+        <input hidden="" name="controller" value="ViewCourse">
+        <input hidden="" name="action" value="ViewCourse">
+        <input hidden="" name="courseId" value="<%= topic.getCourseId()%>">
+      </form>
+    </nav>
     <main>
       <div class="container">
         <div class="container__left">
-          <div class="lesson">
+          <div class="lesson" id="history">
+            <div class="lesson_content">
+              <% if (studentTopic == null) {
+              %>
+              <p>The record list is empty.</p>
+              <%
+              } else {
+              %>
+              <p>This is the record list.</p>
+              <%
+                  }
+              %>
+
+            </div>
+          </div>
+          <div class="lesson" id="topic">
             <div class="lesson_content">
               <h3 style="text-align: justify;">
                 <strong>
@@ -159,6 +240,7 @@
                   <input type="hidden" name="action" value="ViewNextTopic">
                   <input type="hidden" name="displayIndex" value="<%= topic.getDisplayIndex()%>">
                   <input type="hidden" name="courseId" value="<%= topic.getCourseId()%>">
+                  <input type="hidden" name="studentCourseId" value="<%= studentCourseId%>">
                 </form>
 
                 <form name="ViewPrevTopic" method="POST" action="MainController" id="prev">
@@ -166,6 +248,7 @@
                   <input type="hidden" name="action" value="ViewPrevTopic">
                   <input type="hidden" name="displayIndex" value="<%= topic.getDisplayIndex()%>">
                   <input type="hidden" name="courseId" value="<%= topic.getCourseId()%>">
+                  <input type="hidden" name="studentCourseId" value="<%= studentCourseId%>">
                 </form>
 
                 <%
@@ -191,9 +274,17 @@
       </div>
     </main>
     <script>
+        function showTab(displayed_tab_id, hidden_tab_id) {
+            $(this).click(function () {
+                $('#' + hidden_tab_id).css('display', 'none');
+                $('#' + displayed_tab_id).css('display', 'block');
+            })
+        }
+
         $(document).ready(function () {
+            $('#history').css('display', 'none');
             for (var i = 1; i <= <%= answerList.size()%>; i++) {
-                if (document.getElementById('answer' + i).checked == true) {
+                if (document.getElementById('answer' + i).checked === true) {
                     document.getElementById('answer' + i).parentNode.parentNode.classList.add("selected");
                 }
             }

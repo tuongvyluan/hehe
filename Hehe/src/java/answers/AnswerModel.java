@@ -68,7 +68,7 @@ public class AnswerModel {
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
-    
+
     public AnswerDTO toDTO() {
         return new AnswerDTO(answerId, quizId, isCorrect);
     }

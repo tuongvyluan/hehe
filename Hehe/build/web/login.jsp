@@ -85,8 +85,8 @@
 
             <div class="flex-c-m">
               <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/Hehe/login-google&response_type=code
-                                       &client_id=894467286073-gu13he3q90ma2on3nfjigafidbtvpgur.apps.googleusercontent.com&approval_prompt=force" class="login100-social-item bg3">
-                <i class="fa fa-google"></i>
+                 &client_id=894467286073-gu13he3q90ma2on3nfjigafidbtvpgur.apps.googleusercontent.com&approval_prompt=force" class="login100-social-item bg3" style="text-decoration: none;">
+                <i class="fa-brands fa-google"></i>
               </a>
             </div>
             <div class="g-recaptcha" style="display: flex; justify-content: center"

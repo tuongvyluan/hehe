@@ -16,7 +16,7 @@
         <div class="header__line"></div>
       </div>
       <div class="header__logo">
-        <a href="#"><img src="images/logo-removebg-preview.png" alt=""></a>
+        <a href="home.jsp"><img src="images/logo-removebg-preview.png" alt=""></a>
       </div>
       <ul class="header__nav-links">
         <li><a href="home.jsp">Learning</a></li>

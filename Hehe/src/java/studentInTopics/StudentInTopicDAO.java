@@ -34,7 +34,7 @@ public class StudentInTopicDAO {
             + "(StudentCourseId, TopicId, Status) "
             + "VALUES (?,?,?)";
     
-    private final String GET_COMPLETED_TOPIC = "SELECT TopicId FROM StudentInTopic "
+    private final String GET_COMPLETED_TOPICS = "SELECT TopicId FROM StudentInTopic "
             + "WHERE StudentCourseId=? AND Status='Completed' ORDER BY TopicId";
 
     private final String UPDATE = "UPDATE StudentInTopic SET Status=? WHERE Id=?";
@@ -173,7 +173,7 @@ public class StudentInTopicDAO {
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(GET_COMPLETED_TOPIC);
+                ptm = conn.prepareStatement(GET_COMPLETED_TOPICS);
                 ptm.setInt(1, studentCourseId);
                 rs = ptm.executeQuery();
                 while (rs.next()) {

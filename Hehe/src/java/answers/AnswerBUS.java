@@ -36,12 +36,14 @@ public class AnswerBUS {
                     break;
                 }
             }
+            check = found;
             if (!found) {
-                check = found;
                 break;
             }
         }
-
+        if (answerSize != resultSize) {
+            check = false;
+        }
         return check;
     }
 

@@ -34,7 +34,7 @@ public class TopicDAO {
             + " FROM Topic WHERE CourseId=? AND DisplayIndex>?";
     
     private final String GET_PREV_TOPIC_CONTENT = "SELECT TOP(1) " + TOPIC_CONTENT
-            + " FROM Topic WHERE CourseId=? AND DisplayIndex<?";
+            + " FROM Topic WHERE CourseId=? AND DisplayIndex<? ORDER BY DisplayIndex DESC";
 
     public ArrayList<TopicDTO> get(int sectionId) throws SQLException {
         ArrayList<TopicDTO> list = new ArrayList<>();

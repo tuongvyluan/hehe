@@ -5,6 +5,7 @@
 package controllers;
 
 import answers.AnswerBUS;
+import answers.AnswerModel;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -13,12 +14,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import quizzes.QuizBUS;
+import quizzes.QuizModel;
 import studentAnswers.StudentAnswerBUS;
 import studentInQuizzes.StudentInQuizBUS;
 import studentInQuizzes.StudentInQuizModel;
 import studentInTopics.StudentInTopicBUS;
 import studentInTopics.StudentInTopicDTO;
 import students.StudentDTO;
+import topics.TopicBUS;
 import topics.TopicModel;
 
 /**
@@ -60,6 +64,7 @@ public class StudentInTopicController extends HttpServlet {
 
                 switch (action) {
                     case SUBMIT_QUIZ: {
+                        request.setAttribute("STUDENT_COURSE_ID", studentCourseId);
                         StudentInTopicDTO studentTopic;
                         StudentInQuizModel studentQuiz;
 
@@ -69,22 +74,22 @@ public class StudentInTopicController extends HttpServlet {
                         int quizId = Integer.parseInt(request.getParameter("quizId"));
                         int correctAns = Integer.parseInt(request.getParameter("correctAns"));
 
-                        Integer answerId = null;
-                        ArrayList<Integer> answerIds = null;
+                        ArrayList<Integer> studentAnswers;
                         if (correctAns > 1) {
-                            String[] answers = request.getParameterValues("answers");
+                            String[] answers = request.getParameterValues("studentAnswers");
                             int size = answers.length;
-                            answerIds = new ArrayList<>(size);
+                            studentAnswers = new ArrayList<>(size);
                             for (int i = 0; i < size; i++) {
-                                answerIds.add(Integer.parseInt(answers[i]));
+                                studentAnswers.add(Integer.parseInt(answers[i]));
                             }
-                            submissionResult = answerBUS.checkMultipleAnswerQuiz(answerIds, quizId);
-                            request.setAttribute("STUDENT_ANSWERS", answerIds);
+                            submissionResult = answerBUS.checkMultipleAnswerQuiz(studentAnswers, quizId);
                         } else {
-                            answerId = Integer.parseInt(request.getParameter("answers"));
+                            Integer answerId = Integer.parseInt(request.getParameter("studentAnswers"));
                             submissionResult = answerBUS.checkSingleAnswerQuiz(answerId, quizId);
-                            request.setAttribute("STUDENT_ANSWER", answerId);
+                            studentAnswers = new ArrayList<>(1);
+                            studentAnswers.add(answerId);
                         }
+                        request.setAttribute("STUDENT_ANSWERS", studentAnswers);
 
                         request.setAttribute("SUBMISSION_RESULT", submissionResult);
 
@@ -103,6 +108,7 @@ public class StudentInTopicController extends HttpServlet {
                                 studentTopic = studentInTopicBUS.updateStatus(studentTopic.getId(), STUDENT_TOPIC_STATUS_COMPLETED);
                             }
                         }
+                        request.setAttribute("STUDENT_TOPIC", studentTopic);
 
                         //Create StudentInQuiz using current studentTopic's Id
                         StudentInQuizBUS studentInQuizBUS = new StudentInQuizBUS();
@@ -111,17 +117,36 @@ public class StudentInTopicController extends HttpServlet {
                         //Insert StudentAnswer
                         StudentAnswerBUS studentAnswerBUS = new StudentAnswerBUS();
                         if (correctAns > 1) {
-                            if (answerIds != null) {
-                                for (Integer currentAnswerId : answerIds) {
-                                    studentAnswerBUS.insert(studentQuiz.getStudentInQuizId(), currentAnswerId);
-                                }
+                            for (Integer currentAnswerId : studentAnswers) {
+                                studentAnswerBUS.insert(studentQuiz.getStudentInQuizId(), currentAnswerId);
                             }
-
                         } else {
-                            if (answerId != null) {
-                                studentAnswerBUS.insert(studentQuiz.getStudentInQuizId(), answerId);
-                            }
+                            studentAnswerBUS.insert(studentQuiz.getStudentInQuizId(), studentAnswers.get(0));
                         }
+
+                        // Get topic content again
+                        TopicBUS topicBUS = new TopicBUS();
+                        QuizBUS quizBUS = new QuizBUS();
+                        TopicModel topic = topicBUS.getContent(topicId);
+                        QuizModel quiz = quizBUS.getContent(topic.getTopicId());
+                        request.setAttribute("TOPIC", topic);
+                        request.setAttribute("QUIZ", quiz);
+
+                        String[] answerContents = request.getParameterValues("answerContents");
+                        String[] answerIds = request.getParameterValues("answerIds");
+                        String[] answerCorrects = request.getParameterValues("answerCorrects");
+
+                        int size = answerContents.length;
+                        AnswerModel ans;
+                        ArrayList<AnswerModel> ansList = new ArrayList();
+                        for (int i = 0; i < size; i++) {
+                            ans = new AnswerModel();
+                            ans.setAnswerId(Integer.parseInt(answerIds[i]));
+                            ans.setContent(answerContents[i]);
+                            ans.setCorrect(Boolean.parseBoolean(answerCorrects[i]));
+                            ansList.add(ans);
+                        }
+                        request.setAttribute("ANSWERS", ansList);
                         url = RESULT;
 
                         //Not completed: Show history

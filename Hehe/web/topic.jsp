@@ -1,3 +1,4 @@
+<%@page import="studentInTopics.StudentInTopicDTO"%>
 <%@page import="answers.AnswerModel"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="quizzes.QuizModel"%>
@@ -37,10 +38,15 @@
     <script class="u-script" type="text/javascript" src="js/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="js/nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 4.12.5, nicepage.com">
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="css/styleSideNavBar.css">
+
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <title>${requestScope.TOPIC.topicName}</title>
   </head>
   <body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-xl-mode">
-    
+
     <%
         StudentDTO student = (StudentDTO) session.getAttribute("LOGIN_STUDENT");
         TopicModel topic = (TopicModel) request.getAttribute("TOPIC");
@@ -55,11 +61,86 @@
             response.sendRedirect("home.jsp");
             return;
         }
+        StudentInTopicDTO studentTopic = null;
+        if (request.getAttribute("STUDENT_TOPIC") != null) {
+            studentTopic = (StudentInTopicDTO) request.getAttribute("STUDENT_TOPIC");
+            if (studentTopic.getStatus().equals("Completed")) {
+                response.sendRedirect("completedTopic.jsp");
+            }
+        }
     %>
+    <nav class="sidebar close">
+      <header>
+        <div class="image-text">
+          <span class="image">
+            <a href="home.jsp"><img src="images/logo-removebg-preview.png" alt=""></a>
+          </span>
+
+          <div class="text logo-text">
+            <span class="name">Hehe Code</span>
+
+          </div>
+        </div>
+
+      </header>
+
+      <div class="menu-bar">
+        <div class="menu">
+          <ul class="menu-links">
+            <li class="nav-link">
+              <a href="#" onclick="showTab('topic', 'history')">
+                <i class='bx bx-book-open icon' ></i>
+                <span class="text nav-text">Show lesson</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="#" onclick="showTab('history', 'topic')">
+                <i class='bx bx-stopwatch icon' ></i>
+                <span class="text nav-text">History</span>
+              </a>
+            </li>
+
+
+
+          </ul>
+        </div>
+
+        <div class="bottom-content">
+          <li class="">
+            <a href="#" onclick="submit_form('back_to_course')">
+              <i class='bx bx-log-out icon' ></i>
+              <span class="text nav-text">Back to course</span>
+            </a>
+          </li>
+        </div>
+      </div>
+      <form name="ViewCourse" method="POST" action="MainController" id="back_to_course">
+        <input hidden="" name="controller" value="ViewCourse">
+        <input hidden="" name="action" value="ViewCourse">
+        <input hidden="" name="courseId" value="<%= topic.getCourseId()%>">
+      </form>
+    </nav>
     <main>
+
       <div class="container">
         <div class="container__left">
-          <div class="lesson">
+          <div class="lesson" id="history">
+            <div class="lesson_content">
+              <% if (studentTopic == null) {
+              %>
+              <p>The record list is empty.</p>
+              <%
+              } else {
+              %>
+              <p>This is the record list.</p>
+              <%
+                  }
+              %>
+
+            </div>
+          </div>
+          <div class="lesson" id="topic">
             <div class="lesson_content">
               <%
                   if (!topic.getDescription().isBlank()) {
@@ -134,8 +215,12 @@
                     %>
                     <li class="answer-select" id="answer-select">
                       <div class="select">
-                        <input type="checkbox" id="answer<%= i + 1%>" class="answer" name="answers" value="<%= currentAns.getAnswerId()%>"
+                        <input type="checkbox" id="answer<%= i + 1%>" class="answer" name="studentAnswers" value="<%= currentAns.getAnswerId()%>"
                                form="answerForm">
+                        <input type="hidden" name="answerIds" value="<%= currentAns.getAnswerId()%>" form="answerForm">
+                        <input type="hidden" name="answerContents" value="<%= currentAns.getContent()%>" form="answerForm">
+                        <input type="hidden" name="answerCorrects" value="<%= currentAns.isCorrect()%>" form="answerForm">
+
                         <span class="checkmark"></span>
                       </div>
                       <div class="answer-content">
@@ -198,19 +283,31 @@
       </div>
     </main>
     <script>
+        function showTab(displayed_tab_id, hidden_tab_id) {
+            $(this).click(function () {
+                $('#' + hidden_tab_id).css('display', 'none');
+                $('#' + displayed_tab_id).css('display', 'block');
+            })
+        }
+
         $(document).ready(function () {
+            $('#history').css('display', 'none');
+            $(this).click(function () {
+                $(hidden_tab_id).css('display', 'none');
+                $(displayed_tab_id).css('display', 'block');
+            })
             for (var i = 1; i <= <%= answerList.size()%>; i++) {
-                if (document.getElementById('answer' + i).checked == true) {
+                if (document.getElementById('answer' + i).checked === true) {
                     document.getElementById('answer' + i).parentNode.parentNode.classList.add("selected");
                 }
             }
             var ans = 1;
       <%
-            if (countCorrect > 1) {
+          if (countCorrect > 1) {
       %>
             ans = 2;
       <%
-            }
+          }
       %>
             switch (ans) {
                 case 1:     // single select
@@ -256,8 +353,23 @@
         //        }
 
         function submit_form(form_id) {
-            var form = document.getElementById(form_id);
-            form.submit();
+            var submitResult = false;
+            if (form_id === 'answerForm') {
+                for (var i = 1; i <= <%= answerList.size()%>; i++) {
+                    if (document.getElementById('answer' + i).checked == true) {
+                        submitResult = true;
+                        break;
+                    }
+                }
+            } else {
+                submitResult = true;
+            }
+            if (submitResult) {
+                var form = document.getElementById(form_id);
+                form.submit();
+            } else {
+                alert("You must choose before submit!");
+            }
         }
     </script>
   </body>
