@@ -46,8 +46,8 @@
                 alt=""
               />
               <p>
-                Learn how to code easy with Hehe code.From now, code is not a
-                pain, code is fun like "HE HE"
+                Learn how to code easy with Hehe code. From now, code is not a
+                pain, code is fun like "HE HE".
               </p>
             </div>
             <div class="col item social">
@@ -55,8 +55,8 @@
               ><a href="#"><i class="fa-brands fa-twitter"></i></a
               ><a href="#"><i class="fa-brands fa-youtube"></i></a>
             </div>
+            <p class="copyright"><i class="fa-regular fa-copyright"></i> HEHE TEAM</p>
           </div>
-          <p class="copyright">HEHE TEAM</p>
         </div>
       </footer>
     </div>

@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/controllers/StudentInTopicController.java</file>
-            <file>file:/D:/Homework/SWP/hehe/Hehe/web/topic.jsp</file>
-            <file>file:/D:/Homework/SWP/hehe/Hehe/web/resultTopic.jsp</file>
-            <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/answers/AnswerBUS.java</file>
-            <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/answers/AnswerDAO.java</file>
-            <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/answers/AnswerModel.java</file>
+            <file>file:/D:/Homework/SWP/hehe/Hehe/web/home_studying_course.jsp</file>
+            <file>file:/D:/Homework/SWP/hehe/Hehe/web/home_completed_course.jsp</file>
+            <file>file:/D:/Homework/SWP/hehe/Hehe/web/home.jsp</file>
+            <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/studentInCourses/StudentInCourseDAO.java</file>
+            <file>file:/D:/Homework/SWP/hehe/Hehe/src/java/categories/CategoryDAO.java</file>
         </group>
     </open-files>
 </project-private>

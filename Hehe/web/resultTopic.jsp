@@ -43,6 +43,15 @@
 
     <!----===== Boxicons CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+        />
+    <link rel="stylesheet" href="css/modalConfirm.css" />
     <title>${requestScope.TOPIC.topicName}</title>
   </head>
 
@@ -127,6 +136,44 @@
         <input hidden="" name="courseId" value="<%= topic.getCourseId()%>">
       </form>
     </nav>
+    <div id="modalConfirm" class="modalConfirm" style="z-index: 100;">
+      <%
+          if (request.getAttribute("SUBMISSION_RESULT") == null) {
+              response.sendRedirect("topic.jsp");
+          }
+          boolean submissionResult = (Boolean) request.getAttribute("SUBMISSION_RESULT");
+          if (submissionResult) {
+      %>
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="check__icon" style="background-color: #6DBD73;"><i class="fa-solid fa-check"></i></div>
+        <div class="modal-conten__p">
+          <p>Amazing! Good job!</p>
+          <p>Continue to learn next topic?</p>
+        </div>
+        <div class="modal-content__button">
+          <button class="btn__Next" id="modal-content__open" onclick="nextTopic('next')">YES</button>
+          <button class="btn__Close" id="modal-content__close" onclick="currentTopic()">NO</button>
+        </div>
+      </div>
+      <%
+      } else {
+      %>
+      <div class="modal-content">
+        <div class="check__icon" style="background-color: #F75563;"><i class="fa-solid fa-xmark"></i></div>
+        <div class="modal-conten__p">
+          <p>Incorrect!!!</p>
+          <p>Continue to learn next topic?</p>
+        </div>
+        <div class="modal-content__button">
+          <button class="btn__Next" id="modal-content__open" onclick="nextTopic('next')">YES</button>
+          <button class="btn__Close" id="modal-content__close" onclick="currentTopic()">NO</button>
+        </div>
+      </div>
+      <%
+          }
+      %>
+    </div>
     <main>
       <div class="container">
         <div class="container__left">
@@ -147,19 +194,6 @@
           </div>
           <div class="lesson" id="topic">
             <div class="lesson_content">
-              <%
-                  if (request.getAttribute("SUBMISSION_RESULT") == null) {
-                      response.sendRedirect("topic.jsp");
-                  }
-                  boolean submissionResult = (Boolean) request.getAttribute("SUBMISSION_RESULT");
-                  if (submissionResult) {
-              %>
-              CORRECT
-              <%
-              } else {
-              %>INCORRECT<%
-                  }
-              %>
               <%
                   if (!topic.getDescription().isBlank()) {
               %>
@@ -307,6 +341,18 @@
       </div>
     </main>
     <script>
+        var modal = document.getElementById("modalConfirm");
+        var modalcontent = document.getElementsByClassName("modal-content");
+
+// When the user clicks the button, open the modal
+        function nextTopic(form_id) {
+            modal.style.display = "block";
+            var form = document.getElementById(form_id);
+            form.submit();
+        }
+        function currentTopic() {
+            modal.style.display = "none";
+        }
         function showTab(displayed_tab_id, hidden_tab_id) {
             $(this).click(function () {
                 $('#' + hidden_tab_id).css('display', 'none');

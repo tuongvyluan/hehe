@@ -18,9 +18,6 @@
             <div class="header__logo">
                 <a href="home.jsp"><img src="images/logo-removebg-preview.png" alt=""></a>
             </div>
-            <ul class="header__nav-links">
-                <li><a href="home.jsp">Learning</a></li>
-            </ul>
         </nav>
         <script src="js/header.js"></script>
     </body>

@@ -85,12 +85,14 @@
       </div>
     </section>
 
+      
     <%
         int pageNumber = 1;
         int rowsOfPage = 3;
         CategoryBUS categoryBUS = new CategoryBUS();
         int count = categoryBUS.count();
         int totalPage = count / 3;
+        AuthorBUS authorBUS = new AuthorBUS();
         if (totalPage * 3 < count) {
             totalPage++;
         }
@@ -100,7 +102,6 @@
         if (pageNumber > totalPage) {
             pageNumber = totalPage;
         }
-        AuthorBUS authorBUS = new AuthorBUS();
         ArrayList<CategoryModel> categories = categoryBUS.getCategories(pageNumber, rowsOfPage);
 
     %>
@@ -108,7 +109,6 @@
     <%        if (rowsOfPage > categories.size()) {
             rowsOfPage = categories.size();
         }
-        ArrayList<CourseDTO> courseList;
         CourseBUS courseBUS = new CourseBUS();
         for (int i = 1; i <= rowsOfPage; i++) {
             CategoryModel category = categories.get(i - 1);
@@ -120,7 +120,7 @@
           <div class="card-wrapper swiper-wrapper">
 
             <%
-                courseList = courseBUS.getCoursesByCategory(category.getCategoryId(), 1, 5);
+                ArrayList<CourseDTO> courseList = courseBUS.getCoursesByCategory(category.getCategoryId(), 1, 5);
                 for (CourseDTO course : courseList) {
             %>
 
@@ -159,7 +159,7 @@
         }
     %>
     <div class="pagination">
-      <a href="#">&laquo;</a>
+      <a href="./home.jsp?page=1">&laquo;</a>
       
       <%
           for (int i = 1; i < pageNumber; i++) {
@@ -179,7 +179,7 @@
           }
       %>
       
-      <a href="#">&raquo;</a>
+      <a href="./home.jsp?page=<%= totalPage %>">&raquo;</a>
     </div>
       <footer>
         <%@ include file="footerHehe.jsp" %>

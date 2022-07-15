@@ -4,11 +4,13 @@
  */
 package studentInCourses;
 
+import courses.CourseDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import utils.DBUtils;
 
 /**
@@ -21,10 +23,9 @@ public class StudentInCourseDAO {
     private StudentInCourseModel studentInCourseModel;
 
     //Fields
-    private final String STUDENT_IN_COURSE_DTO_FIELDS = "Id, StudentId, CourseId, "
-            + "Status";
     private final String STUDENT_IN_COURSE_MODEL_FIELDS = "Id, StudentId, CourseId, "
             + "Certificate, Status";
+    private final String COURSE_INTRO_FIELDS = "Id, Name, AuthorId, Duration";
 
     //Sql queries
     private final String GET_ENROLLMENT = "SELECT " + STUDENT_IN_COURSE_MODEL_FIELDS
@@ -33,6 +34,14 @@ public class StudentInCourseDAO {
     private final String ENROLL = "INSERT INTO StudentInCourse "
             + "(StudentId, CourseId, StartDate, Certificate, Status) "
             + "VALUES (?,?,?,?,?)";
+
+    private final String GET_STUDYING_COURSES = "SELECT c." + COURSE_INTRO_FIELDS
+            + " FROM Course c JOIN StudentInCourse s ON c.Id=s.CourseId "
+            + " WHERE StudentId=? AND s.Status='Studying'";
+    
+    private final String GET_COMPLETED_COURSES = "SELECT c." + COURSE_INTRO_FIELDS
+            + " FROM Course c JOIN StudentInCourse s ON c.Id=s.CourseId "
+            + " WHERE StudentId=? AND s.Status='Completed'";
 
     public StudentInCourseModel getModel(int studentId, int courseId) throws SQLException {
         studentInCourseModel = null;
@@ -135,5 +144,80 @@ public class StudentInCourseDAO {
             }
         }
         return studentInCourseModel;
+    }
+    
+    public ArrayList<CourseDTO> getStudyingCourses(int studentId) throws SQLException {
+        ArrayList<CourseDTO> list = new ArrayList<>();
+        CourseDTO courseDTO;
+
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_STUDYING_COURSES);
+                ptm.setInt(1, studentId);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    courseDTO = new CourseDTO();
+                    courseDTO.setCourseId(rs.getInt("Id"));
+                    courseDTO.setAuthorId(rs.getInt("AuthorId"));
+                    courseDTO.setCourseName(rs.getString("Name"));
+                    courseDTO.setDuration(rs.getDouble("Duration"));
+                    list.add(courseDTO);
+                }
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return list;
+    }
+    
+    public ArrayList<CourseDTO> getCompletedCourses(int studentId) throws SQLException {
+        ArrayList<CourseDTO> list = new ArrayList<>();
+        CourseDTO courseDTO;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_COMPLETED_COURSES);
+                ptm.setInt(1, studentId);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    courseDTO = new CourseDTO();
+                    courseDTO.setCourseId(rs.getInt("Id"));
+                    courseDTO.setAuthorId(rs.getInt("AuthorId"));
+                    courseDTO.setCourseName(rs.getString("Name"));
+                    courseDTO.setDuration(rs.getDouble("Duration"));
+                    list.add(courseDTO);
+                }
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return list;
     }
 }

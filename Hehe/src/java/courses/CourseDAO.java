@@ -23,6 +23,7 @@ public class CourseDAO {
     private final String COURSE_DTO_FIELDS = "Id, Name, CategoryId";
     private final String COURSE_MODEL_FIELDS = "Id, Name, CategoryId, AuthorId,"
             + "Description, Price, Duration";
+    private final String COURSE_INTRO_FIELDS = "Id, Name, AuthorId, Duration";
 
     //Pagination
     private final String DECLARE_PAGINATION = "DECLARE @PageNumber as INT "
@@ -35,8 +36,11 @@ public class CourseDAO {
     //SQL query
     private final String GET_COURSES = DECLARE_PAGINATION + "SELECT " + COURSE_DTO_FIELDS
             + " FROM Course ORDER BY UpdatedAt " + PAGINATION;
-    private final String GET_COURSES_BY_CATEGORY = DECLARE_PAGINATION + "SELECT Id, Name, AuthorId, Duration"
+
+    private final String GET_COURSES_BY_CATEGORY = DECLARE_PAGINATION + "SELECT "
+            + COURSE_INTRO_FIELDS
             + " FROM Course WHERE Status='Active' AND CategoryId = ? ORDER BY UpdatedAt " + PAGINATION;
+
     private final String GET_COURSE = "SELECT " + COURSE_MODEL_FIELDS
             + " FROM Course WHERE Id=?";
 
