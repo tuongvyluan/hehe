@@ -141,11 +141,8 @@
           </div>
           <div class="lesson" id="topic">
             <div class="lesson_content">
-              <h3 style="text-align: justify;">
-                <strong>
-                  Lý Thuyết
-                </strong>
-              </h3>
+              <h1><%= topic.getDisplayIndex() + ". " + topic.getTopicName()%></h1>
+              <h3 style="text-align: justify;">Lý Thuyết</h3>
               <p style="text-align: justify;">
                 <%= topic.getDescription()%>
               </p>
@@ -153,7 +150,7 @@
               <%
                   if (quiz != null && answerList != null && !answerList.isEmpty()) {
               %>
-              <h3><strong></strong>Bài tập</strong></h3>
+              <h3>Bài tập</h3>
               <ul>
                 <li class="lesson_question" id="question">
                   <%= quiz.getContent()%>

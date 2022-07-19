@@ -142,14 +142,11 @@
           </div>
           <div class="lesson" id="topic">
             <div class="lesson_content">
+              <h1><%= topic.getDisplayIndex() + ". " + topic.getTopicName()%></h1>
               <%
                   if (!topic.getDescription().isBlank()) {
               %>
-              <h3 style="text-align: justify;">
-                <strong>
-                  Lý Thuyết
-                </strong>
-              </h3>
+              <h3 style="text-align: justify;">Lý Thuyết</h3>
               <p style="text-align: justify;">
                 <%= topic.getDescription()%>
               </p>

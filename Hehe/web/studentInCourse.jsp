@@ -52,7 +52,10 @@
         CourseModel course = (CourseModel) request.getAttribute("COURSE");
         ArrayList<SectionDTO> sections = (ArrayList) request.getAttribute("SECTION_LIST");
         ArrayList<Integer> completedTopicIds = (ArrayList) request.getAttribute("COMPLETE_TOPIC_IDS");
-        int totalCompletedTopic = completedTopicIds.size();
+        int totalCompletedTopic = 0;
+        if (completedTopicIds != null && completedTopicIds.size() > 0) {
+            totalCompletedTopic = completedTopicIds.size();
+        }
         if (course == null || sections == null || studentCourse == null) {
             response.sendRedirect("home.jsp");
             return;
