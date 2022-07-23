@@ -33,7 +33,7 @@ public class CategoryDAO {
 
     //SQL query
     private final String GET_CATEGORIES = DECLARE_PAGINATION + "SELECT " + FIELDS
-            + " FROM Category WHERE Status='Active' ORDER BY Id DESC " + PAGINATION;
+            + " FROM Category WHERE Status='ACTIVE' ORDER BY Id DESC " + PAGINATION;
     
     private final String GET_CATEGORY_DTO = "SELECT " + DTO_FIELDS
             + " FROM Course WHERE Id=?";

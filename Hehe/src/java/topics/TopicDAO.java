@@ -24,17 +24,19 @@ public class TopicDAO {
     private final String TOPIC_CONTENT = "Id, CourseId, Name, DisplayIndex, Description";
 
     //Sql queries
+    private final String COUNT_TOPICS_BY_COURSE = "SELECT Count(Id) AS [Count] FROM Topic WHERE CourseId=? AND Status='ACTIVE'";
+    
     private final String GET_TOPICS_BY_SECTION = "SELECT " + TOPIC_DTO_FIELDS
-            + " FROM Topic WHERE SectionId=? ORDER BY DisplayIndex";
+            + " FROM Topic WHERE SectionId=? AND Status='ACTIVE' ORDER BY DisplayIndex";
 
     private final String GET_TOPIC_CONTENT = "SELECT " + TOPIC_CONTENT
-            + " FROM Topic WHERE Id=?";
+            + " FROM Topic WHERE Id=? AND Status='ACTIVE'";
 
-    private final String GET_NEXT_TOPIC_CONTENT = "SELECT TOP(1) " + TOPIC_CONTENT
-            + " FROM Topic WHERE CourseId=? AND DisplayIndex>?";
+    private final String GET_NEXT_TOPIC_ID = "SELECT TOP(1) Id"
+            + " FROM Topic WHERE CourseId=? AND DisplayIndex>? AND Status='ACTIVE' ORDER BY DisplayIndex ASC";
     
-    private final String GET_PREV_TOPIC_CONTENT = "SELECT TOP(1) " + TOPIC_CONTENT
-            + " FROM Topic WHERE CourseId=? AND DisplayIndex<? ORDER BY DisplayIndex DESC";
+    private final String GET_PREV_TOPIC_ID = "SELECT TOP(1) Id"
+            + " FROM Topic WHERE CourseId=? AND DisplayIndex<? AND Status='ACTIVE' ORDER BY DisplayIndex DESC";
 
     public ArrayList<TopicDTO> get(int sectionId) throws SQLException {
         ArrayList<TopicDTO> list = new ArrayList<>();
@@ -109,25 +111,20 @@ public class TopicDAO {
         return topic;
     }
 
-    public TopicModel getNextContent(int courseId, int displayIndex) throws SQLException {
-        TopicModel topic = null;
+    public int getNextTopicId(int courseId, int displayIndex) throws SQLException {
+        int topicId = 0;
         Connection conn = null;
         PreparedStatement ptm = null;
         ResultSet rs = null;
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(GET_NEXT_TOPIC_CONTENT);
+                ptm = conn.prepareStatement(GET_NEXT_TOPIC_ID);
                 ptm.setInt(1, courseId);
                 ptm.setInt(2, displayIndex);
                 rs = ptm.executeQuery();
                 if (rs.next()) {
-                    topic = new TopicModel();
-                    topic.setTopicId(rs.getInt("Id"));
-                    topic.setCourseId(rs.getInt("CourseId"));
-                    topic.setTopicName(rs.getString("Name"));
-                    topic.setDescription(rs.getString("Description"));
-                    topic.setDisplayIndex(rs.getInt("DisplayIndex"));
+                    topicId = rs.getInt("Id");
                 }
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -143,28 +140,23 @@ public class TopicDAO {
                 conn.close();
             }
         }
-        return topic;
+        return topicId;
     }
     
-    public TopicModel getPrevContent(int courseId, int displayIndex) throws SQLException {
-        TopicModel topic = null;
+    public int getPrevTopicId(int courseId, int displayIndex) throws SQLException {
+        int topicId = 0;
         Connection conn = null;
         PreparedStatement ptm = null;
         ResultSet rs = null;
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(GET_PREV_TOPIC_CONTENT);
+                ptm = conn.prepareStatement(GET_PREV_TOPIC_ID);
                 ptm.setInt(1, courseId);
                 ptm.setInt(2, displayIndex);
                 rs = ptm.executeQuery();
                 if (rs.next()) {
-                    topic = new TopicModel();
-                    topic.setTopicId(rs.getInt("Id"));
-                    topic.setCourseId(rs.getInt("CourseId"));
-                    topic.setTopicName(rs.getString("Name"));
-                    topic.setDescription(rs.getString("Description"));
-                    topic.setDisplayIndex(rs.getInt("DisplayIndex"));
+                    topicId = rs.getInt("Id");
                 }
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -180,6 +172,37 @@ public class TopicDAO {
                 conn.close();
             }
         }
-        return topic;
+        return topicId;
+    }
+    
+    public int countTopicsByCourse(int courseId) throws SQLException {
+        int count = 0;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(COUNT_TOPICS_BY_COURSE);
+                ptm.setInt(1, courseId);
+                rs = ptm.executeQuery();
+                if (rs.next()) {
+                    count = rs.getInt("Count");
+                }
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return count;
     }
 }

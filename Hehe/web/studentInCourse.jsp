@@ -34,6 +34,18 @@
         crossorigin="anonymous"
         />
     <title>${requestScope.COURSE.courseName}</title>
+    <style>
+      input[type=submit]{
+          background: none;
+          border: none;
+          padding: 0;
+          /*input has OS specific font-family*/
+      }
+      input[type=submit]:hover{
+          text-decoration: underline;
+          cursor: pointer;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -119,7 +131,6 @@
             <div class="accordion-body">
               <ul style="list-style-type: none;">
                 <%
-
                     ArrayList<TopicDTO> topicList;
                     topicList = topicBUS.get(section.getSectionId());
                     if (topicList != null && topicList.isEmpty() == false) {
@@ -128,25 +139,25 @@
                                 completedTopicCount++;
                 %>
                 <li>
-                  <form name="ViewTopic" method="POST" action="MainController" id="topic<%= topicDTO.getTopicId()%>">
+                  <form target="_blank" name="ViewTopic" method="POST" action="MainController" id="topic<%= topicDTO.getTopicId()%>">
                     <input type="hidden" name="controller" value="Topic">
-                    <input type="hidden" name="action" value="ViewCompletedTopic">
+                    <input type="hidden" name="action" value="ViewTopic">
                     <input type="hidden" name="topicId" value="<%= topicDTO.getTopicId()%>">
                     <input type="hidden" name="studentCourseId" value="<%= studentCourse.getStudentInCourseId()%>">
+                    <input type="submit" style="color: #62C584;" value="<%= topicCount++ + ". " + topicDTO.getTopicName()%>">
                   </form>
-                  <a style="color: #62C584;" onclick="submit_form('topic<%= topicDTO.getTopicId()%>')" href="#"><%= topicCount++ + ". " + topicDTO.getTopicName()%></a>
                 </li>
                 <%
                 } else {
                 %>
                 <li>
-                  <form name="ViewTopic" method="POST" action="MainController" id="topic<%= topicDTO.getTopicId()%>">
+                  <form target="_blank" name="ViewTopic" method="POST" action="MainController" id="topic<%= topicDTO.getTopicId()%>">
                     <input type="hidden" name="controller" value="Topic">
                     <input type="hidden" name="action" value="ViewTopic">
                     <input type="hidden" name="topicId" value="<%= topicDTO.getTopicId()%>">
                     <input type="hidden" name="studentCourseId" value="<%= studentCourse.getStudentInCourseId()%>">
+                    <input type="submit" style="color: #000000;" value="<%= topicCount++ + ". " + topicDTO.getTopicName()%>">
                   </form>
-                  <a onclick="submit_form('topic<%= topicDTO.getTopicId()%>')" href="#"><%= topicCount++ + ". " + topicDTO.getTopicName()%></a>
                 </li>
                 <%
                             }

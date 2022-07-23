@@ -29,15 +29,13 @@ public class TopicBUS {
         return topicModel;
     }
     
-    public TopicModel getNextContent(int courseId, int displayIndex) throws SQLException {
+    public int getNextTopicId(int courseId, int displayIndex) throws SQLException {
         dao = new TopicDAO();
-        topicModel = dao.getNextContent(courseId, displayIndex);
-        return topicModel;
+        return dao.getNextTopicId(courseId, displayIndex);
     }
     
-    public TopicModel getPrevContent(int courseId, int displayIndex) throws SQLException {
+    public int getPrevTopicId(int courseId, int displayIndex) throws SQLException {
         dao = new TopicDAO();
-        topicModel = dao.getPrevContent(courseId, displayIndex);
-        return topicModel;
+        return dao.getPrevTopicId(courseId, displayIndex);
     }
 }

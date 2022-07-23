@@ -7,6 +7,7 @@ package controllers;
 import answers.AnswerBUS;
 import answers.AnswerModel;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import quizzes.QuizBUS;
 import quizzes.QuizModel;
 import studentAnswers.StudentAnswerBUS;
+import studentInCourses.StudentInCourseBUS;
 import studentInQuizzes.StudentInQuizBUS;
 import studentInQuizzes.StudentInQuizModel;
 import studentInTopics.StudentInTopicBUS;
@@ -57,6 +59,7 @@ public class StudentInTopicController extends HttpServlet {
             } else {
                 String action = request.getParameter("action");
                 StudentInTopicBUS studentInTopicBUS = new StudentInTopicBUS();
+                StudentInCourseBUS studentInCourseBUS = new StudentInCourseBUS();
                 int studentCourseId = Integer.parseInt(request.getParameter("studentCourseId"));
                 System.out.println("Student Course ID: " + studentCourseId);
                 int topicId = Integer.parseInt(request.getParameter("topicId"));
@@ -100,12 +103,18 @@ public class StudentInTopicController extends HttpServlet {
                         if (studentTopic == null) {
                             if (submissionResult) {
                                 studentTopic = studentInTopicBUS.insert(studentCourseId, topicId, STUDENT_TOPIC_STATUS_COMPLETED);
+                                if (studentInCourseBUS.checkStatus(studentCourseId)) {
+                                    studentInCourseBUS.completeCourse(studentCourseId);
+                                }
                             } else {
                                 studentTopic = studentInTopicBUS.insert(studentCourseId, topicId, STUDENT_TOPIC_STATUS_STUDYING);
                             }
                         } else {
                             if (submissionResult) {
                                 studentTopic = studentInTopicBUS.updateStatus(studentTopic.getId(), STUDENT_TOPIC_STATUS_COMPLETED);
+                                if (studentInCourseBUS.checkStatus(studentCourseId)) {
+                                    studentInCourseBUS.completeCourse(studentCourseId);
+                                }
                             }
                         }
                         request.setAttribute("STUDENT_TOPIC", studentTopic);
@@ -149,7 +158,17 @@ public class StudentInTopicController extends HttpServlet {
                         request.setAttribute("ANSWERS", ansList);
                         url = RESULT;
 
-                        //Not completed: Show history
+                        //Get next and prev topicId
+                        int displayIndex = topic.getDisplayIndex();
+                        int courseId = topic.getCourseId();
+                        int nextTopicId = topicBUS.getNextTopicId(courseId, displayIndex);
+                        request.setAttribute("NEXT_TOPIC_ID", nextTopicId);
+                        int prevTopicId = topicBUS.getPrevTopicId(courseId, displayIndex);
+                        request.setAttribute("PREV_TOPIC_ID", prevTopicId);
+
+                        //Show quiz history
+                        ArrayList<LocalDate> quizRecord = studentInQuizBUS.getQuizRecord(studentTopic.getId());
+                        request.setAttribute("QUIZ_RECORD", quizRecord);
                         break;
                     }
                 }

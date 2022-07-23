@@ -24,7 +24,7 @@ public class SectionDAO {
     
     //Sql queries
     private final String GET_SECTIONS_BY_COURSE = "SELECT " + SECTION_DTO_FIELDS
-            + " FROM Section WHERE CourseId=? ORDER BY DisplayIndex";
+            + " FROM Section WHERE CourseId=? AND Status='ACTIVE' ORDER BY DisplayIndex";
     
     public ArrayList<SectionDTO> get(int courseId) throws SQLException {
         ArrayList<SectionDTO> list = new ArrayList<>();

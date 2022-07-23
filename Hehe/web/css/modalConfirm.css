@@ -67,12 +67,14 @@
 .btn__Next{
   margin-right: 1vw;
   background-color: #6DBD73;
+  cursor: pointer;
 }
 .btn__Next:hover{
   background-color: #A5C96D ;
 }
 .btn__Close{
   background-color: #F75563;
+  cursor: pointer;
 }
 .btn__Close:hover{
   background-color: #D23047;

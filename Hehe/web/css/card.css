@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
+    background-color: antiquewhite;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card-container {
+    width: 95%;
+    margin: auto;
+}
+
+.card {
+    border-radius: 25px;
+    background-color: #FFF;
+    width: 250px;
+    height: 350px;
+    margin-bottom: 10px;
+    margin: 10px auto;
+}
+
+.image-content,
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 10px 15px 10px 15px;
+}
+
+.card-content {
+    text-align: left;
+}
+
+.card-content h2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-transform: capitalize;
+    font-size: 20px;
+    line-height: 1.5em;
+    min-height: 3em;
+    margin-bottom: 10px;
+}
+
+.image-content {
+    position: relative;
+    row-gap: 5px;
+    height: 150px;
+    padding: 10px 0;
+}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to top left, #1877f2 0%, #ff6cb0 100%);
+    border-radius: 25px 25px 0 25px;
+}
+
+.overlay::before,
+.overlay::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -40px;
+    height: 40px;
+    width: 40px;
+    background-color: #4070F4;
+}
+
+.overlay::after {
+    border-radius: 0 25px 0 0;
+    background-color: #FFF;
+}
+
+.card-image {
+    position: relative;
+    height: 150px;
+    width: 150px;
+    border-radius: 0%;
+    background: #FFF;
+    padding: 3px;
+}
+
+.card-image .card-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #4070F4;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+}
+
+.description {
+    font-size: 15px;
+    color: #333;
+    text-align: left;
+}
+
+.description p {
+    margin-top: 0px;
+}
+
+.card-content-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    margin-top: 0;
+    margin-left: 0;
+}
+
+.card-content-detail p {
+    color: #FF907E;
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+.buttonCourse {
+    border: none;
+    font-size: 16px;
+    color: #FFF;
+    padding: 8px 16px;
+    background-color: #4070F4;
+    border-radius: 6px;
+    margin-right: 10px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.buttonCourse:hover {
+    background: #265DF2;
+}
+@media screen and (min-width: 350px) {
+    .card-container {
+        width: 95%;
+        margin: auto;
+    }
+
+    .card {
+        width: 330px;
+        height: auto;
+    }
+}
+@media screen and (min-width: 560px) {
+    .card-container {
+        width: 90%;
+        margin: auto;
+    }
+
+    .card {
+        width: 290px;
+        height: auto;
+    }
+}
+@media screen and (min-width: 560px) {
+    .card-container {
+        width: 90%;
+        margin: auto;
+    }
+
+    .card {
+        width: 290px;
+        height: auto;
+    }
+}
+@media screen and (min-width: 580px) {
+    .card-container {
+        width: 70%;
+        margin: auto;
+    }
+    .col-sm-6{
+        max-width: 100%;
+    }
+    .card {
+        width: 350px;
+        height: auto;
+    }
+}
+@media screen and (min-width: 768px) {
+    .card-container {
+        width: 90%;
+        margin: auto;
+    }
+
+    .card {
+        width: 300px;
+        height: auto;
+    }
+}
+@media screen and (min-width: 875px) {
+    .card-container {
+        width: 90%;
+        margin: auto;
+    }
+    .col-xl-3{
+        max-width: 50%;
+    }
+    .card {
+        width: 350px;
+        height: auto;
+    }
+}
+@media screen and (min-width: 1050px) {
+    .card-container {
+        width: 90%;
+        margin: auto;
+    }
+    .col-xl-3{
+        max-width: 33.3%;
+    }
+    .card {
+        width: 300px;
+        height: auto;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .card-container {
+        width: 80%;
+        margin: auto;
+    }
+    .col-xl-3{
+        max-width: 33.3%;
+    }
+    .card {
+        width: 310px;
+        height: auto;
+        margin-left: 10px;
+    }
+}
+@media screen and (min-width: 1370px) {
+    .card-container {
+        width: 90%;
+        margin: auto;
+    }
+    .col-xl-3{
+        max-width: 25%;
+    }
+    .card {
+        width: 300px;
+        height: auto;
+        margin-left: 10px;
+    }
+}
+@media screen and (min-width: 1500px) {
+    .card-container {
+        width: 90%;
+        margin: auto;
+    }
+    .card {
+        width: 320px;
+        height: auto;
+    }
+}
+@media screen and (min-width: 1700px) {
+    .card-container {
+        width: 80%;
+        margin: auto;
+    }
+    .card {
+        width: 350px;
+        height: auto;
+    }
+}

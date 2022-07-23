@@ -30,12 +30,13 @@ public class StudentDAO {
     private final String GET_STUDENTS = "SELECT " + STUDENT_MODEL_FIELDS + " FROM Student ORDER BY createdAt "
             + PAGINATION;
 
-    private final String GET_STUDENT_BY_EMAIL = "SELECT " + STUDENT_MODEL_FIELDS + " FROM Student WHERE email=?";
+    private final String CHECK_GOOGLE_LOGIN = "SELECT " + STUDENT_MODEL_FIELDS
+            + " FROM Student WHERE email=? AND Status='ACTIVE'";
 
     private final String GET_STUDENT_BY_ID = "SELECT " + STUDENT_MODEL_FIELDS + " FROM Student WHERE Id=?";
 
     private final String CHECK_NORMAL_LOGIN = "SELECT " + STUDENT_MODEL_FIELDS
-            + " FROM Student WHERE email=? AND password=?";
+            + " FROM Student WHERE Email=? AND Password=? AND Status='ACTIVE'";
 
     private final String CREATE_STUDENT = "INSERT INTO Student "
             + "(status, email, password, firstName, lastName, dob, phoneNumber) VALUES "
@@ -186,7 +187,7 @@ public class StudentDAO {
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(GET_STUDENT_BY_EMAIL);
+                ptm = conn.prepareStatement(CHECK_GOOGLE_LOGIN);
                 ptm.setString(1, email);
                 rs = ptm.executeQuery();
                 if (rs.next()) {
@@ -217,7 +218,7 @@ public class StudentDAO {
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(GET_STUDENT_BY_EMAIL);
+                ptm = conn.prepareStatement(CHECK_GOOGLE_LOGIN);
                 ptm.setString(1, email);
                 rs = ptm.executeQuery();
                 if (rs.next()) {

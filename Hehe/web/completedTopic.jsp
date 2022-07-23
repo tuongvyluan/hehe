@@ -1,3 +1,4 @@
+<%@page import="java.time.LocalDate"%>
 <%@page import="studentInTopics.StudentInTopicDTO"%>
 <%@page import="answers.AnswerModel"%>
 <%@page import="java.util.ArrayList"%>
@@ -24,6 +25,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
     <link rel="stylesheet" href="css/nicepage.css" media="screen">
     <link rel="stylesheet" href="css/About.css" media="screen">
+    <link rel="stylesheet" href="css/table.css" media="screen">
     <link id="u-theme-google-font" rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet"
@@ -132,8 +134,56 @@
               <%
               } else {
               %>
-              <p>This is the record list.</p>
               <%
+                  if (request.getAttribute("QUIZ_RECORD") != null) {
+              %>
+              <table class="table__history">
+                <tr class="table__history__row" style="background-color: #9EA9DF">
+                  <th class="content__table__cell__head tableHead__No" >
+                    No
+                  </th>
+                  <th class="content__table__cell__head tableHead__time">
+                    Time
+                  </th>
+                  <th class="content__table__cell__head tableHead__Status">
+                    Status
+                  </th>
+                </tr>
+                <%
+                    ArrayList<LocalDate> quizRecord = (ArrayList<LocalDate>) request.getAttribute("QUIZ_RECORD");
+                    int recordSize = quizRecord.size();
+                %>
+                <tr class="table__history__row">
+                  <td class="content__table__cell table__No">
+                    <%= 1%>
+                  </td>
+                  <td class="content__table__cell table__time">
+                    <%= quizRecord.get(0)%>
+                  </td>
+                  <td class="content__table__cell table__status">
+                    <p style="color: #87AF3E; font-weight:600;margin: 0;  ">Completed</p>
+                  </td>
+                </tr>
+                <%
+                    for (int i = 1; i < recordSize; i++) {
+                %>
+                <tr class="table__history__row">
+                  <td class="content__table__cell table__No">
+                    <%= i + 1%>
+                  </td>
+                  <td class="content__table__cell table__time">
+                    <%= quizRecord.get(0)%>
+                  </td>
+                  <td class="content__table__cell table__status">
+                    <p style="color: #FF907E; font-weight:600;margin: 0;  ">Not passed</p>
+                  </td>
+                </tr>
+                <%
+                    }
+                %>
+              </table>
+              <%
+                      }
                   }
               %>
 
@@ -232,25 +282,17 @@
             <div class="submit-footer">
               <div class="submit-menu">
 
-                <form name="ViewNextTopic" method="POST" action="MainController" id="next">
-                  <input type="hidden" name="controller" value="Topic">
-                  <input type="hidden" name="action" value="ViewNextTopic">
-                  <input type="hidden" name="displayIndex" value="<%= topic.getDisplayIndex()%>">
-                  <input type="hidden" name="courseId" value="<%= topic.getCourseId()%>">
-                  <input type="hidden" name="studentCourseId" value="<%= studentCourseId%>">
-                </form>
-
-                <form name="ViewPrevTopic" method="POST" action="MainController" id="prev">
-                  <input type="hidden" name="controller" value="Topic">
-                  <input type="hidden" name="action" value="ViewPrevTopic">
-                  <input type="hidden" name="displayIndex" value="<%= topic.getDisplayIndex()%>">
-                  <input type="hidden" name="courseId" value="<%= topic.getCourseId()%>">
-                  <input type="hidden" name="studentCourseId" value="<%= studentCourseId%>">
-                </form>
-
                 <%
-                    if (topic.getDisplayIndex() > 1) {
+                    int nextTopicId = (Integer) request.getAttribute("NEXT_TOPIC_ID");
+                    int prevTopicId = (Integer) request.getAttribute("PREV_TOPIC_ID");
+                    if (prevTopicId != 0) {
                 %>
+                <form name="ViewTopic" method="POST" action="MainController" id="prev">
+                  <input type="hidden" name="controller" value="Topic">
+                  <input type="hidden" name="action" value="ViewTopic">
+                  <input type="hidden" name="topicId" value="<%= prevTopicId%>">
+                  <input type="hidden" name="studentCourseId" value="<%= studentCourseId%>">
+                </form>
                 <a class="previous-button" id="prevbtn" href="#" onclick="submit_form('prev')">
                   <!--dung jsp redirect den trang hien tai-->
                   <i class="fa-solid fa-arrow-left"></i>
@@ -258,12 +300,21 @@
                 </a>
                 <%
                     }
+                    if (nextTopicId != 0) {
                 %>
-
+                <form name="ViewTopic" method="POST" action="MainController" id="next">
+                  <input type="hidden" name="controller" value="Topic">
+                  <input type="hidden" name="action" value="ViewTopic">
+                  <input type="hidden" name="topicId" value="<%= nextTopicId%>">
+                  <input type="hidden" name="studentCourseId" value="<%= studentCourseId%>">
+                </form>
                 <a class="next-button" id="nextbtn" href="#" onclick="submit_form('next')">
                   <span>Next</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </a>
+                <%
+                    }
+                %>
               </div>
             </div>
           </div>

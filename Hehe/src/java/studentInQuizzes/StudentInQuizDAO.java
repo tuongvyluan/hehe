@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import utils.DBUtils;
 import utils.MyUtils;
@@ -28,7 +29,7 @@ public class StudentInQuizDAO {
     private final String GET_QUIZ = "SELECT TOP(1) " + STUDENT_IN_QUIZ_DTO_FIELDS
             + " FROM StudentInQuiz WHERE StudentTopicId=? ORDER BY Id DESC";
 
-    private final String GET_QUIZZES = "SELECT TOP(10) " + STUDENT_IN_QUIZ_DTO_FIELDS
+    private final String GET_QUIZZES = "SELECT TOP(10) CreatedAt"
             + " FROM StudentInQuiz WHERE StudentTopicId=? ORDER BY Id DESC";
 
     private final String INSERT = "INSERT INTO StudentInQuiz "
@@ -69,8 +70,9 @@ public class StudentInQuizDAO {
         return studentInQuizModel;
     }
     
-    public ArrayList<StudentInQuizModel> getStudentQuizzes(int studentTopicId) throws SQLException {
-        ArrayList<StudentInQuizModel> list = new ArrayList<>();
+    public ArrayList<LocalDate> getStudentQuizzes(int studentTopicId) throws SQLException {
+        ArrayList<LocalDate> list = new ArrayList<>();
+        LocalDate date;
         Connection conn = null;
         PreparedStatement ptm = null;
         ResultSet rs = null;
@@ -81,12 +83,8 @@ public class StudentInQuizDAO {
                 ptm.setInt(1, studentTopicId);
                 rs = ptm.executeQuery();
                 while (rs.next()) {
-                    studentInQuizModel = new StudentInQuizModel();
-                    studentInQuizModel.setStudentInQuizId(rs.getInt("Id"));
-                    studentInQuizModel.setStudentTopicId(studentTopicId);
-                    studentInQuizModel.setQuizId(rs.getInt("QuizId"));
-                    studentInQuizModel.setCreatedAt(MyUtils.convertDateToLocalDate(rs.getDate("CreatedAt")));
-                    list.add(studentInQuizModel);
+                    date = MyUtils.convertDateToLocalDate(rs.getDate("CreatedAt"));
+                    list.add(date);
                 }
             }
         } catch (ClassNotFoundException | SQLException e) {

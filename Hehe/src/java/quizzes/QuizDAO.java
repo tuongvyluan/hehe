@@ -20,15 +20,11 @@ public class QuizDAO {
     private QuizModel quizModel;
     
     //Fields
-    private final String QUIZ_DTO_FIELDS = "Id, TopicId";
     private final String QUIZ_CONTENT = "Id, TopicId, Content";
     
     //Sql queries
     private final String GET_QUIZ_CONTENT = "SELECT " + QUIZ_CONTENT
-            + " FROM Quiz WHERE TopicId=?";
-    
-    private final String GET_QUIZ = "SELECT " + QUIZ_DTO_FIELDS
-            + " FROM Quiz WHERE TopicId=?";
+            + " FROM Quiz WHERE TopicId=? AND Status='ACTIVE'";
     
     public QuizModel getContent(int topicId) throws SQLException {
         QuizModel quizModel = null;

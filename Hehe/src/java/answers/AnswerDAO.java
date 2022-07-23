@@ -26,10 +26,10 @@ public class AnswerDAO {
 
     //Sql queries
     private final String GET_ANSWERS_CONTENT = "SELECT " + ANSWER_CONTENT
-            + " FROM Answer WHERE QuizId=? ORDER BY NEWID()";
+            + " FROM Answer WHERE QuizId=? AND Status='ACTIVE' ORDER BY NEWID()";
 
     private final String GET_RESULT = "SELECT Id FROM Answer "
-            + "WHERE QuizId=? AND IsCorrect='TRUE'";
+            + "WHERE QuizId=? AND IsCorrect='TRUE' AND Status='ACTIVE'";
 
     public ArrayList<AnswerModel> getAnswersContent(int quizId) throws SQLException {
         ArrayList<AnswerModel> list = new ArrayList<>();

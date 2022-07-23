@@ -5,6 +5,7 @@
 package studentInQuizzes;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -22,9 +23,9 @@ public class StudentInQuizBUS {
         return model;
     }
     
-    public ArrayList<StudentInQuizModel> getStudentQuizzes(int studentTopicId) throws SQLException {
+    public ArrayList<LocalDate> getQuizRecord(int studentTopicId) throws SQLException {
         dao = new StudentInQuizDAO();
-        ArrayList<StudentInQuizModel> list = dao.getStudentQuizzes(studentTopicId);
+        ArrayList<LocalDate> list = dao.getStudentQuizzes(studentTopicId);
         return list;
     }
     
