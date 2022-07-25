@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="./css/editProfile.css" />
   </head>
   <body>
+    <header>
+      <%@ include file="header.jsp" %>
+    </header>
     <%
         //Prevent everyone else except the login student go to this page
         StudentDTO student;

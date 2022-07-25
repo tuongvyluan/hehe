@@ -28,7 +28,7 @@ public class StudentInTopicDAO {
             + "FROM StudentInTopic s "
             + "JOIN Topic t "
             + "ON s.TopicId = t.Id "
-            + "WHERE StudentCourseId=? AND s.Status='Completed' AND t.Status='Active'";
+            + "WHERE StudentId=? AND CourseId = ? AND s.Status='Completed' AND t.Status='ACTIVE'";
 
     private final String GET_TOPIC = "SELECT " + STUDENT_IN_TOPIC_DTO_FIELDS
             + " FROM StudentInTopic WHERE StudentCourseId=? AND TopicId=?";
@@ -202,7 +202,7 @@ public class StudentInTopicDAO {
         return list;
     }
     
-    public int countCompletedTopicsByCourse(int studentCourseId) throws SQLException {
+    public int countCompletedTopicsByCourse(int studentId, int courseId) throws SQLException {
         int count = 0;
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -211,7 +211,8 @@ public class StudentInTopicDAO {
             conn = DBUtils.getConnection();
             if (conn != null) {
                 ptm = conn.prepareStatement(COUNT_COMPLETED_TOPICS);
-                ptm.setInt(1, studentCourseId);
+                ptm.setInt(1, studentId);
+                ptm.setInt(2, courseId);
                 rs = ptm.executeQuery();
                 if (rs.next()) {
                     count = rs.getInt("Count");

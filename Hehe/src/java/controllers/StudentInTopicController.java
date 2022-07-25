@@ -103,18 +103,12 @@ public class StudentInTopicController extends HttpServlet {
                         if (studentTopic == null) {
                             if (submissionResult) {
                                 studentTopic = studentInTopicBUS.insert(studentCourseId, topicId, STUDENT_TOPIC_STATUS_COMPLETED);
-                                if (studentInCourseBUS.checkStatus(studentCourseId)) {
-                                    studentInCourseBUS.completeCourse(studentCourseId);
-                                }
                             } else {
                                 studentTopic = studentInTopicBUS.insert(studentCourseId, topicId, STUDENT_TOPIC_STATUS_STUDYING);
                             }
                         } else {
                             if (submissionResult) {
                                 studentTopic = studentInTopicBUS.updateStatus(studentTopic.getId(), STUDENT_TOPIC_STATUS_COMPLETED);
-                                if (studentInCourseBUS.checkStatus(studentCourseId)) {
-                                    studentInCourseBUS.completeCourse(studentCourseId);
-                                }
                             }
                         }
                         request.setAttribute("STUDENT_TOPIC", studentTopic);

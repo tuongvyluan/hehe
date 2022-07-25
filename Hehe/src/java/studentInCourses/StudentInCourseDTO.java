@@ -13,13 +13,11 @@ public class StudentInCourseDTO {
     private int studentInCourseId;
     private int studentId;
     private int courseId;
-    private String status;
 
-    public StudentInCourseDTO(int studentInCourseId, int studentId, int courseId, String status) {
+    public StudentInCourseDTO(int studentInCourseId, int studentId, int courseId) {
         this.studentInCourseId = studentInCourseId;
         this.studentId = studentId;
         this.courseId = courseId;
-        this.status = status;
     }
 
     public StudentInCourseDTO() {
@@ -49,16 +47,8 @@ public class StudentInCourseDTO {
         this.courseId = courseId;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     @Override
     public String toString() {
-        return "StudentInCourseDTO{" + "studentInCourseId=" + studentInCourseId + ", studentId=" + studentId + ", courseId=" + courseId + ", status=" + status + '}';
+        return "StudentInCourseDTO{" + "studentInCourseId=" + studentInCourseId + ", studentId=" + studentId + ", courseId=" + courseId + '}';
     }
 }

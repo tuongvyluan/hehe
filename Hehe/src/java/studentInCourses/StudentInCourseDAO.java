@@ -24,7 +24,7 @@ public class StudentInCourseDAO {
 
     //Fields
     private final String STUDENT_IN_COURSE_MODEL_FIELDS = "Id, StudentId, CourseId, "
-            + "Certificate, Status";
+            + "Certificate";
     private final String COURSE_INTRO_FIELDS = "Id, Name, AuthorId, Duration";
 
     //Sql queries
@@ -40,14 +40,7 @@ public class StudentInCourseDAO {
 
     private final String GET_STUDYING_COURSES = "SELECT c." + COURSE_INTRO_FIELDS
             + " FROM Course c JOIN StudentInCourse s ON c.Id=s.CourseId "
-            + " WHERE StudentId=? AND s.Status='Studying'";
-    
-    private final String GET_COMPLETED_COURSES = "SELECT c." + COURSE_INTRO_FIELDS
-            + " FROM Course c JOIN StudentInCourse s ON c.Id=s.CourseId "
-            + " WHERE StudentId=? AND s.Status='Completed'";
-    
-    private final String COMPLETE_COURSE = "UPDATE StudentInCourse "
-            + "SET Status='Completed' WHERE Id=?";
+            + " WHERE StudentId=? AND c.Status='ACTIVE'";
 
     public StudentInCourseModel getModel(int studentId, int courseId) throws SQLException {
         studentInCourseModel = null;
@@ -66,7 +59,6 @@ public class StudentInCourseDAO {
                     studentInCourseModel.setCourseId(courseId);
                     studentInCourseModel.setStudentId(studentId);
                     studentInCourseModel.setStudentInCourseId(rs.getInt("Id"));
-                    studentInCourseModel.setStatus(rs.getString("Status"));
                     studentInCourseModel.setCertificate(rs.getString("Certificate"));
                 }
             }
@@ -102,7 +94,6 @@ public class StudentInCourseDAO {
                     studentInCourseModel.setCourseId(rs.getInt("CourseId"));
                     studentInCourseModel.setStudentId(rs.getInt("StudentId"));
                     studentInCourseModel.setStudentInCourseId(studentCourseId);
-                    studentInCourseModel.setStatus(rs.getString("Status"));
                     studentInCourseModel.setCertificate(rs.getString("Certificate"));
                 }
             }
@@ -138,7 +129,6 @@ public class StudentInCourseDAO {
                     studentInCourseDTO.setCourseId(rs.getInt("CourseId"));
                     studentInCourseDTO.setStudentId(rs.getInt("StudentId"));
                     studentInCourseDTO.setStudentInCourseId(studentCourseId);
-                    studentInCourseDTO.setStatus(rs.getString("Status"));
                 }
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -174,7 +164,6 @@ public class StudentInCourseDAO {
                     studentInCourseModel.setCourseId(courseId);
                     studentInCourseModel.setStudentId(studentId);
                     studentInCourseDTO.setStudentInCourseId(rs.getInt("Id"));
-                    studentInCourseDTO.setStatus(rs.getString("Status"));
                 }
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -259,64 +248,5 @@ public class StudentInCourseDAO {
             }
         }
         return list;
-    }
-    
-    public ArrayList<CourseDTO> getCompletedCourses(int studentId) throws SQLException {
-        ArrayList<CourseDTO> list = new ArrayList<>();
-        CourseDTO courseDTO;
-        Connection conn = null;
-        PreparedStatement ptm = null;
-        ResultSet rs = null;
-        try {
-            conn = DBUtils.getConnection();
-            if (conn != null) {
-                ptm = conn.prepareStatement(GET_COMPLETED_COURSES);
-                ptm.setInt(1, studentId);
-                rs = ptm.executeQuery();
-                while (rs.next()) {
-                    courseDTO = new CourseDTO();
-                    courseDTO.setCourseId(rs.getInt("Id"));
-                    courseDTO.setAuthorId(rs.getInt("AuthorId"));
-                    courseDTO.setCourseName(rs.getString("Name"));
-                    courseDTO.setDuration(rs.getDouble("Duration"));
-                    list.add(courseDTO);
-                }
-            }
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (ptm != null) {
-                ptm.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
-        }
-        return list;
-    }
-    
-    public void completeCourse(int studentInCourseId) throws SQLException {
-        studentInCourseDTO = null;
-        Connection conn = null;
-        PreparedStatement ptm = null;
-        try {
-            conn = DBUtils.getConnection();
-            if (conn != null) {
-                ptm = conn.prepareStatement(COMPLETE_COURSE);
-                ptm.setInt(1, studentInCourseId);
-            }
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if (ptm != null) {
-                ptm.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
-        }
     }
 }

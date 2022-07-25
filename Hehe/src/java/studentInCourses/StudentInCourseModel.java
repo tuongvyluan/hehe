@@ -17,15 +17,14 @@ public class StudentInCourseModel {
     private int courseId;
     private String certificate;
     private LocalDate startDate;
-    private String status;
+    private double progress;
 
-    public StudentInCourseModel(int studentInCourseId, int studentId, int courseId, String certificate, LocalDate startDate, String status) {
+    public StudentInCourseModel(int studentInCourseId, int studentId, int courseId, String certificate, LocalDate startDate, double progress) {
         this.studentInCourseId = studentInCourseId;
         this.studentId = studentId;
         this.courseId = courseId;
         this.certificate = certificate;
         this.startDate = startDate;
-        this.status = status;
     }
 
     public StudentInCourseModel() {
@@ -70,22 +69,14 @@ public class StudentInCourseModel {
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
     
     public StudentInCourseDTO toDTO() {
-        return new StudentInCourseDTO(studentInCourseId, studentId, courseId, status);
+        return new StudentInCourseDTO(studentInCourseId, studentId, courseId);
     }
 
     @Override
     public String toString() {
-        return "StudentInCourseModel{" + "studentInCourseId=" + studentInCourseId + ", studentId=" + studentId + ", courseId=" + courseId + ", certificate=" + certificate + ", startDate=" + startDate + ", status=" + status + '}';
+        return "StudentInCourseModel{" + "studentInCourseId=" + studentInCourseId + ", studentId=" + studentId + ", courseId=" + courseId + ", certificate=" + certificate + ", startDate=" + startDate + '}';
     }
     
     

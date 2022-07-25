@@ -6,6 +6,7 @@ package studentInCourses;
 
 import courses.CourseDTO;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import studentInTopics.StudentInTopicDAO;
 import topics.TopicDAO;
@@ -34,31 +35,30 @@ public class StudentInCourseBUS {
         ArrayList<CourseDTO> list = dao.getStudyingCourses(studentId);
         return list;
     }
-
-    public ArrayList<CourseDTO> getCompletedCourses(int studentId) throws SQLException {
-        dao = new StudentInCourseDAO();
-        ArrayList<CourseDTO> list = dao.getCompletedCourses(studentId);
-        return list;
+    
+    public double getCourseProgress(int studentId, int courseId) throws SQLException {
+        double progress = 0;
+        DecimalFormat df = new DecimalFormat("0.0");
+        StudentInTopicDAO studentInTopicDAO = new StudentInTopicDAO();
+        TopicDAO topicDAO = new TopicDAO();
+        int completedCourse = studentInTopicDAO.countCompletedTopicsByCourse(studentId, courseId);
+        int totalTopics = topicDAO.countTopicsByCourse(courseId);
+        if (totalTopics != 0) {
+            progress = completedCourse * 100 / totalTopics;
+        }
+        return Double.parseDouble(df.format(progress));
     }
-
-    public boolean checkStatus(int studentCourseId) throws SQLException {
-        boolean check = false;
-        dao = new StudentInCourseDAO();
-        StudentInCourseDTO studentCourse = dao.getDTO(studentCourseId);
-        if (studentCourse != null) {
-            TopicDAO topicDAO = new TopicDAO();
-            StudentInTopicDAO studentInTopicDAO = new StudentInTopicDAO();
-            int countTotalTopics = topicDAO.countTopicsByCourse(studentCourse.getCourseId());
-            int countCompletedTopic = studentInTopicDAO.countCompletedTopicsByCourse(studentCourseId);
-            if (countCompletedTopic == countTotalTopics) {
-                check = true;
+    
+    public ArrayList<Double> getCoursesProgress(int studentId, ArrayList<CourseDTO> courses) throws SQLException {
+        ArrayList<Double> progressList = null;
+        if (courses != null && !courses.isEmpty()) {
+            progressList = new ArrayList<>();
+            double progress = 0;
+            for (CourseDTO courseDTO : courses) {
+                progress = getCourseProgress(studentId, courseDTO.getCourseId());
+                progressList.add(progress);
             }
         }
-        return check;
-    }
-
-    public void completeCourse(int studentCourseId) throws SQLException {
-        dao = new StudentInCourseDAO();
-        dao.completeCourse(studentCourseId);
+        return progressList;
     }
 }
