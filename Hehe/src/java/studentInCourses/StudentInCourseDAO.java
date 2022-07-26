@@ -28,19 +28,25 @@ public class StudentInCourseDAO {
     private final String COURSE_INTRO_FIELDS = "Id, Name, AuthorId, Duration";
 
     //Sql queries
-    private final String GET_STUDENT_COURSE = "SELECT " + STUDENT_IN_COURSE_MODEL_FIELDS
-            + " FROM StudentInCourse WHERE StudentId=? AND CourseId=?";
+    private final String GET_STUDENT_COURSE = "SELECT s." + STUDENT_IN_COURSE_MODEL_FIELDS
+            + " FROM StudentInCourse s"
+            + " JOIN Course c"
+            + " ON c.Id = s.CourseId"
+            + " WHERE StudentId=? AND CourseId=? AND c.Status = 'Active'";
     
-    private final String GET_STUDENT_COURSE_BY_ID = "SELECT " + STUDENT_IN_COURSE_MODEL_FIELDS
-            + " FROM StudentInCourse WHERE Id=?";
+    private final String GET_STUDENT_COURSE_BY_ID = "SELECT  s." + STUDENT_IN_COURSE_MODEL_FIELDS
+            + " FROM StudentInCourse s"
+            + " JOIN Course c"
+            + " ON c.Id = s.CourseId"
+            + " WHERE Id=? AND c.Status = 'Active'";
 
     private final String ENROLL = "INSERT INTO StudentInCourse "
-            + "(StudentId, CourseId, StartDate, Certificate, Status) "
-            + "VALUES (?,?,?,?,?)";
+            + "(StudentId, CourseId, StartDate, Certificate) "
+            + "VALUES (?,?,?,?)";
 
     private final String GET_STUDYING_COURSES = "SELECT c." + COURSE_INTRO_FIELDS
             + " FROM Course c JOIN StudentInCourse s ON c.Id=s.CourseId "
-            + " WHERE StudentId=? AND c.Status='ACTIVE'";
+            + " WHERE StudentId=? AND c.Status='Active'";
 
     public StudentInCourseModel getModel(int studentId, int courseId) throws SQLException {
         studentInCourseModel = null;
@@ -194,7 +200,6 @@ public class StudentInCourseDAO {
                 ptm.setInt(2, courseId);
                 ptm.setString(3, LocalDate.now().toString());
                 ptm.setString(4, "null");
-                ptm.setString(5, "Studying");
                 if (ptm.executeUpdate() == 1) {
                     studentInCourseModel = getModel(studentId, courseId);
                 }

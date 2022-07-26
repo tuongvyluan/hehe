@@ -31,16 +31,16 @@ public class StudentDAO {
             + PAGINATION;
 
     private final String CHECK_GOOGLE_LOGIN = "SELECT " + STUDENT_MODEL_FIELDS
-            + " FROM Student WHERE email=? AND Status='ACTIVE'";
+            + " FROM Student WHERE email=? AND Status='Active'";
 
     private final String GET_STUDENT_BY_ID = "SELECT " + STUDENT_MODEL_FIELDS + " FROM Student WHERE Id=?";
 
     private final String CHECK_NORMAL_LOGIN = "SELECT " + STUDENT_MODEL_FIELDS
-            + " FROM Student WHERE Email=? AND Password=? AND Status='ACTIVE'";
+            + " FROM Student WHERE Email=? AND Password=? AND Status='Active'";
 
     private final String CREATE_STUDENT = "INSERT INTO Student "
             + "(status, email, password, firstName, lastName, dob, phoneNumber) VALUES "
-            + "('ACTIVE', ?, ?, ?, ?, ?, ?)";
+            + "('Active', ?, ?, ?, ?, ?, ?)";
 
     public List<StudentModel> get(int pageNumber, int rowsOfPage) throws SQLException {
         ArrayList<StudentModel> list = new ArrayList<>();

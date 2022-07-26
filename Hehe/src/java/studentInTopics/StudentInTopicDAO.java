@@ -21,27 +21,36 @@ public class StudentInTopicDAO {
 
     //Fields
     private final String STUDENT_IN_TOPIC_DTO_FIELDS = "Id, StudentCourseId, "
-            + "TopicId, Status";
+            + "TopicId, s.Status";
 
     //SQL queries
     private final String COUNT_COMPLETED_TOPICS = "SELECT COUNT(s.Id) AS [Count] "
             + "FROM StudentInTopic s "
             + "JOIN Topic t "
             + "ON s.TopicId = t.Id "
-            + "WHERE StudentId=? AND CourseId = ? AND s.Status='Completed' AND t.Status='ACTIVE'";
+            + "WHERE StudentId=? AND CourseId = ? AND s.Status='Completed' AND t.Status='Active'";
 
-    private final String GET_TOPIC = "SELECT " + STUDENT_IN_TOPIC_DTO_FIELDS
-            + " FROM StudentInTopic WHERE StudentCourseId=? AND TopicId=?";
+    private final String GET_TOPIC = "SELECT s." + STUDENT_IN_TOPIC_DTO_FIELDS
+            + " FROM StudentInTopic s"
+            + " JOIN Topic t"
+            + " ON t.Id = s.TopicId"
+            + " WHERE StudentCourseId=? AND TopicId=? AND t.Status = 'Active'";
 
-    private final String GET_TOPIC_BY_ID = "SELECT " + STUDENT_IN_TOPIC_DTO_FIELDS
-            + " FROM StudentInTopic WHERE Id=?";
+    private final String GET_TOPIC_BY_ID = "SELECT s." + STUDENT_IN_TOPIC_DTO_FIELDS
+            + " FROM StudentInTopic s"
+            + " JOIN Topic t"
+            + " ON t.Id = s.TopicId"
+            + " WHERE s.Id=? AND t.Status = 'Active'";
 
     private final String INSERT = "INSERT INTO StudentInTopic "
             + "(StudentCourseId, TopicId, Status) "
             + "VALUES (?,?,?)";
 
-    private final String GET_COMPLETED_TOPICS = "SELECT TopicId FROM StudentInTopic "
-            + "WHERE StudentCourseId=? AND Status='Completed' ORDER BY TopicId";
+    private final String GET_COMPLETED_TOPICS = "SELECT TopicId"
+            + " FROM StudentInTopic s"
+            + " JOIN Topic t"
+            + " ON t.Id = s.TopicId"
+            + " WHERE StudentCourseId=? AND s.Status='Completed' AND t.Status='Active' ORDER BY TopicId";
 
     private final String UPDATE = "UPDATE StudentInTopic SET Status=? WHERE Id=?";
 
@@ -152,8 +161,8 @@ public class StudentInTopicDAO {
             conn = DBUtils.getConnection();
             if (conn != null) {
                 ptm = conn.prepareStatement(UPDATE);
-                ptm.setInt(2, studentTopicId);
                 ptm.setString(1, status);
+                ptm.setInt(2, studentTopicId);
                 if (ptm.executeUpdate() == 1) {
                     studentInTopicDTO = getDTO(studentTopicId);
                 }

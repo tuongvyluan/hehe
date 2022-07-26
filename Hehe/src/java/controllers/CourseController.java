@@ -5,6 +5,7 @@
 package controllers;
 
 import courses.CourseBUS;
+import courses.CourseDTO;
 import courses.CourseModel;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,10 +26,11 @@ public class CourseController extends HttpServlet {
 
     //Action String
     private final String VIEW_COURSE = "ViewCourse";
+    private final String SEARCH_COURSE = "SearchCourse";
 
     //Destination String
-    private final String ERROR = "error.jsp";
     private final String HOME = "home.jsp";
+    private final String HOME_SEARCH = "home_search.jsp";
     private final String COURSE = "course.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -40,14 +42,23 @@ public class CourseController extends HttpServlet {
         SectionBUS sectionBUS = new SectionBUS();
         try {
             String action = request.getParameter("action");
-            int courseId = Integer.parseInt(request.getParameter("courseId"));
             switch (action) {
                 case VIEW_COURSE: {
+                    int courseId = Integer.parseInt(request.getParameter("courseId"));
                     course = courseBUS.get(courseId);
                     ArrayList<SectionDTO> sections = sectionBUS.get(courseId);
                     request.setAttribute("CURRENT_COURSE", course);
                     request.setAttribute("SECTION_LIST", sections);
                     url = COURSE;
+                    break;
+                }
+
+                case SEARCH_COURSE: {
+                    String search = request.getParameter("search");
+                    ArrayList<CourseDTO> list = courseBUS.searchCoursesByName(search);
+                    request.setAttribute("SEARCH_RESULT", list);
+                    request.setAttribute("SEARCH", search);
+                    url = HOME_SEARCH;
                     break;
                 }
             }

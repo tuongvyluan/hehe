@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 body {
-    background-color: antiquewhite;
+    
     font-family: 'Poppins', sans-serif;
 }
 
 .card-container {
-    width: 95%;
+    width: 90%;
     margin: auto;
 }
 
@@ -107,6 +107,7 @@ body {
 
 .description p {
     margin-top: 0px;
+    margin-bottom: 0.5rem;
 }
 
 .card-content-detail {
@@ -256,6 +257,7 @@ body {
         width: 90%;
         margin: auto;
     }
+   
     .card {
         width: 320px;
         height: auto;
@@ -266,6 +268,7 @@ body {
         width: 80%;
         margin: auto;
     }
+   
     .card {
         width: 350px;
         height: auto;

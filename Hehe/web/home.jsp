@@ -66,12 +66,12 @@
       .pagination a {
           text-align: center;
       }
-      
-      
+
+
     </style>
     <title>Hehe Code</title>
   </head>
-  <body>
+  <body onload="addColor()">
     <header>
       <%@ include file="header.jsp" %>
     </header>
@@ -84,8 +84,41 @@
         </div>
       </div>
     </section>
+    <section class="search__courses" id="search__courses">
+      <div class="row card-container">
+        <div class="col-sm-10 col-md-10">
+          <div
+              class="card"
+              style="
+              border: none;
+              border-radius: 0px;
+              height: fit-content;
+              width: 80vw;
+              "
+              >
+          </div>
+        </div>
+      </div>
+      <div class="row card-container search__button" style="font-size: 20px">
+        <div class="" style="float: right">
+          <form action="MainController" id="search" method="POST">
+            <input type="hidden" name="action" value="SearchCourse">
+            <input type="hidden" name="controller" value="Course">
+            <input class="search__input" type="text" placeholder="Search" name="search" value="${requestScope.SEARCH}" />
+            <button class="btn__search__submit" type="submit" onclick="submit_form('search')">
+              <i class="fa fa-search"></i>
+            </button>
+          </form>
+        </div>
+        <div class="">
+          <button>All course</button>
+        </div>
+        <div class="">
+          <button>Enrolled</button>
+        </div>
+      </div>
+    </section>
 
-      
     <%
         int pageNumber = 1;
         int rowsOfPage = 3;
@@ -103,10 +136,7 @@
             pageNumber = totalPage;
         }
         ArrayList<CategoryModel> categories = categoryBUS.getCategories(pageNumber, rowsOfPage);
-
-    %>
-
-    <%        if (rowsOfPage > categories.size()) {
+        if (rowsOfPage > categories.size()) {
             rowsOfPage = categories.size();
         }
         CourseBUS courseBUS = new CourseBUS();
@@ -160,34 +190,70 @@
     %>
     <div class="pagination">
       <a href="./home.jsp?page=1">&laquo;</a>
-      
+
       <%
           for (int i = 1; i < pageNumber; i++) {
       %>
-      <a href="./home.jsp?page=<%= i %>"><%= i%></a>
+      <a href="./home.jsp?page=<%= i%>"><%= i%></a>
       <%
           }
       %>
-      
+
       <a href="" class="active"><%= pageNumber%></a>
-      
+
       <%
           for (int i = pageNumber + 1; i <= totalPage; i++) {
       %>
-      <a href="./home.jsp?page=<%= i %>"><%= i%></a>
+      <a href="./home.jsp?page=<%= i%>"><%= i%></a>
       <%
           }
       %>
-      
-      <a href="./home.jsp?page=<%= totalPage %>">&raquo;</a>
+
+      <a href="./home.jsp?page=<%= totalPage%>">&raquo;</a>
     </div>
-      <footer>
-        <%@ include file="footerHehe.jsp" %>
-      </footer>
+    <footer>
+      <%@ include file="footerHehe.jsp" %>
+    </footer>
   </body>
   <!-- Swiper JS -->
   <script src="js/swiper-bundle.min.js"></script>
 
   <!-- JavaScript -->
   <script src="js/script.js"></script>
+  <script>
+      const colorRandom = document.querySelectorAll(".overlay");
+      const backgroundPink =
+              "linear-gradient(to top left, #1877f2 0%, #FF6CB0 80%)";
+      const backgroundBlue =
+              "linear-gradient(to top left, #1877f2 0%, #66ffff  80%)";
+      const backgroundYellow =
+              "linear-gradient(to top left, #1877f2 0%, #F9F871  80%)";
+      const backgroundGreen =
+              "linear-gradient(to top left, #1877f2 0%, #6EFACC 80%)";
+      const backgroundViolet =
+              "linear-gradient(to top left, #1877f2 0%, #CB6BDF 80%)";
+      const backgroundRed =
+              "linear-gradient(to top left, #1877f2 0%, #FF907E 80%)";
+      const backColor = [
+          backgroundPink,
+          backgroundBlue,
+          backgroundRed,
+          backgroundYellow,
+          backgroundGreen,
+          backgroundViolet,
+      ];
+
+      function addColor() {
+          let x = 0;
+          colorRandom.forEach((e) => {
+              e.style.background = backColor[x % 6];
+              x = x + 1;
+          });
+      }
+
+      function submit_form(form_id) {
+          var form = document.getElementById(form_id);
+          form.submit();
+      }
+  </script>
 </html>

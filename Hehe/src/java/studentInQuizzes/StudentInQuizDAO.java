@@ -22,15 +22,21 @@ public class StudentInQuizDAO {
     private StudentInQuizModel studentInQuizModel;
     
     //Fields
-    private final String STUDENT_IN_QUIZ_DTO_FIELDS = "Id, StudentTopicId, "
-            + "QuizId, CreatedAt";
+    private final String STUDENT_IN_QUIZ_DTO_FIELDS = "s.Id, StudentTopicId, "
+            + "QuizId, s.CreatedAt";
     
     //SQL queries
     private final String GET_QUIZ = "SELECT TOP(1) " + STUDENT_IN_QUIZ_DTO_FIELDS
-            + " FROM StudentInQuiz WHERE StudentTopicId=? ORDER BY Id DESC";
+            + " FROM StudentInQuiz s"
+            + " JOIN Quiz q"
+            + " ON q.Id = s.QuizId"
+            + " WHERE StudentTopicId=? AND q.Status='Active' ORDER BY Id DESC";
 
-    private final String GET_QUIZZES = "SELECT TOP(10) CreatedAt"
-            + " FROM StudentInQuiz WHERE StudentTopicId=? ORDER BY Id DESC";
+    private final String GET_QUIZZES = "SELECT TOP(10) s.CreatedAt"
+            + " FROM StudentInQuiz s"
+            + " JOIN Quiz q"
+            + " ON q.Id = s.QuizId"
+            + " WHERE StudentTopicId=? AND q.Status='Active' ORDER BY s.Id DESC";
 
     private final String INSERT = "INSERT INTO StudentInQuiz "
             + "(StudentTopicId, QuizId) VALUES (?,?)";

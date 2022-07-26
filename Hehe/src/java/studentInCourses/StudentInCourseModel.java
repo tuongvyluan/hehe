@@ -17,9 +17,8 @@ public class StudentInCourseModel {
     private int courseId;
     private String certificate;
     private LocalDate startDate;
-    private double progress;
 
-    public StudentInCourseModel(int studentInCourseId, int studentId, int courseId, String certificate, LocalDate startDate, double progress) {
+    public StudentInCourseModel(int studentInCourseId, int studentId, int courseId, String certificate, LocalDate startDate) {
         this.studentInCourseId = studentInCourseId;
         this.studentId = studentId;
         this.courseId = courseId;

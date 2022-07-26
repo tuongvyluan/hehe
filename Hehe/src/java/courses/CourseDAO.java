@@ -34,8 +34,6 @@ public class CourseDAO {
             + "ROWS FETCH NEXT @RowsOfPage ROWS ONLY";
 
     //SQL query
-    private final String GET_COURSES = DECLARE_PAGINATION + "SELECT " + COURSE_DTO_FIELDS
-            + " FROM Course ORDER BY UpdatedAt " + PAGINATION;
 
     private final String GET_COURSES_BY_CATEGORY = DECLARE_PAGINATION + "SELECT "
             + COURSE_INTRO_FIELDS
@@ -43,50 +41,9 @@ public class CourseDAO {
 
     private final String GET_COURSE = "SELECT " + COURSE_MODEL_FIELDS
             + " FROM Course WHERE Id=?";
-
-    public ArrayList<CourseDTO> get(int pageNumber, int rowsOfPage) throws SQLException {
-        ArrayList<CourseDTO> list = new ArrayList<>();
-        if (pageNumber <= 0) {
-            pageNumber = 1;
-        }
-
-        if (rowsOfPage <= 0) {
-            rowsOfPage = 1;
-        }
-
-        Connection conn = null;
-        PreparedStatement ptm = null;
-        ResultSet rs = null;
-        try {
-            conn = DBUtils.getConnection();
-            if (conn != null) {
-                ptm = conn.prepareStatement(GET_COURSES);
-                ptm.setInt(1, pageNumber);
-                ptm.setInt(2, rowsOfPage);
-                rs = ptm.executeQuery();
-                while (rs.next()) {
-                    courseDTO = new CourseDTO();
-                    courseDTO.setCourseId(rs.getInt("Id"));
-                    courseDTO.setCourseName(rs.getString("Name"));
-                    courseDTO.setCategoryId(rs.getInt("CategoryId"));
-                    list.add(courseDTO);
-                }
-            }
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (ptm != null) {
-                ptm.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
-        }
-        return list;
-    }
+    
+    private final String SEARCH_COURSES = "SELECT " + COURSE_INTRO_FIELDS
+            + " FROM Course WHERE Name LIKE ? ORDER BY UpdatedAt";
 
     public ArrayList<CourseDTO> getByCategory(int categoryId, int pageNumber, int rowsOfPage) throws SQLException {
         ArrayList<CourseDTO> list = new ArrayList<>();
@@ -170,5 +127,42 @@ public class CourseDAO {
             }
         }
         return course;
+    }
+    
+    public ArrayList<CourseDTO> searchCoursesByName(String search) throws SQLException {
+        ArrayList<CourseDTO> list = new ArrayList<>();
+
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(SEARCH_COURSES);
+                ptm.setString(1, "%" + search + "%");
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    courseDTO = new CourseDTO();
+                    courseDTO.setCourseId(rs.getInt("Id"));
+                    courseDTO.setAuthorId(rs.getInt("AuthorId"));
+                    courseDTO.setCourseName(rs.getString("Name"));
+                    courseDTO.setDuration(rs.getDouble("Duration"));
+                    list.add(courseDTO);
+                }
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return list;
     }
 }

@@ -9,9 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import studentInQuizzes.StudentInQuizModel;
 import utils.DBUtils;
-import utils.MyUtils;
 
 /**
  *
@@ -28,11 +26,17 @@ public class StudentAnswerDAO {
     private final String GET_ANSWER_BY_ID = "SELECT " + STUDENT_ANSWER_DTO_FIELDS
             + " FROM StudentAnswer WHERE Id=?";
     
-    private final String GET_ANSWER = "SELECT " + STUDENT_ANSWER_DTO_FIELDS
-            + " FROM StudentAnswer WHERE StudentQuizId=? AND AnswerId=?";
+    private final String GET_ANSWER = "SELECT s." + STUDENT_ANSWER_DTO_FIELDS
+            + " FROM StudentAnswer s"
+            + " JOIN Answer a"
+            + " ON a.Id = s.AnswerId"
+            + " WHERE StudentQuizId=? AND AnswerId=? AND a.Status='Active'";
 
-    private final String GET_ANSWERS = "SELECT TOP(10) " + STUDENT_ANSWER_DTO_FIELDS
-            + " FROM StudentAnswer WHERE StudentQuizId=? ORDER BY Id";
+    private final String GET_ANSWERS = "SELECT TOP(10) s." + STUDENT_ANSWER_DTO_FIELDS
+            + " FROM StudentAnswer s"
+            + " JOIN Answer a"
+            + " ON a.Id = s.AnswerId"
+            + " WHERE StudentQuizId=? AND a.Status='Active' ORDER BY s.Id";
 
     private final String INSERT = "INSERT INTO StudentAnswer "
             + "(StudentQuizId, AnswerId) VALUES (?,?)";

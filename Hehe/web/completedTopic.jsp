@@ -315,6 +315,10 @@
                 <%
                     }
                 %>
+                <div class="submit-button" id="submitbtn" style="color: #FFFFFF; background-color: #87AF3E;">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span>Completed</span>
+                </div>
               </div>
             </div>
           </div>

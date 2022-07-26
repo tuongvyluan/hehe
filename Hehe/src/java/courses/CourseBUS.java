@@ -17,9 +17,9 @@ public class CourseBUS {
     private CourseDTO courseDTO;
     private CourseModel courseModel;
 
-    public ArrayList<CourseDTO> getCourses(int pageNumber, int rowsOfPage) throws SQLException {
+    public ArrayList<CourseDTO> searchCoursesByName(String search) throws SQLException {
         dao = new CourseDAO();
-        ArrayList<CourseDTO> list = dao.get(pageNumber, rowsOfPage);
+        ArrayList<CourseDTO> list = dao.searchCoursesByName(search);
         return list;
     }
 

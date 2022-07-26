@@ -394,7 +394,23 @@
                 <%
                     }
                 %>
-
+                <%
+                    if (submissionResult) {
+                %>
+                <div class="submit-button" id="submitbtn" style="color: #FFFFFF; background-color: #87AF3E;">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span>Completed</span>
+                </div>
+                <%
+                } else {
+                %>
+                <div class="submit-button" id="submitbtn" style="color: #FFFFFF; background-color: #FF907E;">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span>Not passed</span>
+                </div>
+                <%
+                    }
+                %>
               </div>
             </div>
           </div>

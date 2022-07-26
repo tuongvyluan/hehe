@@ -24,19 +24,19 @@ public class TopicDAO {
     private final String TOPIC_CONTENT = "Id, CourseId, Name, DisplayIndex, Description";
 
     //Sql queries
-    private final String COUNT_TOPICS_BY_COURSE = "SELECT Count(Id) AS [Count] FROM Topic WHERE CourseId=? AND Status='ACTIVE'";
+    private final String COUNT_TOPICS_BY_COURSE = "SELECT Count(Id) AS [Count] FROM Topic WHERE CourseId=? AND Status='Active'";
     
     private final String GET_TOPICS_BY_SECTION = "SELECT " + TOPIC_DTO_FIELDS
-            + " FROM Topic WHERE SectionId=? AND Status='ACTIVE' ORDER BY DisplayIndex";
+            + " FROM Topic WHERE SectionId=? AND Status='Active' ORDER BY DisplayIndex";
 
     private final String GET_TOPIC_CONTENT = "SELECT " + TOPIC_CONTENT
-            + " FROM Topic WHERE Id=? AND Status='ACTIVE'";
+            + " FROM Topic WHERE Id=? AND Status='Active'";
 
     private final String GET_NEXT_TOPIC_ID = "SELECT TOP(1) Id"
-            + " FROM Topic WHERE CourseId=? AND DisplayIndex>? AND Status='ACTIVE' ORDER BY DisplayIndex ASC";
+            + " FROM Topic WHERE CourseId=? AND DisplayIndex>? AND Status='Active' ORDER BY DisplayIndex ASC";
     
     private final String GET_PREV_TOPIC_ID = "SELECT TOP(1) Id"
-            + " FROM Topic WHERE CourseId=? AND DisplayIndex<? AND Status='ACTIVE' ORDER BY DisplayIndex DESC";
+            + " FROM Topic WHERE CourseId=? AND DisplayIndex<? AND Status='Active' ORDER BY DisplayIndex DESC";
 
     public ArrayList<TopicDTO> get(int sectionId) throws SQLException {
         ArrayList<TopicDTO> list = new ArrayList<>();
